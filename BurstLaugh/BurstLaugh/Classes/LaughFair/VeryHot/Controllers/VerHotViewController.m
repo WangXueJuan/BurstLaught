@@ -7,8 +7,16 @@
 //
 
 #import "VerHotViewController.h"
+#import "AFNetworking.h"
+#import "VertHotTableViewCell.h"
+#import "verHotModel.h"
+#import "verHotDetailTableViewController.h"
 
-@interface VerHotViewController ()
+
+@interface VerHotViewController ()<UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 
 @end
 
@@ -17,8 +25,105 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor orangeColor];
-    self.tabBarController.tabBar.hidden = NO;
+    
+    //将tableView添加到视图上
+    [self.view addSubview:self.tableView];
+    //请求网路数据
+    [self requestData];
+    
+}
+
+//请求网路数据
+- (void)requestData {
+    AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
+    [sessionManger GET:[NSString stringWithFormat:@"%@", kVerHotList] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+       
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *responDic = responseObject;
+        NSMutableArray *listArray = responDic[@"list"];
+        NSLog(@"%ld",listArray.count);
+        NSMutableArray *textArray = [NSMutableArray new];
+        for (NSDictionary *dict in listArray) {
+            verHotModel *verModel = [[verHotModel alloc] initWithDictionary:dict];
+            [textArray addObject:verModel];
+            [self.dataArray addObject:textArray];
+        }
+        
+        
+        [self.tableView reloadData];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+
+
+}
+
+#pragma mark ---------------------------- UITableViewDataSource
+//分区行数
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataArray.count;
+}
+
+//重用机制
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellId = @"cellId";
+    VertHotTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[VertHotTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSMutableArray *array = self.dataArray[indexPath.section];
+    cell.verModel = array[indexPath.row];
+
+    return cell;
+}
+
+
+#pragma mark ----------------------------  UITableViewDelegate
+//返回每一行的高度
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    verHotModel *monMode = self.dataArray[indexPath.row];
+//    CGFloat cellHeight = [VertHotTableViewCell getCellHeightMode:monMode];
+//    //把cell的高度返回给tableView
+//    return cellHeight + 20;
+//}
+
+//cell的点击方法
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *detaildStorboard = [UIStoryboard storyboardWithName:@"verHotDetail" bundle:nil];
+    verHotDetailTableViewController *hotVC = detaildStorboard.instantiateInitialViewController;
+    NSMutableArray *groupArray = self.dataArray[indexPath.section];
+    hotVC.verModel = groupArray[indexPath.row];
+    
+    [self.navigationController pushViewController:hotVC animated:YES];
+
+
+}
+
+
+#pragma mark ----------------------------- 懒加载
+-(UITableView *)tableView {
+    if (!_tableView) {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight - 180) style:UITableViewStylePlain];
+        //设置属性
+        self.tableView.rowHeight = 250.0;
+        //设置代理
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+    }
+    return _tableView;
+
+}
+
+-(NSMutableArray *)dataArray {
+    if (!_dataArray) {
+        self.dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+
 }
 
 - (void)didReceiveMemoryWarning {

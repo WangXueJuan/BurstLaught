@@ -1,24 +1,22 @@
 //
-//  VideoViewController.m
+//  jokerHumorViewController.m
 //  BurstLaugh
 //
-//  Created by scjy on 16/3/3.
+//  Created by scjy on 16/3/4.
 //  Copyright © 2016年 王雪娟. All rights reserved.
 //
 
-#import "VideoViewController.h"
+#import "jokerHumorViewController.h"
 
-@interface VideoViewController ()
+@interface jokerHumorViewController ()
 
 @end
 
-@implementation VideoViewController
+@implementation jokerHumorViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

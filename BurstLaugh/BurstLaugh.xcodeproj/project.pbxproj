@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A75DC0F1C890C4400BFBA10 /* SCNavTabBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A75DC061C890C4400BFBA10 /* SCNavTabBar.bundle */; };
+		7A75DC101C890C4400BFBA10 /* SCNavTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC091C890C4400BFBA10 /* SCNavTabBarController.m */; };
+		7A75DC111C890C4400BFBA10 /* SCNavTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC0C1C890C4400BFBA10 /* SCNavTabBar.m */; };
+		7A75DC121C890C4400BFBA10 /* SCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC0E1C890C4400BFBA10 /* SCPopView.m */; };
+		7A75DC151C8916D000BFBA10 /* jokerHumorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC141C8916D000BFBA10 /* jokerHumorViewController.m */; };
+		7A75DC181C89175600BFBA10 /* TextJokerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC171C89175600BFBA10 /* TextJokerViewController.m */; };
+		7A75DC1A1C891C8E00BFBA10 /* KverHot.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A75DC191C891C8E00BFBA10 /* KverHot.plist */; };
+		7A75DC1D1C89200300BFBA10 /* VertHotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC1C1C89200300BFBA10 /* VertHotTableViewCell.m */; };
+		7A75DC201C892AEA00BFBA10 /* verHotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC1F1C892AEA00BFBA10 /* verHotModel.m */; };
+		7A7A920D1C89749200F9F0E9 /* verHotDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A920C1C89749200F9F0E9 /* verHotDetailTableViewController.m */; };
+		7A7A920F1C8974B700F9F0E9 /* verHotDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7A920E1C8974B700F9F0E9 /* verHotDetail.storyboard */; };
 		7AA6F7BD1C88287200C7DE19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6F7BC1C88287200C7DE19 /* main.m */; };
 		7AA6F7C01C88287200C7DE19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6F7BF1C88287200C7DE19 /* AppDelegate.m */; };
 		7AA6F7C21C88287200C7DE19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AA6F7C11C88287200C7DE19 /* Assets.xcassets */; };
@@ -50,6 +61,26 @@
 		41767937985FA64A38DBD8DB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4B75084CA0B05FBFB1A98091 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B814C4AA5A0B28517C27FA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7A75DC051C890C4400BFBA10 /* CommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMacro.h; sourceTree = "<group>"; };
+		7A75DC061C890C4400BFBA10 /* SCNavTabBar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SCNavTabBar.bundle; sourceTree = "<group>"; };
+		7A75DC081C890C4400BFBA10 /* SCNavTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNavTabBarController.h; sourceTree = "<group>"; };
+		7A75DC091C890C4400BFBA10 /* SCNavTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNavTabBarController.m; sourceTree = "<group>"; };
+		7A75DC0B1C890C4400BFBA10 /* SCNavTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNavTabBar.h; sourceTree = "<group>"; };
+		7A75DC0C1C890C4400BFBA10 /* SCNavTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNavTabBar.m; sourceTree = "<group>"; };
+		7A75DC0D1C890C4400BFBA10 /* SCPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPopView.h; sourceTree = "<group>"; };
+		7A75DC0E1C890C4400BFBA10 /* SCPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPopView.m; sourceTree = "<group>"; };
+		7A75DC131C8916D000BFBA10 /* jokerHumorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jokerHumorViewController.h; path = ../jokerHumorViewController.h; sourceTree = "<group>"; };
+		7A75DC141C8916D000BFBA10 /* jokerHumorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jokerHumorViewController.m; path = ../jokerHumorViewController.m; sourceTree = "<group>"; };
+		7A75DC161C89175600BFBA10 /* TextJokerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextJokerViewController.h; sourceTree = "<group>"; };
+		7A75DC171C89175600BFBA10 /* TextJokerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextJokerViewController.m; sourceTree = "<group>"; };
+		7A75DC191C891C8E00BFBA10 /* KverHot.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KverHot.plist; sourceTree = "<group>"; };
+		7A75DC1B1C89200300BFBA10 /* VertHotTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertHotTableViewCell.h; sourceTree = "<group>"; };
+		7A75DC1C1C89200300BFBA10 /* VertHotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertHotTableViewCell.m; sourceTree = "<group>"; };
+		7A75DC1E1C892AEA00BFBA10 /* verHotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = verHotModel.h; sourceTree = "<group>"; };
+		7A75DC1F1C892AEA00BFBA10 /* verHotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = verHotModel.m; sourceTree = "<group>"; };
+		7A7A920B1C89749200F9F0E9 /* verHotDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = verHotDetailTableViewController.h; sourceTree = "<group>"; };
+		7A7A920C1C89749200F9F0E9 /* verHotDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = verHotDetailTableViewController.m; sourceTree = "<group>"; };
+		7A7A920E1C8974B700F9F0E9 /* verHotDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = verHotDetail.storyboard; sourceTree = "<group>"; };
 		7AA6F7B81C88287200C7DE19 /* BurstLaugh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurstLaugh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AA6F7BC1C88287200C7DE19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7AA6F7BE1C88287200C7DE19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,13 +94,13 @@
 		7AA6F7D61C88287200C7DE19 /* BurstLaughUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BurstLaughUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AA6F7DA1C88287200C7DE19 /* BurstLaughUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BurstLaughUITests.m; sourceTree = "<group>"; };
 		7AA6F7DC1C88287200C7DE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7AA6F7EE1C8829F700C7DE19 /* JokesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JokesViewController.h; path = ../JokesViewController.h; sourceTree = "<group>"; };
-		7AA6F7EF1C8829F700C7DE19 /* JokesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JokesViewController.m; path = ../JokesViewController.m; sourceTree = "<group>"; };
+		7AA6F7EE1C8829F700C7DE19 /* JokesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JokesViewController.h; sourceTree = "<group>"; };
+		7AA6F7EF1C8829F700C7DE19 /* JokesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JokesViewController.m; sourceTree = "<group>"; };
 		7AA6F8081C8829F700C7DE19 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		7AA6F8091C8829F700C7DE19 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		7AA6F8161C882BFE00C7DE19 /* LaughtFairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaughtFairViewController.h; sourceTree = "<group>"; };
 		7AA6F8171C882BFE00C7DE19 /* LaughtFairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaughtFairViewController.m; sourceTree = "<group>"; };
-		7AA6F8191C8830BA00C7DE19 /* jokes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = jokes.storyboard; path = Views/jokes.storyboard; sourceTree = "<group>"; };
+		7AA6F8191C8830BA00C7DE19 /* jokes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = jokes.storyboard; path = jokes/Views/jokes.storyboard; sourceTree = "<group>"; };
 		7AA6F81B1C88317000C7DE19 /* Laught.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Laught.storyboard; sourceTree = "<group>"; };
 		7AA6F81D1C88319500C7DE19 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		7AA6F81F1C88552A00C7DE19 /* HWDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWDefine.h; sourceTree = "<group>"; };
@@ -116,6 +147,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A75DC031C890C4400BFBA10 /* Resure */ = {
+			isa = PBXGroup;
+			children = (
+				7A75DC041C890C4400BFBA10 /* SUNavTabBar */,
+			);
+			path = Resure;
+			sourceTree = "<group>";
+		};
+		7A75DC041C890C4400BFBA10 /* SUNavTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7A75DC051C890C4400BFBA10 /* CommonMacro.h */,
+				7A75DC061C890C4400BFBA10 /* SCNavTabBar.bundle */,
+				7A75DC071C890C4400BFBA10 /* ViewControllers */,
+				7A75DC0A1C890C4400BFBA10 /* Views */,
+			);
+			path = SUNavTabBar;
+			sourceTree = "<group>";
+		};
+		7A75DC071C890C4400BFBA10 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A75DC081C890C4400BFBA10 /* SCNavTabBarController.h */,
+				7A75DC091C890C4400BFBA10 /* SCNavTabBarController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7A75DC0A1C890C4400BFBA10 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A75DC0B1C890C4400BFBA10 /* SCNavTabBar.h */,
+				7A75DC0C1C890C4400BFBA10 /* SCNavTabBar.m */,
+				7A75DC0D1C890C4400BFBA10 /* SCPopView.h */,
+				7A75DC0E1C890C4400BFBA10 /* SCPopView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7AA6F7AF1C88287100C7DE19 = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +263,9 @@
 		7AA6F7E91C8829F700C7DE19 /* Jokes */ = {
 			isa = PBXGroup;
 			children = (
+				7AA6F7EE1C8829F700C7DE19 /* JokesViewController.h */,
+				7AA6F7EF1C8829F700C7DE19 /* JokesViewController.m */,
+				7AA6F8191C8830BA00C7DE19 /* jokes.storyboard */,
 				7AA6F7EA1C8829F700C7DE19 /* jokes */,
 				7AA6F7F01C8829F700C7DE19 /* Texts */,
 			);
@@ -202,9 +275,6 @@
 		7AA6F7EA1C8829F700C7DE19 /* jokes */ = {
 			isa = PBXGroup;
 			children = (
-				7AA6F7EE1C8829F700C7DE19 /* JokesViewController.h */,
-				7AA6F7EF1C8829F700C7DE19 /* JokesViewController.m */,
-				7AA6F8191C8830BA00C7DE19 /* jokes.storyboard */,
 				7AA6F7EB1C8829F700C7DE19 /* Controllers */,
 				7AA6F7EC1C8829F700C7DE19 /* Modells */,
 				7AA6F7ED1C8829F700C7DE19 /* Views */,
@@ -215,6 +285,8 @@
 		7AA6F7EB1C8829F700C7DE19 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7A75DC131C8916D000BFBA10 /* jokerHumorViewController.h */,
+				7A75DC141C8916D000BFBA10 /* jokerHumorViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -246,6 +318,8 @@
 		7AA6F7F11C8829F700C7DE19 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7A75DC161C89175600BFBA10 /* TextJokerViewController.h */,
+				7A75DC171C89175600BFBA10 /* TextJokerViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -325,6 +399,9 @@
 			children = (
 				7AA6F8341C88705600C7DE19 /* VerHotViewController.h */,
 				7AA6F8351C88705600C7DE19 /* VerHotViewController.m */,
+				7A75DC191C891C8E00BFBA10 /* KverHot.plist */,
+				7A7A920B1C89749200F9F0E9 /* verHotDetailTableViewController.h */,
+				7A7A920C1C89749200F9F0E9 /* verHotDetailTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -332,6 +409,8 @@
 		7AA6F7FD1C8829F700C7DE19 /* Modells */ = {
 			isa = PBXGroup;
 			children = (
+				7A75DC1E1C892AEA00BFBA10 /* verHotModel.h */,
+				7A75DC1F1C892AEA00BFBA10 /* verHotModel.m */,
 			);
 			path = Modells;
 			sourceTree = "<group>";
@@ -339,6 +418,9 @@
 		7AA6F7FE1C8829F700C7DE19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7A75DC1B1C89200300BFBA10 /* VertHotTableViewCell.h */,
+				7A75DC1C1C89200300BFBA10 /* VertHotTableViewCell.m */,
+				7A7A920E1C8974B700F9F0E9 /* verHotDetail.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -462,6 +544,7 @@
 		7AA6F80F1C8829F700C7DE19 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7A75DC031C890C4400BFBA10 /* Resure */,
 				7AA6F8211C8857E900C7DE19 /* VOSegmentedControl */,
 			);
 			path = Resource;
@@ -609,6 +692,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AA6F7C21C88287200C7DE19 /* Assets.xcassets in Resources */,
+				7A7A920F1C8974B700F9F0E9 /* verHotDetail.storyboard in Resources */,
+				7A75DC1A1C891C8E00BFBA10 /* KverHot.plist in Resources */,
+				7A75DC0F1C890C4400BFBA10 /* SCNavTabBar.bundle in Resources */,
 				7AA6F81C1C88317000C7DE19 /* Laught.storyboard in Resources */,
 				7AA6F81E1C88319500C7DE19 /* Mine.storyboard in Resources */,
 				7AA6F7C51C88287200C7DE19 /* LaunchScreen.storyboard in Resources */,
@@ -685,16 +771,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A75DC101C890C4400BFBA10 /* SCNavTabBarController.m in Sources */,
+				7A75DC111C890C4400BFBA10 /* SCNavTabBar.m in Sources */,
 				7AA6F8361C88705600C7DE19 /* VerHotViewController.m in Sources */,
 				7AA6F82A1C8857E900C7DE19 /* VOContentLayer.m in Sources */,
 				7AA6F8331C885CAA00C7DE19 /* VideoViewController.m in Sources */,
 				7AA6F8181C882BFE00C7DE19 /* LaughtFairViewController.m in Sources */,
+				7A75DC201C892AEA00BFBA10 /* verHotModel.m in Sources */,
 				7AA6F82D1C8857E900C7DE19 /* VOSegmentedControl.m in Sources */,
 				7AA6F82B1C8857E900C7DE19 /* VOIndicatorAnimation.m in Sources */,
+				7A75DC1D1C89200300BFBA10 /* VertHotTableViewCell.m in Sources */,
 				7AA6F7C01C88287200C7DE19 /* AppDelegate.m in Sources */,
 				7AA6F8301C885C9800C7DE19 /* QiushiViewController.m in Sources */,
+				7A75DC151C8916D000BFBA10 /* jokerHumorViewController.m in Sources */,
 				7AA6F82C1C8857E900C7DE19 /* VOSegment.m in Sources */,
+				7A7A920D1C89749200F9F0E9 /* verHotDetailTableViewController.m in Sources */,
 				7AA6F7BD1C88287200C7DE19 /* main.m in Sources */,
+				7A75DC121C890C4400BFBA10 /* SCPopView.m in Sources */,
+				7A75DC181C89175600BFBA10 /* TextJokerViewController.m in Sources */,
 				7AA6F8121C8829F700C7DE19 /* MineViewController.m in Sources */,
 				7AA6F8101C8829F700C7DE19 /* JokesViewController.m in Sources */,
 			);
@@ -783,6 +877,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -820,6 +915,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

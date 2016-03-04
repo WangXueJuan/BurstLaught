@@ -17,9 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIView *videoView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, kWidth, kHeight - 88)];
-    videoView.backgroundColor = [UIColor purpleColor];
-    [self.view addSubview:videoView];
+    
 }
 
 - (void)didReceiveMemoryWarning {

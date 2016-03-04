@@ -7,6 +7,10 @@
 //
 
 #import "JokesViewController.h"
+#import "jokerHumorViewController.h"
+#import "TextJokerViewController.h"
+#import "SCNavTabBarController.h"
+
 
 @interface JokesViewController ()
 
@@ -19,6 +23,25 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor purpleColor];
     
+    //添加被管理的子视图控制器
+    [self setChildController];
+    
+}
+
+- (void)setChildController {
+    jokerHumorViewController *jokerVC = [[jokerHumorViewController alloc] init];
+    jokerVC.title = @"最 新";
+    jokerVC.view.backgroundColor = [UIColor whiteColor];
+    
+    TextJokerViewController *textVc = [[TextJokerViewController alloc] init];
+    textVc.title = @"纯 文";
+    textVc.view.backgroundColor = [UIColor whiteColor];
+
+    SCNavTabBarController *navTabBar = [[SCNavTabBarController alloc] init];
+    navTabBar.subViewControllers = @[jokerVC, textVc];
+    navTabBar.showArrowButton = YES;
+    [navTabBar addParentController:self];
+
 }
 
 - (void)didReceiveMemoryWarning {
