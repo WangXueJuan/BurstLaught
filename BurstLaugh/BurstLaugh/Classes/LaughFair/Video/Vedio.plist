@@ -1,0 +1,968 @@
+{
+info =     {
+count = 65316;
+np = 1457145468;
+};
+list =     (
+{
+bookmark = 0;
+comment = 2;
+down = 26;
+forward = 1;
+id = 17477819;
+passtime = "2016-03-05 10:48:00";
+"share_url" = "http://b.f.winapp111.com/budejie/land.php?pid=17477819&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+}
+);
+text = "\U5b9e\U62cd\U76d1\U72f1\U6253\U67b6\Uff01\U4e0d\U80fd\U60f9\U7761\U89c9\U7684\U4eba\Uff0c\U66f4\U4e0d\U80fd\U60f9\U7761\U89c9\U7684\U5f71\U5e1d\Uff01";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2016/02/26/56d046259b2ce_mini.jpg"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U2593\Uff0e\U6c89\U6d6e\U5148\U68ee";
+uid = 8534627;
+};
+up = 101;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3ddfc344a_wpc.mp4"
+);
+duration = 53;
+height = 336;
+playcount = 399;
+playfcount = 275;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da3ddfc344a_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3ddfc344a_wpd.mp4"
+);
+width = 448;
+};
+},
+{
+bookmark = 0;
+comment = 0;
+down = 46;
+forward = 0;
+id = 17478343;
+passtime = "2016-03-05 10:47:59";
+"share_url" = "http://c.f.winapp111.com/budejie/land.php?pid=17478343&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+},
+{
+id = 56;
+name = "\U521b\U610f";
+},
+{
+id = 97;
+name = "\U6d4b\U8bd5";
+}
+);
+text = "\U667a\U5546\U6d4b\U8bd5\Uff0c\U4e0d\U670d\U6765\U6218\Uff1a\U5982\U4f55\U75284\U6761\U76f4\U7ebf\U4e32\U8d779\U4e2a\U70b9\Uff1f";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/picture2/M00/0B/F2/wKiFRlRJzsqAaK21AABln326bhU374.jpg"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U4e9a\U9ebb\U4f60\U4e0d\U61c2\U7231";
+uid = 12039479;
+};
+up = 95;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da486e54a6d_wpc.mp4"
+);
+duration = 87;
+height = 360;
+playcount = 29;
+playfcount = 4;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da486e54a6d__59.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da486e54a6d_wpd.mp4"
+);
+width = 640;
+};
+},
+{
+bookmark = 0;
+comment = 0;
+down = 46;
+forward = 0;
+id = 17478351;
+passtime = "2016-03-05 10:47:42";
+"share_url" = "http://a.f.winapp111.mobi/budejie/land.php?pid=17478351&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 61;
+name = "\U6076\U641e";
+},
+{
+id = 62;
+name = "\U5185\U6db5";
+}
+);
+text = "\U548c\U7f8e\U5973\U76f8\U4eb2\Uff0c\U6211\U6ca1\U6709\U623f\U3001\U6ca1\U6709\U8f66\Uff0c\U5c45\U7136\U6210\U529f\U4e86\Uff01";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/picture1/M00/10/2F/wKiFQ1RGSpSAQVqNAAAQXGGEqSs.cn_qqa"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U7231\U96e8\U5170\U99a8";
+uid = 12003214;
+};
+up = 96;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da48a7dee6f_wpc.mp4"
+);
+duration = 39;
+height = 360;
+playcount = 20;
+playfcount = 6;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da48a7dee6f__34.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da48a7dee6f_wpd.mp4"
+);
+width = 640;
+};
+},
+{
+bookmark = 0;
+comment = 0;
+down = 27;
+forward = 0;
+id = 17477655;
+passtime = "2016-03-05 10:46:31";
+"share_url" = "http://b.f.winapp111.cn/budejie/land.php?pid=17477655&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+},
+{
+id = 61;
+name = "\U6076\U641e";
+},
+{
+id = 63;
+name = "\U7b11\U8bdd";
+},
+{
+id = 115;
+name = "\U539f\U521b";
+}
+);
+text = "\U95ee\U9898\U4e25\U91cd\U4e86\U2026\U2026";
+type = video;
+u =             {
+header =                 (
+"http://qzapp.qlogo.cn/qzapp/100336987/190A71417DF9BA4A490B0B98C2D44030/100"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "  93%";
+uid = 7991085;
+};
+up = 96;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b21379bd_wpc.mp4"
+);
+duration = 16;
+height = 480;
+playcount = 378;
+playfcount = 273;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da3b21379bd_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b21379bd_wpd.mp4"
+);
+width = 272;
+};
+},
+{
+bookmark = 0;
+comment = 0;
+down = 32;
+forward = 0;
+id = 17477682;
+passtime = "2016-03-05 10:46:17";
+"share_url" = "http://c.f.budejie.com/budejie/land.php?pid=17477682&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+},
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 115;
+name = "\U539f\U521b";
+}
+);
+text = "\U7535\U8bdd\U542c\U7b52\U4e0d\U597d\U4f7f\U4e86\Uff01\U7ed3\U5c40\U4e07\U4e07\U6ca1\U60f3\U5230\Uff0c\U5566\U5566\U5566\U5566\U5566";
+type = video;
+u =             {
+header =                 (
+"http://tp2.sinaimg.cn/1640015373/50/5650428888/1"
+);
+"is_v" = 1;
+"is_vip" = 0;
+name = "\U50cf\U6781\U4e86\U5c0f\U4e11";
+uid = 903179;
+};
+up = 87;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b84d2914_wpc.mp4"
+);
+duration = 30;
+height = 480;
+playcount = 290;
+playfcount = 94;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da3b84d2914_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b84d2914_wpd.mp4"
+);
+width = 480;
+};
+},
+{
+bookmark = 0;
+comment = 1;
+down = 29;
+forward = 0;
+id = 17477647;
+passtime = "2016-03-05 10:45:17";
+"share_url" = "http://c.f.zk111.cn/budejie/land.php?pid=17477647&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+}
+);
+text = "\U5144\U5f1f\Uff0c\U4e00\U8f88\U5b50";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2015/12/28/568139f56eb4c_mini.jpg"
+);
+"is_v" = 0;
+"is_vip" = 1;
+name = "\U767e\U601d\U5973\U751f";
+uid = 17019188;
+};
+up = 100;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3aeabeeeb_wpc.mp4"
+);
+duration = 19;
+height = 640;
+playcount = 356;
+playfcount = 55;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da3aeabeeeb_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3aeabeeeb_wpd.mp4"
+);
+width = 480;
+};
+},
+{
+bookmark = 3;
+comment = 1;
+down = 52;
+forward = 7;
+id = 17478029;
+passtime = "2016-03-05 10:44:34";
+"share_url" = "http://a.f.budejie.com/budejie/land.php?pid=17478029&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 62;
+name = "\U5185\U6db5";
+}
+);
+text = "\U673a\U667a\U7684\U5c0f\U660e\Uff1a\U8fd9\U5c31\U662f\U4e0d\U7ea6\U800c\U540c\Uff0c\U6c42\U8001\U5e08\U5fc3\U7406\U9634\U5f71\U9762\U79ef";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/picture2/M00/0B/F5/wKiFWVRKP1eAcT-KAAAl16EGhgI.cn_qqa"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "~\U2198\U87f2\U5150\U98db";
+uid = 12039483;
+};
+up = 140;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da42165003f_wpc.mp4"
+);
+duration = 57;
+height = 352;
+playcount = 1069;
+playfcount = 596;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da42165003f__89.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da42165003f_wpd.mp4"
+);
+width = 640;
+};
+},
+{
+bookmark = 0;
+comment = 0;
+down = 34;
+forward = 0;
+id = 17477282;
+passtime = "2016-03-05 10:44:33";
+"share_url" = "http://a.f.zk111.com.cn/budejie/land.php?pid=17477282&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+},
+{
+id = 61;
+name = "\U6076\U641e";
+}
+);
+text = "\U4e0d\U6015\U795e\U4e00\U6837\U7684\U5bf9\U624b    \U5c31\U6015\U732a\U4e00\U6837\U961f\U53cb\n\U8fd9\U5e74\U5934 \U635f\U53cb\U592a\U7279\U4e48\U591a\U4e86\Uff0c\U4e00\U4e0d\U7559\U795e\U5c31\U7279\U4e48\U4e2d\U6807\U4e86";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2015/12/25/567d5a96bc2c6_mini.jpg"
+);
+"is_v" = 0;
+"is_vip" = 1;
+name = "\U53ea\U662f\U5f88\U4f4e\U8c03\U7f62\U4e86";
+uid = 14492056;
+};
+up = 82;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da33801f512_wpc.mp4"
+);
+duration = 272;
+height = 352;
+playcount = 334;
+playfcount = 9;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da33801f512_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da33801f512_wpd.mp4"
+);
+width = 640;
+};
+},
+{
+bookmark = 0;
+comment = 3;
+down = 37;
+forward = 0;
+id = 17477014;
+passtime = "2016-03-05 10:44:22";
+"share_url" = "http://c.f.winapp111.mobi/budejie/land.php?pid=17477014&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+},
+{
+id = 62;
+name = "\U5185\U6db5";
+},
+{
+id = 70;
+name = "\U60c5\U611f";
+}
+);
+text = "\U54c8\U54c8\U54c8\Uff5e\U5c45\U8aaa\U767e\U5206\U4e4b99\U7684\U7537\U4eba\U90fd\U662f\U9019\U62db";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2015/01/24/54c355b0ce793_mini.jpg"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U694a\U5357\U51ef\U4e0d\U4f1a\U98db";
+uid = 8209002;
+};
+up = 83;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da2d84d8dcb_wpc.mp4"
+);
+duration = 272;
+height = 320;
+playcount = 337;
+playfcount = 10;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da2d84d8dcb_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da2d84d8dcb_wpd.mp4"
+);
+width = 640;
+};
+},
+{
+bookmark = 1;
+comment = 3;
+down = 67;
+forward = 2;
+id = 17477398;
+passtime = "2016-03-05 10:44:05";
+"share_url" = "http://a.f.budejie.com/budejie/land.php?pid=17477398&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 61;
+name = "\U6076\U641e";
+},
+{
+id = 62;
+name = "\U5185\U6db5";
+}
+);
+text = "\U4ee5\U540e\U7ed1\U67b6\U7684\U65f6\U5019\Uff0c\U4e00\U5b9a\U8981\U5148\U5378\U5986\Uff01\U5dee\U70b9\U5f04\U51fa\U4eba\U547d\U3002\U3002";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/picture1/M00/10/49/wKiFQ1RSKAWAUqMlAAATesYvffU.cn_qqa"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U3123\U65cb\U8f49\U7b71\U75bc\U574f\U5b69\U5b50\U221a";
+uid = 12120848;
+};
+up = 225;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da36192eae0_wpc.mp4"
+);
+duration = 120;
+height = 300;
+playcount = 8662;
+playfcount = 5945;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da36192eae0__11.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da36192eae0_wpd.mp4"
+);
+width = 632;
+};
+},
+{
+bookmark = 0;
+comment = 0;
+down = 49;
+forward = 0;
+id = 17478176;
+passtime = "2016-03-05 10:43:39";
+"share_url" = "http://a.f.winapp111.net/budejie/land.php?pid=17478176&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+}
+);
+text = "\U571f\U8c6a\U54e5\U620f\U8bf4\U5e03\U52a0\U8feaChiron\Uff0c\U5170\U535a\U57fa\U5c3cCentenario  \U4e5f\U53ea\U6709\U4f60\U6562\U5728\U522b\U4eba\U9762\U524d\U8fd9\U6837\U5410\U69fd\U4e86";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/20151203192409.png"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "30\U79d2\U61c2\U8f66";
+uid = 14026235;
+};
+up = 105;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da4555dd185_wpc.mp4"
+);
+duration = 623;
+height = 476;
+playcount = 94;
+playfcount = 0;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/x/750x400/picture/2016/0305/56da4555dd185_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da4555dd185_wpd.mp4"
+);
+width = 848;
+};
+},
+{
+bookmark = 0;
+comment = 1;
+down = 31;
+forward = 0;
+id = 17477659;
+passtime = "2016-03-05 10:43:24";
+"share_url" = "http://c.f.zk111.cn/budejie/land.php?pid=17477659&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+}
+);
+text = "\U6709\U94b1\U5c31\U662f\U4efb\U6027\Uff01";
+type = video;
+u =             {
+header =                 (
+"http://qzapp.qlogo.cn/qzapp/100336987/059F9FEE04234164F6C46925F06D6E4D/100"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U98ceNXJ";
+uid = 5951631;
+};
+up = 92;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b3b577ca_wpc.mp4"
+);
+duration = 19;
+height = 640;
+playcount = 372;
+playfcount = 184;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da3b3b577ca_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b3b577ca_wpd.mp4"
+);
+width = 480;
+};
+},
+{
+bookmark = 0;
+comment = 0;
+down = 29;
+forward = 0;
+id = 17477666;
+passtime = "2016-03-05 10:43:01";
+"share_url" = "http://b.f.zk111.net/budejie/land.php?pid=17477666&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+}
+);
+text = "\U90fd\U5feb\U5413\U54ed\U4e86\U3002\Ud83d\Ude02";
+type = video;
+u =             {
+header =                 (
+"http://qzapp.qlogo.cn/qzapp/100336987/69D23BBEF07E86A60A4BEDB8F45BF4F2/100"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "_\U54df\U54df_\U5207\U514b\U95f9__";
+uid = 17663517;
+};
+up = 96;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b5844b9a_wpc.mp4"
+);
+duration = 65;
+height = 480;
+playcount = 370;
+playfcount = 40;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da3b5844b9a_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b5844b9a_wpd.mp4"
+);
+width = 640;
+};
+},
+{
+bookmark = 0;
+comment = 1;
+down = 37;
+forward = 0;
+id = 17477040;
+passtime = "2016-03-05 10:42:49";
+"share_url" = "http://b.f.zk111.cn/budejie/land.php?pid=17477040&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+}
+);
+text = "\U8fd9\U9178\U723d\U2026\U2026";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2015/09/21/55ffaefa401fe_mini.jpg"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U7d22\U547d\U68b5\U97f3";
+uid = 16022743;
+};
+up = 83;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da2df137866_wpc.mp4"
+);
+duration = 28;
+height = 320;
+playcount = 259;
+playfcount = 44;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da2df137866_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da2df137866_wpd.mp4"
+);
+width = 180;
+};
+},
+{
+bookmark = 0;
+comment = 0;
+down = 48;
+forward = 0;
+id = 17478242;
+passtime = "2016-03-05 10:42:47";
+"share_url" = "http://a.f.winapp111.com.cn/budejie/land.php?pid=17478242&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+},
+{
+id = 70;
+name = "\U60c5\U611f";
+},
+{
+id = 329;
+name = "\U751f\U6d3b";
+}
+);
+text = "\U771f\U5fc3\U559c\U6b22\U4e00\U4e2a\U4eba\U662f\U4ec0\U4e48\U6837\U7684\U4f53\U9a8c\U5462\Uff1f";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/profile/20150720134321.jpg"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U8282\U64cd\U8857\U8bbf";
+uid = 15129243;
+};
+up = 101;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da46d5981dd_wpc.mp4"
+);
+duration = 229;
+height = 472;
+playcount = 135;
+playfcount = 8;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/x/750x400/picture/2016/0305/56da46d5981dd_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da46d5981dd_wpd.mp4"
+);
+width = 848;
+};
+},
+{
+bookmark = 0;
+comment = 3;
+down = 37;
+forward = 1;
+id = 17477690;
+passtime = "2016-03-05 10:42:30";
+"share_url" = "http://c.f.zk111.com.cn/budejie/land.php?pid=17477690&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+}
+);
+text = "\U5927\U4f17\U8f66\U6012\U8ffd\U6cd5\U62c9\U5229\U89c6\U9891\U706b\U4e86 \U8f66\U4e3b\U8bf4\U6cd5\U62c9\U5229\U4e5f\U4e0d\U8fc7\U5982\U6b64";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2016/01/07/568da2c021c1f_mini.jpg"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U5634\U75bc\U597d\U8fc7\U5fc3\U75db";
+uid = 8091611;
+};
+up = 86;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b9cedd6d_wpc.mp4"
+);
+duration = 159;
+height = 272;
+playcount = 503;
+playfcount = 4;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da3b9cedd6d_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3b9cedd6d_wpd.mp4"
+);
+width = 352;
+};
+},
+{
+bookmark = 0;
+comment = 0;
+down = 34;
+forward = 0;
+id = 17477633;
+passtime = "2016-03-05 10:42:08";
+"share_url" = "http://b.f.budejie.com/budejie/land.php?pid=17477633&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+}
+);
+text = "\U5305\U5b50\U60f9\U8c01\U4e86\Uff1f\Uff1f\Uff1f";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2016/03/04/56d8eb446d835_mini.jpg"
+);
+"is_v" = 1;
+"is_vip" = 0;
+name = "1313\U5de5\U4f5c\U5ba4";
+uid = 17610394;
+};
+up = 85;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3aaae7495_wpc.mp4"
+);
+duration = 57;
+height = 320;
+playcount = 378;
+playfcount = 93;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da3aaae7495_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3aaae7495_wpd.mp4"
+);
+width = 568;
+};
+},
+{
+bookmark = 8;
+comment = 4;
+down = 40;
+forward = 10;
+id = 17477031;
+passtime = "2016-03-05 10:39:22";
+"share_url" = "http://a.f.zk111.com.cn/budejie/land.php?pid=17477031&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+}
+);
+text = "\U8fd9\U821e\U8e48\U6211\U9189\U4e86";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2015/10/05/5611f56a541b9_mini.jpg"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U505a\U574f\U7537\U4eba\U771f\U96be";
+uid = 16171234;
+};
+up = 122;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da2dd7e453d_wpc.mp4"
+);
+duration = 143;
+height = 424;
+playcount = 1123;
+playfcount = 347;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da2dd7e453d_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da2dd7e453d_wpd.mp4"
+);
+width = 236;
+};
+},
+{
+bookmark = 0;
+comment = 1;
+down = 33;
+forward = 3;
+id = 17477594;
+passtime = "2016-03-05 10:38:26";
+"share_url" = "http://c.f.budejie.com/budejie/land.php?pid=17477594&wx.qq.com";
+tags =             (
+{
+id = 55;
+name = "\U5fae\U89c6\U9891";
+}
+);
+text = "\U770b\U7740\U5c31\U60f3\U5403  \U8d85\U7ea7\U5403\U8d27\U7684\U798f\U97f3";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2015/12/24/567c11d97524c_mini.jpg"
+);
+"is_v" = 0;
+"is_vip" = 0;
+name = "\U5416\U7476";
+uid = 16988328;
+};
+up = 104;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da39e708095_wpc.mp4"
+);
+duration = 91;
+height = 480;
+playcount = 601;
+playfcount = 31;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da39e708095_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da39e708095_wpd.mp4"
+);
+width = 480;
+};
+},
+{
+bookmark = 7;
+comment = 2;
+down = 34;
+forward = 8;
+id = 17477617;
+passtime = "2016-03-05 10:37:48";
+"share_url" = "http://b.f.winapp111.com.cn/budejie/land.php?pid=17477617&wx.qq.com";
+tags =             (
+{
+id = 1;
+name = "\U641e\U7b11";
+},
+{
+id = 119;
+name = "\U7535\U53f0";
+},
+{
+id = 306;
+name = "\U76f8\U58f0";
+},
+{
+id = 9480;
+name = "\U94fe\U63a5";
+}
+);
+text = "5\U5206\U949f\U7b11\U4e86100\U6b21,\U4f60\U4e0d\U7b11\U63cd\U6211!";
+type = video;
+u =             {
+header =                 (
+"http://wimg.spriteapp.cn/profile/large/2015/12/31/56850d019c4aa_mini.jpg"
+);
+"is_v" = 1;
+"is_vip" = 1;
+name = "\U5c0f\U5496\U6a21\U4eff\U79c0";
+uid = 17003528;
+};
+up = 129;
+video =             {
+download =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3a6393373_wpc.mp4"
+);
+duration = 353;
+height = 352;
+playcount = 1134;
+playfcount = 106;
+thumbnail =                 (
+"http://wimg.spriteapp.cn/picture/2016/0305/56da3a6393373_wpd.jpg"
+);
+video =                 (
+"http://wvideo.spriteapp.cn/video/2016/0305/56da3a6393373_wpd.mp4"
+);
+width = 640;
+};
+}
+);
+}

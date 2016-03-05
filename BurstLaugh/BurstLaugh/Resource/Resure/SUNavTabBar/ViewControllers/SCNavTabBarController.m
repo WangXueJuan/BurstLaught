@@ -86,7 +86,7 @@
 {
     // Iinitialize value
     _currentIndex = 1;
-    _navTabBarColor = _navTabBarColor ? _navTabBarColor : NavTabbarColor;
+    _navTabBarColor = _navTabBarColor ? _navTabBarColor : [UIColor whiteColor];
     
     // Load all title of children view controllers
     _titles = [[NSMutableArray alloc] initWithCapacity:_subViewControllers.count];
@@ -101,8 +101,8 @@
     // Load NavTabBar and content view to show on window
     _navTabBar = [[SCNavTabBar alloc] initWithFrame:CGRectMake(DOT_COORDINATE, DOT_COORDINATE, SCREEN_WIDTH, NAV_TAB_BAR_HEIGHT) showArrowButton:_showArrowButton];
     _navTabBar.delegate = self;
-    _navTabBar.backgroundColor = _navTabBarColor;
-    _navTabBar.lineColor = _navTabBarLineColor;
+    _navTabBar.backgroundColor = [UIColor whiteColor];
+    _navTabBar.lineColor = [UIColor whiteColor];
     _navTabBar.itemTitles = _titles;
     _navTabBar.arrowImage = _navTabBarArrowImage;
     [_navTabBar updateData];
@@ -139,9 +139,9 @@
     CGFloat red, green, blue, alpha;
     if ([navTabbarColor getRed:&red green:&green blue:&blue alpha:&alpha] && !red && !green && !blue && !alpha)
     {
-        navTabbarColor = NavTabbarColor;
+        navTabbarColor = [UIColor whiteColor];
     }
-    _navTabBarColor = navTabbarColor;
+    _navTabBarColor = [UIColor whiteColor];
 }
 
 - (void)addParentController:(UIViewController *)viewController

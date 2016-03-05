@@ -19,6 +19,9 @@
 @property (nonatomic, strong) NSString *down;
 @property (nonatomic, strong) NSString *comment;
 @property (nonatomic, strong) NSString *share_url;
+@property (nonatomic, assign) NSInteger height;
+@property (nonatomic, assign) NSInteger width;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 
 @end

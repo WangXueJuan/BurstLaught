@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface VerHotViewController : UIViewController
 @property (nonatomic, strong) NSString *hotId;
+
+
 @end

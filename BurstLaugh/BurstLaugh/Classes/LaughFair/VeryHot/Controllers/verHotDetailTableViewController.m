@@ -35,12 +35,14 @@
     self.timeLabel.text = [NSString stringWithFormat:@"%@",self.verModel.passtime];
     //头像
     [self.iconImage sd_setImageWithURL:[NSURL URLWithString:self.verModel.icon] placeholderImage:nil];
+    
     //用户名
     self.nameLabel.text = [NSString stringWithFormat:@"%@",self.verModel.name];
     //text
     self.textLabel.text = [NSString stringWithFormat:@"%@",self.verModel.text];
     //picturer
     [self.pictureImage sd_setImageWithURL:[NSURL URLWithString:self.verModel.textImage] placeholderImage:nil];
+    
     //赞
     [self.praiseBtn setTitle:[NSString stringWithFormat:@"%@",self.verModel.up] forState:UIControlStateNormal];
     //踩

@@ -42,10 +42,10 @@
     [self.contentView addSubview:self.imageIcon];
     //name
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 6 + 20, 5, kWidth / 2 - 20, 30)];
-    self.nameLabel.font = [UIFont boldSystemFontOfSize:18.0];
+    self.nameLabel.font = [UIFont boldSystemFontOfSize:16.0];
     [self.contentView addSubview:self.nameLabel];
     //time
-    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 1.65, 5, kWidth - kWidth / 1.8, 30)];
+    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 1.60, 5, kWidth - kWidth / 1.8, 30)];
     self.timeLabel.font = [UIFont systemFontOfSize:13.0];
     self.timeLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:self.timeLabel];
@@ -65,15 +65,18 @@
     //获取图片
     [self.imagePctiu sd_setImageWithURL:[NSURL URLWithString:verModel.textImage] placeholderImage:nil];
     [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:verModel.icon] placeholderImage:nil];
-    //重写cellLabel赋值
+    //重新给cellLabel赋值
     CGFloat height = [[self class] getTextHeightWithText:verModel.text];
     CGRect frame = self.txtLabel.frame;
     frame.size.height = height;
     self.txtLabel.frame = frame;
-//    self.txtLabel.numberOfLines = 0;
     self.txtLabel.text = [NSString stringWithFormat:@"%@",verModel.text];
+     self.txtLabel.numberOfLines = 0;
+    
     self.nameLabel.text = [NSString stringWithFormat:@"%@",verModel.name];
     self.timeLabel.text = [NSString stringWithFormat:@"%@",verModel.passtime];
+    //重新给图片的frame赋值
+    self.imagePctiu.frame = CGRectMake(10, frame.size.height + (kWidth / 6) - 10, kWidth - 20, verModel.height / 3);
 
 
 }
@@ -89,11 +92,12 @@
 + (CGFloat)getCellHeightMode:(verHotModel *)hotModel {
     CGFloat textHeight = [[self class] getTextHeightWithText:hotModel.text];
     if (hotModel.textImage == nil) {
-        return textHeight  + 40;
+        return textHeight + 20;
     } else
         
-        return textHeight + 60 + kWidth / 3;
+        return textHeight + hotModel.height / 3 + 60;
 }
+
 
 
 

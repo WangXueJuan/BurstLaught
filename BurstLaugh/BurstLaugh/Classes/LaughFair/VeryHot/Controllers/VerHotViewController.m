@@ -11,7 +11,7 @@
 #import "VertHotTableViewCell.h"
 #import "verHotModel.h"
 #import "verHotDetailTableViewController.h"
-
+#import "GifView.h"
 
 @interface VerHotViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -30,6 +30,7 @@
     [self.view addSubview:self.tableView];
     //请求网路数据
     [self requestData];
+    
     
 }
 
@@ -51,6 +52,9 @@
         
         
         [self.tableView reloadData];
+        
+       
+    
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -83,13 +87,7 @@
 
 
 #pragma mark ----------------------------  UITableViewDelegate
-//返回每一行的高度
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    verHotModel *monMode = self.dataArray[indexPath.row];
-//    CGFloat cellHeight = [VertHotTableViewCell getCellHeightMode:monMode];
-//    //把cell的高度返回给tableView
-//    return cellHeight + 20;
-//}
+
 
 //cell的点击方法
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -103,13 +101,23 @@
 
 }
 
+//返回cell的自定义高度
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *array = self.dataArray[indexPath.section];
+    verHotModel *hotModel = array[indexPath.row];
+    CGFloat cellHeight  = [VertHotTableViewCell getCellHeightMode:hotModel];
+    return cellHeight + 20;
+    
+
+}
+
 
 #pragma mark ----------------------------- 懒加载
 -(UITableView *)tableView {
     if (!_tableView) {
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight - 180) style:UITableViewStylePlain];
         //设置属性
-        self.tableView.rowHeight = 250.0;
+//        self.tableView.rowHeight = 250.0;
         //设置代理
         self.tableView.delegate = self;
         self.tableView.dataSource = self;

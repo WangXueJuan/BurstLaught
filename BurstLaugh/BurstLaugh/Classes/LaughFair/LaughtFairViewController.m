@@ -8,14 +8,13 @@
 
 #import "LaughtFairViewController.h"
 #import "PrefixHeader.pch"
-#import "VOSegmentedControl.h"
 #import "QiushiViewController.h"
 #import "VideoViewController.h"
 #import "VerHotViewController.h"
 #import "SCNavTabBarController.h"
 
 @interface LaughtFairViewController ()
-@property (nonatomic, strong) VOSegmentedControl *segMentroller;
+
 
 @end
 
@@ -38,12 +37,12 @@
     //视频
     VideoViewController *videVC = [[VideoViewController alloc] init];
     videVC.title = @"精 彩 视 频";
-    videVC.view.backgroundColor = [UIColor blackColor];
+    videVC.view.backgroundColor = [UIColor whiteColor];
     
     //糗事
     QiushiViewController *qiushiVc = [[QiushiViewController alloc] init];
     qiushiVc.title = @"幽 默 糗 事";
-    qiushiVc.view.backgroundColor = [UIColor grayColor];
+    qiushiVc.view.backgroundColor = [UIColor whiteColor];
     
     SCNavTabBarController *navTabBar = [[SCNavTabBarController alloc] init];
     navTabBar.subViewControllers = @[verHotVC, videVC, qiushiVc];

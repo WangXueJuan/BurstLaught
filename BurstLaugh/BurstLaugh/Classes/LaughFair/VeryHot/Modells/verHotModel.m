@@ -19,8 +19,10 @@
         NSDictionary *imageDic = dict[@"image"];
         NSMutableArray *urlArray = [NSMutableArray new];
         if (![imageDic isEqual:[NSNull null]]) {
-            urlArray = imageDic[@"download_url"];
-            self.textImage = urlArray[1];
+            self.height = [imageDic[@"height"] integerValue];
+            self.width = [imageDic[@"width"] integerValue];
+            urlArray = imageDic[@"big"];
+            self.textImage = urlArray[0];
         }
         //获取头像
         NSDictionary *uDic = dict[@"u"];
