@@ -8,25 +8,25 @@
 
 #import "VideoViewController.h"
 #import "PullingRefreshTableView.h"
-#import <MediaPlayer/MediaPlayer.h>
 #import "VideoTableViewCell.h"
 #import "AFNetworking.h"
 #import "videoModel.h"
 #import "HWTools.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "videoFrame.h"
 
 @interface VideoViewController ()<UITableViewDataSource, UITableViewDelegate,PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;
     NSString *_netId;
+    CGFloat cellHeight;
 }
 
 
 @property (nonatomic, strong) PullingRefreshTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *videoArray;
 @property (nonatomic, assign) BOOL refreshing;
-@property (nonatomic, strong) MPMoviePlayerController *moviePlayer;
+
 @end
 
 @implementation VideoViewController
@@ -103,37 +103,16 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *array = self.videoArray[indexPath.section];
     videoModel *model = array[indexPath.row];
-    CGFloat cellHeight = [VideoTableViewCell getCellHeightModel:model];
+     cellHeight = [VideoTableViewCell getCellHeightModel:model];
     return cellHeight + 50;
     
 }
 
-//cell点击方法
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray *array = self.videoArray[indexPath.section];
-    videoModel *video = array[indexPath.row];
-    NSLog(@"%@",video.video_url);
-    self.moviePlayer = [[MPMoviePlayerController alloc] init];
-    self.moviePlayer.contentURL = [NSURL URLWithString:video.video_url];
-    //添加播放器界面到控制器的view上
-    self.moviePlayer.view.frame = CGRectMake(0, 0, kWidth,kWidth - 100);
-    [self.tableView addSubview:self.moviePlayer.view];
-    //隐藏自动自带的控制面板
-    self.moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
-    //添加一个按钮，点击退出播放器
-    UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    quitBtn.frame = CGRectMake(20, 20, kWidth - 40, self.moviePlayer.view.frame.size.height - 50);
-    [quitBtn addTarget:self action:@selector(removeMovie) forControlEvents:UIControlEventTouchUpInside];
-    [self.moviePlayer.view addSubview:quitBtn];
-    [self.moviePlayer play];
-    
-}
 
 #pragma mark ------------------ 监听播放器
 
-- (void)removeMovie{
-    [self.moviePlayer.view removeFromSuperview];
-}
+
+
 
 
 
@@ -158,15 +137,6 @@
     return [HWTools getSystemNowTime];
 }
 
-//手指开始拖动
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.tableView tableViewDidEndDragging:scrollView];
-}
-
-//手指结束拖动
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self.tableView tableViewDidEndDragging:scrollView];
-}
 
 #pragma mark ----------------------- 懒加载
 -(PullingRefreshTableView *)tableView {
@@ -175,6 +145,7 @@
         self.tableView.rowHeight = 270;
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+        self.tableView.separatorColor = [UIColor clearColor];
     }
     return _tableView;
     

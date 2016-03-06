@@ -8,14 +8,18 @@
 
 #import "VertHotTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "HWTools.h"
 
 @interface VertHotTableViewCell ()
+{
+    CGPoint point1;
+}
 @property(nonatomic, retain) UIImageView *imageIcon;
 @property(nonatomic, retain) UIImageView *imagePctiu;
 @property(nonatomic, retain) UILabel *nameLabel;
 @property(nonatomic, retain) UILabel *txtLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
+
 @end
 
 @implementation VertHotTableViewCell
@@ -28,6 +32,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self configView];
+        
     }
     return self;
 }
@@ -38,7 +43,6 @@
     self.imageIcon = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5,kWidth / 6, kWidth / 6)];
     self.imageIcon.layer.cornerRadius = kWidth / 6 / 2.0;
     self.imageIcon.clipsToBounds = YES;
-    
     [self.contentView addSubview:self.imageIcon];
     //name
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 6 + 20, 5, kWidth / 2 - 20, 30)];
@@ -55,6 +59,7 @@
     [self.contentView addSubview:self.txtLabel];
     //picture
     self.imagePctiu = [[UIImageView alloc] initWithFrame:CGRectMake(kWidth / 5, 80,kWidth - (kWidth / 3), kWidth / 2.5)];
+    self.imagePctiu.userInteractionEnabled = YES;
     [self.contentView addSubview:self.imagePctiu];
     
     
@@ -66,7 +71,7 @@
     [self.imagePctiu sd_setImageWithURL:[NSURL URLWithString:verModel.textImage] placeholderImage:nil];
     [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:verModel.icon] placeholderImage:nil];
     //重新给cellLabel赋值
-    CGFloat height = [[self class] getTextHeightWithText:verModel.text];
+    CGFloat height = [HWTools getTextHeightWithText:verModel.text];
     CGRect frame = self.txtLabel.frame;
     frame.size.height = height;
     self.txtLabel.frame = frame;
@@ -81,23 +86,23 @@
 
 }
 
-#pragma mark ------------------ 自定义高度
-+ (CGFloat)getTextHeightWithText:(NSString *)txtlabel{
-    //计算方法
-    CGRect textRect = [txtlabel boundingRectWithSize:CGSizeMake(kWidth * 0.65, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0]} context:nil];
-    return textRect.size.height;
-    
+
+
+
+- (void)handleGesture1:(UITapGestureRecognizer *)gesture{
+
 }
 
+#pragma mark ------------------ 自定义高度
+
 + (CGFloat)getCellHeightMode:(verHotModel *)hotModel {
-    CGFloat textHeight = [[self class] getTextHeightWithText:hotModel.text];
+    CGFloat textHeight = [HWTools getTextHeightWithText:hotModel.text];
     if (hotModel.textImage == nil) {
-        return textHeight + 20;
+        return textHeight + 40;
     } else
         
         return textHeight + hotModel.height / 3 + 60;
 }
-
 
 
 

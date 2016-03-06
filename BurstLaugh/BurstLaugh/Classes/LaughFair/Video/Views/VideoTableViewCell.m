@@ -8,7 +8,7 @@
 
 #import "VideoTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "HWTools.h"
 @implementation VideoTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -22,6 +22,9 @@
 
 
 - (void)config{
+    
+   
+    
     //内容
     UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 5, kWidth - 10, 30)];
     [self.contentView addSubview:tLabel];
@@ -53,8 +56,17 @@
     duabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:duabel];
     self.durationLabel = duabel;
+    //分割线
+    self.uiClear = [[UIView alloc] init];
+    self.uiClear.backgroundColor = [UIColor grayColor];
+    self.uiClear.alpha = 0.2;
+    [self.contentView addSubview:self.uiClear];
+    
    
     self.backgroundColor = [UIColor whiteColor];
+    
+    
+    
 }
 
 //set方法赋值
@@ -78,12 +90,35 @@
     
     [self.priseBtn setTitle:[NSString stringWithFormat:@"赞 %@",videoModel.up] forState:UIControlStateNormal];
     [self.downBtn setTitle:[NSString stringWithFormat:@"踩 %@",videoModel.down] forState:UIControlStateNormal];
-    self.durationLabel.text = [NSString stringWithFormat:@"%.f",videoModel.duration];
-    self.playCountLabel.text = [NSString stringWithFormat:@"次数 %@",videoModel.playcount];
+    self.durationLabel.text = [NSString stringWithFormat:@"时长%.f",videoModel.duration];
+    self.playCountLabel.text = [NSString stringWithFormat:@"次数%@",videoModel.playcount];
     
+    //分割线
+    self.uiClear.frame = CGRectMake(0,frame.size.height + 263, kWidth, 8);
+    
+    //添加视频播放器
+    self.moviePlayer = [[MPMoviePlayerController alloc] init];
+    self.moviePlayer.contentURL = [NSURL URLWithString:videoModel.video_url];
+    //添加播放器界面到控制器的view上
+    self.moviePlayer.view.frame = CGRectMake(0, 0, kWidth,self.image.frame.size.height + 30);
+    self.moviePlayer.view.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:self.moviePlayer.view];
+    //隐藏自动自带的控制面板
+    self.moviePlayer.controlStyle = MPMovieControlStyleDefault;
+
+    //添加一个按钮，点击退出播放器
+    UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    quitBtn.frame = CGRectMake(20, 20, kWidth - 40, self.moviePlayer.view.frame.size.height - 50);
+    [quitBtn addTarget:self action:@selector(removeMovie) forControlEvents:UIControlEventTouchUpInside];
+    [self.moviePlayer.view addSubview:quitBtn];
+
     
 }
 
+- (void)removeMovie {
+    [self.moviePlayer play];
+    
+}
 
 
 //定义一个获取text高度的方法，可在外调用
@@ -93,7 +128,7 @@
 }
 
 + (CGFloat)getCellHeightModel:(videoModel *)model {
-    CGFloat textHeight = [[self class] getTextHeightWithText:model.text];
+    CGFloat textHeight = [HWTools getTextHeightWithText:model.text];
     if (model.picture == nil) {
          return textHeight + 20;
     }

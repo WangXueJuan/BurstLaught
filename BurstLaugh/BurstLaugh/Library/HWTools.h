@@ -15,6 +15,7 @@
 
 //获取系统当前时间
 + (NSDate *)getSystemNowTime;
-
+//返回文本的最大高度
++ (CGFloat)getTextHeightWithText:(NSString *)txtlabel;
 
 @end

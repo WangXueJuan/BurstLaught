@@ -7,8 +7,18 @@
 //
 
 #import "QiushiViewController.h"
-
-@interface QiushiViewController ()
+#import "AFNetworking.h"
+#import "PullingRefreshTableView.h"
+#import "QiuShiTableViewCell.h"
+#import "HWTools.h"
+@interface QiushiViewController ()<PullingRefreshTableViewDelegate, UITableViewDataSource, UITableViewDelegate>
+{
+    NSInteger _pageCount;
+    CGFloat cellHeight;
+}
+@property (nonatomic, assign) BOOL refreshing;
+@property (nonatomic, strong) PullingRefreshTableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
@@ -18,6 +28,113 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self.view addSubview:self.tableView];
+    //请求网络数据
+    [self requestData];
+    
+}
+
+- (void)requestData {
+    AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
+    sessionManger.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [sessionManger GET:[NSString stringWithFormat:@"%@page%ld",kQiushiList,(long)_pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *successDic = responseObject;
+        NSMutableArray *itemsArray = successDic[@"items"];
+        for (NSDictionary *dic in itemsArray) {
+            qiushiModel *model = [[qiushiModel alloc] initWithDictionary:dic];
+            [self.dataArray addObject:model];
+        }
+        
+        [self.tableView reloadData];
+    
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+    
+}
+
+
+#pragma mark-------------------- UITableViewDataSource
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellId = @"cellId";
+    QiuShiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[QiuShiTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    qiushiModel *model = self.dataArray[indexPath.row];
+    cell.qiushiModel = model;
+    
+    return cell;
+
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"%ld",self.dataArray.count);
+    return self.dataArray.count;
+}
+
+#pragma mark -------------------- UITableViewDelegate
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    qiushiModel *model = self.dataArray[indexPath.row];
+    cellHeight = [QiuShiTableViewCell getCellHeightModel:model];
+    return cellHeight + 50;
+}
+#pragma mark --------------------- PullingRefreshTableViewDelegate
+//上拉加载
+-(void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView {
+    _pageCount += 1;
+    self.refreshing = NO;
+    [self performSelector:@selector(requestData) withObject:nil afterDelay:1.0];
+
+}
+//下拉刷新
+-(void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView {
+    _pageCount = 1;
+    self.refreshing = YES;
+    [self performSelector:@selector(requestData) withObject:nil afterDelay:1.0];
+}
+
+//获取系统当前时间
+-(NSDate *)pullingTableViewRefreshingFinishedDate {
+    return [HWTools getSystemNowTime];
+    
+}
+
+//手指开始拖动
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.tableView tableViewDidScroll:scrollView];
+
+}
+
+//手指结束拖动
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.tableView tableViewDidEndDragging:scrollView];
+}
+
+#pragma mark----------------------- 懒加载
+-(PullingRefreshTableView *)tableView {
+    if (_tableView == nil) {
+        self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight - 120) pullingDelegate:self];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        self.tableView.rowHeight = 250;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return _tableView;
+
+}
+
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        self.dataArray = [NSMutableArray new];
+    }
+    return _dataArray;
 }
 
 - (void)didReceiveMemoryWarning {

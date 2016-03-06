@@ -18,7 +18,7 @@
 #define kVideoList @"http://s.budejie.com/topic/list/zuixin/41/budejie-android-6.3.2/0-20.json?market=tencentyingyongbao&appname=baisibudejie&os=4.2.2&visiting=&mac=90%3A4e%3A2b%3A17%3A8d%3A8b&ver=6.3.2"
 
 //糗事接口
-#define kQiushiList @"http://m2.qiushibaike.com/article/list/text?page=1&count=30&rqcnt=2"
+#define kQiushiList @"http://m2.qiushibaike.com/article/list/text?count=30&rqcnt=2"
 
 /*     段子接口   */
 

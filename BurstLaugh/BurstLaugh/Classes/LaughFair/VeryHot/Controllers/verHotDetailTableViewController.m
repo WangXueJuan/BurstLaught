@@ -8,9 +8,9 @@
 
 #import "verHotDetailTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "HWTools.h"
 
-
-@interface verHotDetailTableViewController ()
+@interface verHotDetailTableViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -29,12 +29,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+ 
     self.title = self.verModel.name;
     //更新时间
     self.timeLabel.text = [NSString stringWithFormat:@"%@",self.verModel.passtime];
+    
     //头像
     [self.iconImage sd_setImageWithURL:[NSURL URLWithString:self.verModel.icon] placeholderImage:nil];
+    if (self.iconImage == nil) {
+        
+    }
     
     //用户名
     self.nameLabel.text = [NSString stringWithFormat:@"%@",self.verModel.name];
@@ -42,6 +46,7 @@
     self.textLabel.text = [NSString stringWithFormat:@"%@",self.verModel.text];
     //picturer
     [self.pictureImage sd_setImageWithURL:[NSURL URLWithString:self.verModel.textImage] placeholderImage:nil];
+    
     
     //赞
     [self.praiseBtn setTitle:[NSString stringWithFormat:@"%@",self.verModel.up] forState:UIControlStateNormal];
@@ -51,20 +56,14 @@
     [self.comentBtn setTitle:[NSString stringWithFormat:@"%@",self.verModel.comment] forState:UIControlStateNormal];
     //分享
     [self.sharBtn setTitle:[NSString stringWithFormat:@"%@",self.verModel.share_url] forState:UIControlStateNormal];
-    
-    //添加轻拍手势
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    //点击次数
-    tap.numberOfTapsRequired = 1;
-    //手指个数
-    tap.numberOfTouchesRequired = 1;
-    //将手势添加到视图
-    [self.pictureImage addGestureRecognizer:tap];
-    
-    
+  
+
     
 
+  
+    
 }
+
 
 //评论
 - (IBAction)comentBtnAction:(id)sender {
