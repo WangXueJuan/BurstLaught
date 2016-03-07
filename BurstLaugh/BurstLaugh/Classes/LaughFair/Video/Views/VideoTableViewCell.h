@@ -24,7 +24,7 @@
 @property (nonatomic, strong) UIButton *playBtn;
 @property (nonatomic, strong) MPMoviePlayerController *moviePlayer;
 @property (nonatomic, assign) NSInteger clickCount;
-
+@property (nonatomic, strong) UIButton *quitBtn;
 
 //自定义文本高度
 + (CGFloat)getCellHeightModel:(videoModel *)model;

@@ -16,12 +16,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *pictureImage;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *praiseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *downBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sharBtn;
 @property (weak, nonatomic) IBOutlet UIButton *comentBtn;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIImageView *imageV;
 
 @end
 
@@ -29,59 +31,53 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
-    self.title = self.verModel.name;
-    //更新时间
-    self.timeLabel.text = [NSString stringWithFormat:@"%@",self.verModel.passtime];
     
-    //头像
-    [self.iconImage sd_setImageWithURL:[NSURL URLWithString:self.verModel.icon] placeholderImage:nil];
-    if (self.iconImage == nil) {
-        
-    }
+    //添加右标题
+    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    commentBtn.frame = CGRectMake(kWidth * 0.75, 5, 30, 30);
+    [commentBtn addTarget:self action:@selector(download:) forControlEvents:UIControlEventTouchUpInside];
     
-    //用户名
-    self.nameLabel.text = [NSString stringWithFormat:@"%@",self.verModel.name];
-    //text
-    self.textLabel.text = [NSString stringWithFormat:@"%@",self.verModel.text];
+    [commentBtn setImage:[UIImage imageNamed:@"iconfont-xiazai-2"] forState:UIControlStateNormal];
+    [commentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:commentBtn];
+    self.navigationItem.rightBarButtonItem = rightBtnItem;
+    
+  
+    self.imageV = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, kWidth - 10, self.verModel.height - 20)];
     //picturer
-    [self.pictureImage sd_setImageWithURL:[NSURL URLWithString:self.verModel.textImage] placeholderImage:nil];
+    [self.imageV sd_setImageWithURL:[NSURL URLWithString:self.verModel.textImage] placeholderImage:nil];
+    //添加scrollview
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, kWidth, kHeight)];
+    self.scrollView.backgroundColor = [UIColor blackColor];
+    self.scrollView.contentSize = CGSizeMake(kWidth, self.verModel.height);
+    self.scrollView.delegate = self;
+    [self.view addSubview:self.scrollView];
+    [self.scrollView addSubview:self.imageV];
     
     
-    //赞
-    [self.praiseBtn setTitle:[NSString stringWithFormat:@"%@",self.verModel.up] forState:UIControlStateNormal];
-    //踩
-    [self.downBtn setTitle:[NSString stringWithFormat:@"%@",self.verModel.down] forState:UIControlStateNormal];
-    //评论
-    [self.comentBtn setTitle:[NSString stringWithFormat:@"%@",self.verModel.comment] forState:UIControlStateNormal];
-    //分享
-    [self.sharBtn setTitle:[NSString stringWithFormat:@"%@",self.verModel.share_url] forState:UIControlStateNormal];
-  
+}
+
+//保存图片到本地
+- (void)download:(UIButton *)btn{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定要保存到相册吗？" preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        UIImageWriteToSavedPhotosAlbum(self.imageV.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 
     
-
-  
     
 }
 
-
-//评论
-- (IBAction)comentBtnAction:(id)sender {
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    
+    if (error != NULL){
+//        [MBProgressHUD showError:@"下载失败"];
+    }else{
+//        [MBProgressHUD showSuccess:@"保存成功"];
+    }
 }
-
-//分享
-- (IBAction)sharBtnAction:(id)sender {
-}
-
-//踩
-- (IBAction)downBtnAction:(id)sender {
-}
-
-//赞
-- (IBAction)priseBtnAction:(id)sender {
-}
-
-#pragma mark ---------------------- 懒加载
 
 
 

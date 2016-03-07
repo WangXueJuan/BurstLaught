@@ -22,18 +22,20 @@
 		7A65D1571C8A87A80016B8A3 /* videoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A65D1561C8A87A80016B8A3 /* videoModel.m */; };
 		7A65D1601C8A8F870016B8A3 /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A65D15E1C8A8F870016B8A3 /* VideoTableViewCell.m */; };
 		7A65D1641C8AC9920016B8A3 /* HWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A65D1631C8AC9920016B8A3 /* HWTools.m */; };
+		7A6723A31C8D1DC60041E638 /* QiuShiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6723A21C8D1DC60041E638 /* QiuShiDetailViewController.m */; };
+		7A6723A51C8D36170041E638 /* QiushiDeatil.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A6723A41C8D36170041E638 /* QiushiDeatil.plist */; };
+		7A6723A81C8D504D0041E638 /* QiuShiDetailModell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6723A71C8D504D0041E638 /* QiuShiDetailModell.m */; };
+		7A6723AB1C8D50670041E638 /* QiuShiDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6723AA1C8D50670041E638 /* QiuShiDetailTableViewCell.m */; };
+		7A6723AD1C8D96230041E638 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6723AC1C8D96230041E638 /* StoreKit.framework */; };
 		7A75DC0F1C890C4400BFBA10 /* SCNavTabBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A75DC061C890C4400BFBA10 /* SCNavTabBar.bundle */; };
 		7A75DC101C890C4400BFBA10 /* SCNavTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC091C890C4400BFBA10 /* SCNavTabBarController.m */; };
 		7A75DC111C890C4400BFBA10 /* SCNavTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC0C1C890C4400BFBA10 /* SCNavTabBar.m */; };
 		7A75DC121C890C4400BFBA10 /* SCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC0E1C890C4400BFBA10 /* SCPopView.m */; };
 		7A75DC151C8916D000BFBA10 /* jokerHumorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC141C8916D000BFBA10 /* jokerHumorViewController.m */; };
-		7A75DC181C89175600BFBA10 /* TextJokerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC171C89175600BFBA10 /* TextJokerViewController.m */; };
 		7A75DC1A1C891C8E00BFBA10 /* KverHot.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A75DC191C891C8E00BFBA10 /* KverHot.plist */; };
 		7A75DC1D1C89200300BFBA10 /* VertHotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC1C1C89200300BFBA10 /* VertHotTableViewCell.m */; };
 		7A75DC201C892AEA00BFBA10 /* verHotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75DC1F1C892AEA00BFBA10 /* verHotModel.m */; };
 		7A7A920D1C89749200F9F0E9 /* verHotDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A920C1C89749200F9F0E9 /* verHotDetailTableViewController.m */; };
-		7A7A920F1C8974B700F9F0E9 /* verHotDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7A920E1C8974B700F9F0E9 /* verHotDetail.storyboard */; };
-		7AA22FD31C8BD678005D2646 /* videoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA22FD21C8BD678005D2646 /* videoFrame.m */; };
 		7AA22FD51C8BF01E005D2646 /* qiushi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AA22FD41C8BF01E005D2646 /* qiushi.plist */; };
 		7AA22FD81C8BF34C005D2646 /* qiushiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA22FD71C8BF34C005D2646 /* qiushiModel.m */; };
 		7AA22FDB1C8BF3BF005D2646 /* QiuShiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA22FDA1C8BF3BF005D2646 /* QiuShiTableViewCell.m */; };
@@ -45,7 +47,6 @@
 		7AA6F7C51C88287200C7DE19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AA6F7C31C88287200C7DE19 /* LaunchScreen.storyboard */; };
 		7AA6F7D01C88287200C7DE19 /* BurstLaughTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6F7CF1C88287200C7DE19 /* BurstLaughTests.m */; };
 		7AA6F7DB1C88287200C7DE19 /* BurstLaughUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6F7DA1C88287200C7DE19 /* BurstLaughUITests.m */; };
-		7AA6F8101C8829F700C7DE19 /* JokesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6F7EF1C8829F700C7DE19 /* JokesViewController.m */; };
 		7AA6F8121C8829F700C7DE19 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6F8091C8829F700C7DE19 /* MineViewController.m */; };
 		7AA6F8181C882BFE00C7DE19 /* LaughtFairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6F8171C882BFE00C7DE19 /* LaughtFairViewController.m */; };
 		7AA6F81A1C8830BA00C7DE19 /* jokes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AA6F8191C8830BA00C7DE19 /* jokes.storyboard */; };
@@ -98,6 +99,14 @@
 		7A65D15E1C8A8F870016B8A3 /* VideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewCell.m; sourceTree = "<group>"; };
 		7A65D1621C8AC9920016B8A3 /* HWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTools.h; sourceTree = "<group>"; };
 		7A65D1631C8AC9920016B8A3 /* HWTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTools.m; sourceTree = "<group>"; };
+		7A6723A11C8D1DC60041E638 /* QiuShiDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuShiDetailViewController.h; sourceTree = "<group>"; };
+		7A6723A21C8D1DC60041E638 /* QiuShiDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuShiDetailViewController.m; sourceTree = "<group>"; };
+		7A6723A41C8D36170041E638 /* QiushiDeatil.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QiushiDeatil.plist; sourceTree = "<group>"; };
+		7A6723A61C8D504D0041E638 /* QiuShiDetailModell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuShiDetailModell.h; sourceTree = "<group>"; };
+		7A6723A71C8D504D0041E638 /* QiuShiDetailModell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuShiDetailModell.m; sourceTree = "<group>"; };
+		7A6723A91C8D50670041E638 /* QiuShiDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuShiDetailTableViewCell.h; sourceTree = "<group>"; };
+		7A6723AA1C8D50670041E638 /* QiuShiDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuShiDetailTableViewCell.m; sourceTree = "<group>"; };
+		7A6723AC1C8D96230041E638 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7A75DC051C890C4400BFBA10 /* CommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMacro.h; sourceTree = "<group>"; };
 		7A75DC061C890C4400BFBA10 /* SCNavTabBar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SCNavTabBar.bundle; sourceTree = "<group>"; };
 		7A75DC081C890C4400BFBA10 /* SCNavTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNavTabBarController.h; sourceTree = "<group>"; };
@@ -108,8 +117,6 @@
 		7A75DC0E1C890C4400BFBA10 /* SCPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPopView.m; sourceTree = "<group>"; };
 		7A75DC131C8916D000BFBA10 /* jokerHumorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jokerHumorViewController.h; path = ../jokerHumorViewController.h; sourceTree = "<group>"; };
 		7A75DC141C8916D000BFBA10 /* jokerHumorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jokerHumorViewController.m; path = ../jokerHumorViewController.m; sourceTree = "<group>"; };
-		7A75DC161C89175600BFBA10 /* TextJokerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextJokerViewController.h; sourceTree = "<group>"; };
-		7A75DC171C89175600BFBA10 /* TextJokerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextJokerViewController.m; sourceTree = "<group>"; };
 		7A75DC191C891C8E00BFBA10 /* KverHot.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KverHot.plist; sourceTree = "<group>"; };
 		7A75DC1B1C89200300BFBA10 /* VertHotTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertHotTableViewCell.h; sourceTree = "<group>"; };
 		7A75DC1C1C89200300BFBA10 /* VertHotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertHotTableViewCell.m; sourceTree = "<group>"; };
@@ -117,9 +124,6 @@
 		7A75DC1F1C892AEA00BFBA10 /* verHotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = verHotModel.m; sourceTree = "<group>"; };
 		7A7A920B1C89749200F9F0E9 /* verHotDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = verHotDetailTableViewController.h; sourceTree = "<group>"; };
 		7A7A920C1C89749200F9F0E9 /* verHotDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = verHotDetailTableViewController.m; sourceTree = "<group>"; };
-		7A7A920E1C8974B700F9F0E9 /* verHotDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = verHotDetail.storyboard; sourceTree = "<group>"; };
-		7AA22FD11C8BD678005D2646 /* videoFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = videoFrame.h; path = ../Views/videoFrame.h; sourceTree = "<group>"; };
-		7AA22FD21C8BD678005D2646 /* videoFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = videoFrame.m; path = ../Views/videoFrame.m; sourceTree = "<group>"; };
 		7AA22FD41C8BF01E005D2646 /* qiushi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = qiushi.plist; sourceTree = "<group>"; };
 		7AA22FD61C8BF34C005D2646 /* qiushiModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qiushiModel.h; sourceTree = "<group>"; };
 		7AA22FD71C8BF34C005D2646 /* qiushiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = qiushiModel.m; sourceTree = "<group>"; };
@@ -141,13 +145,11 @@
 		7AA6F7D61C88287200C7DE19 /* BurstLaughUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BurstLaughUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AA6F7DA1C88287200C7DE19 /* BurstLaughUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BurstLaughUITests.m; sourceTree = "<group>"; };
 		7AA6F7DC1C88287200C7DE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7AA6F7EE1C8829F700C7DE19 /* JokesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JokesViewController.h; sourceTree = "<group>"; };
-		7AA6F7EF1C8829F700C7DE19 /* JokesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JokesViewController.m; sourceTree = "<group>"; };
 		7AA6F8081C8829F700C7DE19 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		7AA6F8091C8829F700C7DE19 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		7AA6F8161C882BFE00C7DE19 /* LaughtFairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaughtFairViewController.h; sourceTree = "<group>"; };
 		7AA6F8171C882BFE00C7DE19 /* LaughtFairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaughtFairViewController.m; sourceTree = "<group>"; };
-		7AA6F8191C8830BA00C7DE19 /* jokes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = jokes.storyboard; path = jokes/Views/jokes.storyboard; sourceTree = "<group>"; };
+		7AA6F8191C8830BA00C7DE19 /* jokes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = jokes.storyboard; sourceTree = "<group>"; };
 		7AA6F81B1C88317000C7DE19 /* Laught.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Laught.storyboard; sourceTree = "<group>"; };
 		7AA6F81D1C88319500C7DE19 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		7AA6F81F1C88552A00C7DE19 /* HWDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWDefine.h; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A6723AD1C8D96230041E638 /* StoreKit.framework in Frameworks */,
 				7A65D1541C8A86BF0016B8A3 /* CoreMedia.framework in Frameworks */,
 				7A65D1521C8A86B30016B8A3 /* AVFoundation.framework in Frameworks */,
 				7A65D1501C8A86AB0016B8A3 /* MediaToolbox.framework in Frameworks */,
@@ -320,11 +323,7 @@
 		7AA6F7E91C8829F700C7DE19 /* Jokes */ = {
 			isa = PBXGroup;
 			children = (
-				7AA6F7EE1C8829F700C7DE19 /* JokesViewController.h */,
-				7AA6F7EF1C8829F700C7DE19 /* JokesViewController.m */,
-				7AA6F8191C8830BA00C7DE19 /* jokes.storyboard */,
 				7AA6F7EA1C8829F700C7DE19 /* jokes */,
-				7AA6F7F01C8829F700C7DE19 /* Texts */,
 			);
 			path = Jokes;
 			sourceTree = "<group>";
@@ -361,39 +360,7 @@
 		7AA6F7ED1C8829F700C7DE19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		7AA6F7F01C8829F700C7DE19 /* Texts */ = {
-			isa = PBXGroup;
-			children = (
-				7AA6F7F11C8829F700C7DE19 /* Controllers */,
-				7AA6F7F21C8829F700C7DE19 /* Modells */,
-				7AA6F7F31C8829F700C7DE19 /* Views */,
-			);
-			path = Texts;
-			sourceTree = "<group>";
-		};
-		7AA6F7F11C8829F700C7DE19 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				7A75DC161C89175600BFBA10 /* TextJokerViewController.h */,
-				7A75DC171C89175600BFBA10 /* TextJokerViewController.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		7AA6F7F21C8829F700C7DE19 /* Modells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modells;
-			sourceTree = "<group>";
-		};
-		7AA6F7F31C8829F700C7DE19 /* Views */ = {
-			isa = PBXGroup;
-			children = (
+				7AA6F8191C8830BA00C7DE19 /* jokes.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -427,6 +394,9 @@
 			children = (
 				7AA6F82E1C885C9800C7DE19 /* QiushiViewController.h */,
 				7AA6F82F1C885C9800C7DE19 /* QiushiViewController.m */,
+				7A6723A11C8D1DC60041E638 /* QiuShiDetailViewController.h */,
+				7A6723A21C8D1DC60041E638 /* QiuShiDetailViewController.m */,
+				7A6723A41C8D36170041E638 /* QiushiDeatil.plist */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -436,6 +406,8 @@
 			children = (
 				7AA22FD61C8BF34C005D2646 /* qiushiModel.h */,
 				7AA22FD71C8BF34C005D2646 /* qiushiModel.m */,
+				7A6723A61C8D504D0041E638 /* QiuShiDetailModell.h */,
+				7A6723A71C8D504D0041E638 /* QiuShiDetailModell.m */,
 			);
 			path = Modells;
 			sourceTree = "<group>";
@@ -445,6 +417,8 @@
 			children = (
 				7AA22FD91C8BF3BF005D2646 /* QiuShiTableViewCell.h */,
 				7AA22FDA1C8BF3BF005D2646 /* QiuShiTableViewCell.m */,
+				7A6723A91C8D50670041E638 /* QiuShiDetailTableViewCell.h */,
+				7A6723AA1C8D50670041E638 /* QiuShiDetailTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -485,7 +459,6 @@
 			children = (
 				7A75DC1B1C89200300BFBA10 /* VertHotTableViewCell.h */,
 				7A75DC1C1C89200300BFBA10 /* VertHotTableViewCell.m */,
-				7A7A920E1C8974B700F9F0E9 /* verHotDetail.storyboard */,
 				7A65D13A1C8A770D0016B8A3 /* GifView.h */,
 				7A65D13B1C8A770D0016B8A3 /* GifView.m */,
 			);
@@ -517,8 +490,6 @@
 			children = (
 				7A65D1551C8A87A80016B8A3 /* videoModel.h */,
 				7A65D1561C8A87A80016B8A3 /* videoModel.m */,
-				7AA22FD11C8BD678005D2646 /* videoFrame.h */,
-				7AA22FD21C8BD678005D2646 /* videoFrame.m */,
 			);
 			path = Modells;
 			sourceTree = "<group>";
@@ -638,6 +609,7 @@
 		F3D2E31A06ECEF295C3E91F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A6723AC1C8D96230041E638 /* StoreKit.framework */,
 				7A65D1531C8A86BF0016B8A3 /* CoreMedia.framework */,
 				7A65D1511C8A86B30016B8A3 /* AVFoundation.framework */,
 				7A65D14F1C8A86AB0016B8A3 /* MediaToolbox.framework */,
@@ -760,7 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AA6F7C21C88287200C7DE19 /* Assets.xcassets in Resources */,
-				7A7A920F1C8974B700F9F0E9 /* verHotDetail.storyboard in Resources */,
+				7A6723A51C8D36170041E638 /* QiushiDeatil.plist in Resources */,
 				7A75DC1A1C891C8E00BFBA10 /* KverHot.plist in Resources */,
 				7A75DC0F1C890C4400BFBA10 /* SCNavTabBar.bundle in Resources */,
 				7A65D14B1C8A85630016B8A3 /* blueArrowDown.png in Resources */,
@@ -848,13 +820,14 @@
 				7A75DC111C890C4400BFBA10 /* SCNavTabBar.m in Sources */,
 				7AA6F8361C88705600C7DE19 /* VerHotViewController.m in Sources */,
 				7A65D1641C8AC9920016B8A3 /* HWTools.m in Sources */,
+				7A6723A31C8D1DC60041E638 /* QiuShiDetailViewController.m in Sources */,
 				7AA6F8331C885CAA00C7DE19 /* VideoViewController.m in Sources */,
 				7AA22FEB1C8C635A005D2646 /* jokerModel.m in Sources */,
 				7AA6F8181C882BFE00C7DE19 /* LaughtFairViewController.m in Sources */,
 				7AA22FDB1C8BF3BF005D2646 /* QiuShiTableViewCell.m in Sources */,
+				7A6723AB1C8D50670041E638 /* QiuShiDetailTableViewCell.m in Sources */,
 				7A75DC201C892AEA00BFBA10 /* verHotModel.m in Sources */,
 				7AA22FD81C8BF34C005D2646 /* qiushiModel.m in Sources */,
-				7AA22FD31C8BD678005D2646 /* videoFrame.m in Sources */,
 				7A65D1601C8A8F870016B8A3 /* VideoTableViewCell.m in Sources */,
 				7A75DC1D1C89200300BFBA10 /* VertHotTableViewCell.m in Sources */,
 				7A65D1571C8A87A80016B8A3 /* videoModel.m in Sources */,
@@ -862,12 +835,11 @@
 				7A65D14C1C8A85630016B8A3 /* PullingRefreshTableView.m in Sources */,
 				7AA6F8301C885C9800C7DE19 /* QiushiViewController.m in Sources */,
 				7A75DC151C8916D000BFBA10 /* jokerHumorViewController.m in Sources */,
+				7A6723A81C8D504D0041E638 /* QiuShiDetailModell.m in Sources */,
 				7A7A920D1C89749200F9F0E9 /* verHotDetailTableViewController.m in Sources */,
 				7AA6F7BD1C88287200C7DE19 /* main.m in Sources */,
 				7A75DC121C890C4400BFBA10 /* SCPopView.m in Sources */,
-				7A75DC181C89175600BFBA10 /* TextJokerViewController.m in Sources */,
 				7AA6F8121C8829F700C7DE19 /* MineViewController.m in Sources */,
-				7AA6F8101C8829F700C7DE19 /* JokesViewController.m in Sources */,
 				7A65D13C1C8A770D0016B8A3 /* GifView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

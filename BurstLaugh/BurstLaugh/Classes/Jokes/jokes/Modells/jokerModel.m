@@ -14,8 +14,8 @@
     if (self) {
         NSDictionary *authorDic = dic[@"author"];
         if (![authorDic isEqual:[NSNull null]]) {
-            self.avatar = dic[@"avatar"];
-            self.name = dic[@"name"];
+            self.avatar = authorDic[@"avatar"];
+            self.name = authorDic[@"name"];
         }
         NSDictionary *contDic = dic[@"content"];
         if (![contDic isEqual:[NSNull null]]) {

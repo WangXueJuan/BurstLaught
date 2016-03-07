@@ -32,6 +32,7 @@
     [self requestData];
     
     
+    
 }
 
 //请求网路数据
@@ -91,15 +92,19 @@
 
 //cell的点击方法
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIStoryboard *detaildStorboard = [UIStoryboard storyboardWithName:@"verHotDetail" bundle:nil];
-    verHotDetailTableViewController *hotVC = detaildStorboard.instantiateInitialViewController;
+
+    verHotDetailTableViewController *hotVC =[[verHotDetailTableViewController alloc] init];
     NSMutableArray *groupArray = self.dataArray[indexPath.section];
-    hotVC.verModel = groupArray[indexPath.row];
-    
-    [self.navigationController pushViewController:hotVC animated:YES];
+        hotVC.verModel = groupArray[indexPath.row];
+    //如果图片不为空就打开图片
+    if (hotVC.verModel.textImage != nil) {
+         [self.navigationController pushViewController:hotVC animated:YES];
+    }
 
-
+   
 }
+
+
 
 //返回cell的自定义高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

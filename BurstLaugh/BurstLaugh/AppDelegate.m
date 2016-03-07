@@ -7,10 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "JokesViewController.h"
 #import "LaughtFairViewController.h"
 #import "MineViewController.h"
-
+#import "jokerHumorViewController.h"
 
 @interface AppDelegate ()
 

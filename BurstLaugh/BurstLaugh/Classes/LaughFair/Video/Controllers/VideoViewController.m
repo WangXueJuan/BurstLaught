@@ -13,20 +13,20 @@
 #import "videoModel.h"
 #import "HWTools.h"
 #import <AVFoundation/AVFoundation.h>
-#import "videoFrame.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface VideoViewController ()<UITableViewDataSource, UITableViewDelegate,PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;
-    NSString *_netId;
-    CGFloat cellHeight;
+    NSInteger _netId;
+
 }
 
 
 @property (nonatomic, strong) PullingRefreshTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *videoArray;
 @property (nonatomic, assign) BOOL refreshing;
-
+@property (nonatomic, strong) MPMoviePlayerController *player;
 @end
 
 @implementation VideoViewController
@@ -35,6 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+//    [self.view addSubview:self.player];
     [self.view addSubview:self.tableView];
     //启动自动刷新
     [self.tableView launchRefreshing];
@@ -47,7 +48,7 @@
 //请求网络数据
 - (void)loadDataRe {
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
-    [sessionManger GET:[NSString stringWithFormat:@"%@udid=%@",kVideoList, _netId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManger GET:[NSString stringWithFormat:@"%@udid=%ld",kVideoList, (long)_netId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //下拉刷新时需要移除数组中的数据
@@ -93,7 +94,21 @@
 
 
 }
-
+/*
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *array = self.videoArray[indexPath.section];
+    videoModel *model = array[indexPath.row];
+    self.player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:model.video_url]];
+    self.player.view.frame = CGRectMake(0, 0, kWidth, 80);
+    self.player.view.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.player.view];
+    //隐藏自动自带的控制面板
+    self.player.controlStyle = MPMovieControlStyleDefault;
+    NSLog(@"%@",model.video_url);
+    [self.player play];
+    
+}
+*/
 //返回分区行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.videoArray.count;
@@ -103,15 +118,10 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *array = self.videoArray[indexPath.section];
     videoModel *model = array[indexPath.row];
-     cellHeight = [VideoTableViewCell getCellHeightModel:model];
+    CGFloat cellHeight = [VideoTableViewCell getCellHeightModel:model];
     return cellHeight + 50;
     
 }
-
-
-#pragma mark ------------------ 监听播放器
-
-
 
 
 

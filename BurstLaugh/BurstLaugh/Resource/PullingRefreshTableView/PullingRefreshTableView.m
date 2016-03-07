@@ -30,6 +30,8 @@
 @synthesize state = _state;
 @synthesize loading = _loading;
 
+
+
  //Default is at top
 - (id)initWithFrame:(CGRect)frame atTop:(BOOL)top {
     self = [super initWithFrame:frame];
@@ -211,9 +213,9 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
                                                fromDate:date toDate:[NSDate date] options:0];
-    int year = [components year];
-    int month = [components month];
-    int day = [components day];
+    NSInteger year = [components year];
+    NSInteger month = [components month];
+    NSInteger day = [components day];
     if (year == 0 && month == 0 && day < 3) {
         if (day == 0) {
             title = NSLocalizedString(@"今天",nil);
@@ -271,6 +273,11 @@
     }
     return self;
 }
+
+-(void)dealloc {
+    [self removeObserver:self forKeyPath:@"contentSize"];
+}
+
 
 - (id)initWithFrame:(CGRect)frame pullingDelegate:(id<PullingRefreshTableViewDelegate>)aPullingDelegate {
     self = [self initWithFrame:frame style:UITableViewStylePlain];

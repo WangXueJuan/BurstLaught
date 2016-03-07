@@ -105,18 +105,20 @@
     [self.contentView addSubview:self.moviePlayer.view];
     //隐藏自动自带的控制面板
     self.moviePlayer.controlStyle = MPMovieControlStyleDefault;
-
-    //添加一个按钮，点击退出播放器
-    UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    quitBtn.frame = CGRectMake(20, 20, kWidth - 40, self.moviePlayer.view.frame.size.height - 50);
-    [quitBtn addTarget:self action:@selector(removeMovie) forControlEvents:UIControlEventTouchUpInside];
-    [self.moviePlayer.view addSubview:quitBtn];
+   
+    //添加一个按钮，点击播放器
+    self.quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.quitBtn.frame = CGRectMake(20, 20, kWidth - 40, self.moviePlayer.view.frame.size.height - 50);
+    [self.quitBtn setImage:[UIImage imageNamed:@"iconfont-3"] forState:UIControlStateNormal];
+    [self.quitBtn addTarget:self action:@selector(removeMovie) forControlEvents:UIControlEventTouchUpInside];
+    [self.moviePlayer.view addSubview:self.quitBtn];
 
     
 }
 
 - (void)removeMovie {
     [self.moviePlayer play];
+    [self.quitBtn removeFromSuperview];
     
 }
 

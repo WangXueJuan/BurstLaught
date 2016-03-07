@@ -19,14 +19,14 @@
 
 //糗事接口
 #define kQiushiList @"http://m2.qiushibaike.com/article/list/text?count=30&rqcnt=2"
+//糗事详情接口
+#define kQiuShiDetailList @"http://m2.qiushibaike.com/article"
 
 /*     段子接口   */
 
-//纯文段子
-#define kTextJokes @"http://api.mahua.com/app/jokes/text?oauth_signature_method=HMAC-SHA1&oauth_consumer_key=e65fc27d8892e4a50dcd1d8e1bd4bf81&app_channel=channel_yingyongbao&platform=android&oauth_version=1.0&oauth_timestamp=1456977825208&oauth_nonce=ec95a85a367573dc993e2c56a35c7230&device_id=60155e3e2dfe9c0f&api_version=3.0&client_version=3.1.1-relase&oauth_token=&oauth_signature=9Lo7J61Bo7bXVEJbDEYx3KkJWew%3D"
 
 //最新段子
-#define kJokesList @"http://jianstory.com/rest/images/new?page=1&type=2&like_count=10"
+#define kJokesList @"http://jianstory.com/rest/images/new?type=2&like_count=10"
 
 
 

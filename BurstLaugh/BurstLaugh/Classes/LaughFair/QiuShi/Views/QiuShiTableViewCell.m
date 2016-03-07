@@ -98,24 +98,43 @@
 
 }
 
-/*
+
 //段子界面赋值
 -(void)setJokerModel:(jokerModel *)jokerModel {
     [self.iconImage sd_setImageWithURL:[NSURL URLWithString:jokerModel.avatar] placeholderImage:nil];
-    self.nameLabel.text = jokerModel.text;
-    self.textLabel.text = jokerModel.text;
+    self.nameLabel.text = jokerModel.name;
+    //重写给label赋值
+    CGFloat height = [HWTools getTextHeightWithText:jokerModel.text];
+    CGRect frame = self.contextLabel.frame;
+    frame.size.height = height;
+    self.contextLabel.frame = frame;
+    self.contextLabel.numberOfLines = 0;
+    self.contextLabel.text = [NSString stringWithFormat:@"%@",jokerModel.text];
+
+//    self.textLabel.text = jokerModel.text;
     [self.upBtn setTitle:[NSString stringWithFormat:@"%@",jokerModel.like] forState:UIControlStateNormal];
     [self.downBtn setTitle:[NSString stringWithFormat:@"%@",jokerModel.unlike] forState:UIControlStateNormal];
     [self.countBtn setTitle:[NSString stringWithFormat:@"%@",jokerModel.comment] forState:UIControlStateNormal];
     [self.sharBtn setTitle:[NSString stringWithFormat:@"%@",jokerModel.shared] forState:UIControlStateNormal];
+    
+    //重新给按钮赋值
+    self.upBtn.frame = CGRectMake(5,frame.size.height + kWidth / 6 - 20, kWidth / 4 - 5, 30);
+    self.downBtn.frame = CGRectMake(kWidth / 4 + 5, frame.size.height + kWidth / 6 - 20, kWidth / 4 - 5, 30);
+    self.countBtn.frame = CGRectMake(kWidth / 2 + 5, frame.size.height + kWidth / 6 - 20, kWidth / 4 - 5, 30);
+    self.sharBtn.frame = CGRectMake(kWidth * 0.75 + 5, frame.size.height + kWidth / 6 - 20, kWidth / 4 - 10, 30);
+    [self.downBtn setTitle:[NSString stringWithFormat:@"%@",jokerModel.unlike] forState:UIControlStateNormal];
+    [self.upBtn setTitle:[NSString stringWithFormat:@"%@",jokerModel.like] forState:UIControlStateNormal];
+    [self.countBtn setTitle:[NSString stringWithFormat:@"%@",jokerModel.comment] forState:UIControlStateNormal];
+    [self.sharBtn setTitle:[NSString stringWithFormat:@"%@",jokerModel.shared] forState:UIControlStateNormal];
+    self.lineLabel.frame = CGRectMake(0, frame.size.height + kWidth / 6 - 20 + 40, kWidth, 5);
 
 }
 
 + (CGFloat)getCellHeightJokerModel:(jokerModel *)model{
     CGFloat textHeight = [HWTools getTextHeightWithText:model.text];
-    return textHeight + 30;
+    return textHeight + 60;
 }
-*/
+
 - (void)awakeFromNib {
     // Initialization code
 }

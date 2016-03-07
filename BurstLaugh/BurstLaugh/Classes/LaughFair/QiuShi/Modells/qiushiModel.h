@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *share_count; //分享次数
 @property (nonatomic, strong) NSString *iconId;
 @property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSString *contentId;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 

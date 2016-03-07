@@ -8,7 +8,7 @@
         <!--段 子-->
         <scene sceneID="3Q3-3i-vDq">
             <objects>
-                <viewController id="Kkk-Pg-cQw" customClass="JokesViewController" sceneMemberID="viewController">
+                <viewController id="Kkk-Pg-cQw" customClass="jokerHumorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vyM-Ci-YxQ"/>
                         <viewControllerLayoutGuide type="bottom" id="kTY-1T-DUx"/>
