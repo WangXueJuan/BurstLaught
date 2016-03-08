@@ -12,7 +12,10 @@
 #import "QiuShiTableViewCell.h"
 #import "HWTools.h"
 #import "QiuShiDetailViewController.h"
-@interface QiushiViewController ()<PullingRefreshTableViewDelegate, UITableViewDataSource, UITableViewDelegate>
+#import "ProgressHUD.h"
+#import "CollectionViewController.h"
+#import "MineViewController.h"
+@interface QiushiViewController ()<PullingRefreshTableViewDelegate, UITableViewDataSource, UITableViewDelegate,collectDelegate>
 {
     NSInteger _pageCount;
     CGFloat cellHeight;
@@ -39,11 +42,13 @@
 }
 
 - (void)requestData {
+    [ProgressHUD show:@"正在加载数据"];
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
     sessionManger.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [sessionManger GET:[NSString stringWithFormat:@"%@page=%ld",kQiushiList,(long)_pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [ProgressHUD show:@"数据加载完成"];
         if (self.refreshing) {
             if (self.dataArray.count > 0) {
                 [self.dataArray removeAllObjects];
@@ -57,7 +62,7 @@
         }
         
         [self.tableView reloadData];
-    
+        [ProgressHUD dismiss];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -74,6 +79,7 @@
         cell = [[QiuShiTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate  =self;
 
     qiushiModel *model = self.dataArray[indexPath.row];
     cell.qiushiModel = model;
@@ -82,10 +88,51 @@
 
 }
 
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"%ld",self.dataArray.count);
     return self.dataArray.count;
 }
+
+-(void)collectionClick:(UIButton *)btn {
+    if (btn.tag == 9) {
+        [ProgressHUD showSuccess:@"收藏成功"];
+        CollectionViewController *collectVC = [[CollectionViewController alloc] init];
+        QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
+        NSIndexPath *path = [self.tableView indexPathForCell:cell];
+        qiushiModel *model = self.dataArray[path.row];
+        collectVC.collectModel = model;
+        //把model中的数据取出来存到defaults里面然后传到收藏界面
+        NSString *iconImage = collectVC.collectModel.iconImage;
+        NSString *name = collectVC.collectModel.login;
+        NSString *up = collectVC.collectModel.up;
+        NSString *down = collectVC.collectModel.down;
+        NSString *shared = collectVC.collectModel.share_count;
+        NSString *comment = collectVC.collectModel.comments_count;
+        NSString *content = collectVC.collectModel.content;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:iconImage forKey:@"iconImage"];
+        [defaults setValue:name forKey:@"name"];
+        [defaults setValue:up forKey:@"up"];
+        [defaults setValue:down forKey:@"down"];
+        [defaults setValue:shared forKey:@"shared"];
+        [defaults setValue:comment forKey:@"comment"];
+        [defaults setValue:content forKey:@"content"];
+    
+        
+
+    }else {
+        QiuShiDetailViewController *detailVc = [[QiuShiDetailViewController alloc] init];
+        QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
+        NSIndexPath *path = [self.tableView indexPathForCell:cell];
+        qiushiModel *model = self.dataArray[path.row];
+        detailVc.QiushiModel = model;
+        detailVc._detailId = model.contentId;
+        [self.navigationController pushViewController:detailVc animated:YES];
+    }
+    
+}
+
 
 #pragma mark -------------------- UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -13,4 +13,5 @@
 @interface QiuShiDetailViewController : UIViewController
 @property (nonatomic, strong) qiushiModel *QiushiModel;
 @property (nonatomic, copy)  NSString  *_detailId;
+
 @end

@@ -12,7 +12,7 @@
 #import "AFNetworking.h"
 #import "QiuShiDetailTableViewCell.h"
 #import <StoreKit/StoreKit.h>
-
+#import "ProgressHUD.h"
 @interface QiuShiDetailViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate, SKStoreProductViewControllerDelegate>
 {
    
@@ -48,7 +48,6 @@
     UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:commentBtn];
     self.navigationItem.rightBarButtonItem = rightBtnItem;
     
-   
 }
 
 //开始请求网络
@@ -57,7 +56,7 @@
     [sessionManger GET:[NSString stringWithFormat:@"%@/%@/comments?count=50&page=%ld",kQiuShiDetailList, self._detailId, (long)_pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+        [ProgressHUD show:@"数据加载完成"];
         NSDictionary *responseDic = responseObject;
         NSMutableArray *itemsArray = responseDic[@"items"];
         for (NSDictionary *dic in itemsArray) {
@@ -69,6 +68,7 @@
         [self.tableView reloadData];
         [self.tableView tableViewDidFinishedLoading];
         self.tableView.reachedTheEnd = NO;
+         [ProgressHUD dismiss];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -106,7 +106,7 @@
             detailCell = [[QiuShiDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
         QiuShiDetailModell *model = self.listArray[indexPath.row];
-        NSLog(@"%@",self.listArray[indexPath.row]);
+//        NSLog(@"%@",self.listArray[indexPath.row]);
         detailCell.detailModell = model;
         self.tableView.separatorColor = [UIColor clearColor];
         detailCell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -140,11 +140,14 @@
     if (self.textFied.text) {
         [self.textFied removeFromSuperview];
         [self.publishBtn removeFromSuperview];
-        [self.listArray insertObject:self.listArray atIndex:0];
-        [self.tableView reloadData];
+        //把输入的内容转化成model类型然后添加到数组中
+        QiuShiDetailModell *pingLunModel = [[QiuShiDetailModell alloc] init];
+        pingLunModel.content = self.textFied.text;
+        [self.listArray insertObject:pingLunModel atIndex:0];
+        
     }
-
-    
+    [self.tableView reloadData];
+  
 }
 
 //点击return回收键盘

@@ -10,6 +10,7 @@
 #import "LaughtFairViewController.h"
 #import "MineViewController.h"
 #import "jokerHumorViewController.h"
+#import <BmobSDK/Bmob.h>
 
 @interface AppDelegate ()
 
@@ -32,26 +33,26 @@
     laughNav.tabBarItem.image = [UIImage imageNamed:@"icon_my_enable"];
     laughNav.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     //设置选中图片
-    UIImage *lauImage = [UIImage imageNamed:@"icon_my_active"];
+    UIImage *lauImage = [UIImage imageNamed:@"ss"];
     laughNav.tabBarItem.selectedImage = [lauImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     //段子
     UIStoryboard *jokesStoryBord = [UIStoryboard storyboardWithName:@"jokes" bundle:nil];
     UINavigationController *jokeNav = jokesStoryBord.instantiateInitialViewController;
     //设置图片
-    jokeNav.tabBarItem.image = [UIImage imageNamed:@"icon_top_enable"];
+    jokeNav.tabBarItem.image = [UIImage imageNamed:@"icon_new_enable"];
     jokeNav.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     //设置选中图片
-    UIImage *jokeImage = [UIImage imageNamed:@"icon_top_active"];
+    UIImage *jokeImage = [UIImage imageNamed:@"sy.png"];
     jokeNav.tabBarItem.selectedImage = [jokeImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //个人
     UIStoryboard *mineStoryBoard = [UIStoryboard storyboardWithName:@"Mine" bundle:nil];
     UINavigationController *mineNav = mineStoryBoard.instantiateInitialViewController;
     //设置图片
-    mineNav.tabBarItem.image = [UIImage imageNamed:@"icon_new_enable"];
+    mineNav.tabBarItem.image = [UIImage imageNamed:@"geren.jpg"];
     mineNav.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     //设置选中图片
-    UIImage *mineImage = [UIImage imageNamed:@"icon_new_active"];
+    UIImage *mineImage = [UIImage imageNamed:@"geren.jpg"];
     mineNav.tabBarItem.selectedImage = [mineImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //添加被tabBarVC管理的视图
@@ -64,6 +65,9 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

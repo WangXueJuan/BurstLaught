@@ -10,7 +10,13 @@
 #import "qiushiModel.h"
 #import "jokerModel.h"
 
-@interface QiuShiTableViewCell : UITableViewCell
+@protocol collectDelegate <NSObject>
+
+- (void)collectionClick:(UIButton *)btn;
+
+@end
+
+@interface QiuShiTableViewCell : UITableViewCell<collectDelegate>
 @property (nonatomic, strong) UIImageView *iconImage; //头像
 @property (nonatomic, strong) UILabel *nameLabel; //名字
 @property (nonatomic, strong) UILabel *contextLabel; //文字
@@ -20,8 +26,16 @@
 @property (nonatomic, strong) UIButton *sharBtn;  //分享次数
 @property (nonatomic, strong) qiushiModel *qiushiModel;
 @property (nonatomic, strong) UILabel *lineLabel;
+@property (nonatomic, strong) UIButton *collectBtn;
 @property (nonatomic, strong) jokerModel *jokerModel;
+
+@property (nonatomic, assign) id<collectDelegate>delegate;
 //自定义一个方法，计算cell的高度
+//幽默糗事界面的计算方法
 + (CGFloat)getCellHeightModel:(qiushiModel *)model;
+//段子界面的计算方法
 + (CGFloat)getCellHeightJokerModel:(jokerModel *)model;
+
+
+
 @end

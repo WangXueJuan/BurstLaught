@@ -14,7 +14,7 @@
 #import "HWTools.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-
+#import "ProgressHUD.h"
 @interface VideoViewController ()<UITableViewDataSource, UITableViewDelegate,PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;
@@ -47,10 +47,12 @@
 
 //请求网络数据
 - (void)loadDataRe {
+    [ProgressHUD show:@"正在加载数据"];
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
     [sessionManger GET:[NSString stringWithFormat:@"%@udid=%ld",kVideoList, (long)_netId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [ProgressHUD show:@"数据加载完成"];
         //下拉刷新时需要移除数组中的数据
         if (self.refreshing) {
             if (self.videoArray.count > 0) {
@@ -69,7 +71,7 @@
         [self.tableView tableViewDidFinishedLoading];
         self.tableView.reachedTheEnd = NO;
         [self.tableView reloadData];
-        
+         [ProgressHUD dismiss];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];

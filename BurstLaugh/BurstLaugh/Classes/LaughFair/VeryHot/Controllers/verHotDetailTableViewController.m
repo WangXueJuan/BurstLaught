@@ -9,19 +9,9 @@
 #import "verHotDetailTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "HWTools.h"
-
+#import "ProgressHUD.h"
 @interface verHotDetailTableViewController ()<UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *iconImage;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
-
-
-@property (weak, nonatomic) IBOutlet UIButton *praiseBtn;
-@property (weak, nonatomic) IBOutlet UIButton *downBtn;
-@property (weak, nonatomic) IBOutlet UIButton *sharBtn;
-@property (weak, nonatomic) IBOutlet UIButton *comentBtn;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *imageV;
 
@@ -43,11 +33,11 @@
     self.navigationItem.rightBarButtonItem = rightBtnItem;
     
   
-    self.imageV = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, kWidth - 10, self.verModel.height - 20)];
+    self.imageV = [[UIImageView alloc] initWithFrame:CGRectMake(5, 20, kWidth - 10, self.verModel.height - 40)];
     //picturer
     [self.imageV sd_setImageWithURL:[NSURL URLWithString:self.verModel.textImage] placeholderImage:nil];
     //添加scrollview
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, kWidth, kHeight)];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight)];
     self.scrollView.backgroundColor = [UIColor blackColor];
     self.scrollView.contentSize = CGSizeMake(kWidth, self.verModel.height);
     self.scrollView.delegate = self;
@@ -73,9 +63,9 @@
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     
     if (error != NULL){
-//        [MBProgressHUD showError:@"下载失败"];
+        [ProgressHUD showError:@"下载失败"];
     }else{
-//        [MBProgressHUD showSuccess:@"保存成功"];
+        [ProgressHUD showSuccess:@"保存成功"];
     }
 }
 

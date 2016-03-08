@@ -61,7 +61,7 @@
         _arrowButton.image = _arrowImage;
         _arrowButton.userInteractionEnabled = YES;
         [self addSubview:_arrowButton];
-        [self viewShowShadow:_arrowButton shadowRadius:20.0f shadowOpacity:20.0f];
+//        [self viewShowShadow:_arrowButton shadowRadius:20.0f shadowOpacity:20.0f];
         
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(functionButtonPressed)];
         [_arrowButton addGestureRecognizer:tapGestureRecognizer];
@@ -71,13 +71,14 @@
     _navgationTabBar.showsHorizontalScrollIndicator = NO;
     [self addSubview:_navgationTabBar];
     
-    [self viewShowShadow:self shadowRadius:10.0f shadowOpacity:10.0f];
+//    [self viewShowShadow:self shadowRadius:10.0f shadowOpacity:10.0f];
 }
 
 - (void)showLineWithButtonWidth:(CGFloat)width
 {
     _line = [[UIView alloc] initWithFrame:CGRectMake(2.0f, NAV_TAB_BAR_HEIGHT - 3.0f, width - 4.0f, 3.0f)];
-    _line.backgroundColor = UIColorWithRGBA(20.0f, 80.0f, 200.0f, 0.7f);
+//    _line.backgroundColor = UIColorWithRGBA(20.0f, 80.0f, 200.0f, 0.7f);
+    _line.backgroundColor = [UIColor colorWithRed:255.0 / 255.0 green:129.0 / 255.0 blue:169.0 / 255.0 alpha:1.0];
     [_navgationTabBar addSubview:_line];
 }
 
@@ -135,8 +136,8 @@
 
 - (void)viewShowShadow:(UIView *)view shadowRadius:(CGFloat)shadowRadius shadowOpacity:(CGFloat)shadowOpacity
 {
-    view.layer.shadowRadius = shadowRadius;
-    view.layer.shadowOpacity = shadowOpacity;
+//    view.layer.shadowRadius = shadowRadius;
+//    view.layer.shadowOpacity = shadowOpacity;
 }
 
 - (CGFloat)popMenuHeight

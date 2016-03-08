@@ -9,6 +9,7 @@
 #import "QiuShiTableViewCell.h"
 #import "HWTools.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ProgressHUD.h"
 @implementation QiuShiTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -23,12 +24,19 @@
     //头像
     self.iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, kWidth / 6 - 20, kWidth / 6 - 20)];
     self.iconImage.layer.cornerRadius = (kWidth / 6 - 20 ) * 0.5;
-//    self.iconImage.backgroundColor = [UIColor redColor];
+    self.iconImage.image = [UIImage imageNamed:@"geren"];
     self.iconImage.clipsToBounds = YES;
     [self.contentView addSubview:self.iconImage];
     //名称
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 6 + 10, 10, kWidth - kWidth / 6 - 15, kWidth / 6 - 20)];
+    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 6 + 10, 10, kWidth - kWidth / 6 - 50, kWidth / 6 - 20)];
     [self.contentView addSubview:self.nameLabel];
+    //收藏
+    self.collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.collectBtn setImage:[UIImage imageNamed:@"icon_like"] forState:UIControlStateNormal];
+    self.collectBtn.tag = 9;
+    [self.collectBtn addTarget:self action:@selector(collectionAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.collectBtn.frame = CGRectMake(kWidth - kWidth / 6, 10, 30, kWidth / 6 - 20);
+    [self.contentView addSubview:self.collectBtn];
     //内容
     self.contextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, kWidth / 6 - 15 , kWidth - 20, 50)];
     [self.contentView addSubview:self.contextLabel];
@@ -53,6 +61,8 @@
     [self.countBtn setImage:[UIImage imageNamed:@"comment@2x.icon"] forState:UIControlStateNormal];
     [self.countBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     self.countBtn.alpha = 0.5;
+    [self.countBtn addTarget:self action:@selector(collectionAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.countBtn.tag = 10;
     [self.contentView addSubview:self.countBtn];
     
     self.sharBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -133,6 +143,15 @@
 + (CGFloat)getCellHeightJokerModel:(jokerModel *)model{
     CGFloat textHeight = [HWTools getTextHeightWithText:model.text];
     return textHeight + 60;
+}
+
+//点击收藏把数据先传到我的个人中心再传到collectionVC中
+- (void)collectionAction:(UIButton *)btn {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(collectionClick:)]) {
+        self.tag = btn.tag;
+        [self.delegate collectionClick:btn];
+    }
+
 }
 
 - (void)awakeFromNib {

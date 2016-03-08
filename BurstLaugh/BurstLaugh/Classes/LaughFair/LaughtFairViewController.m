@@ -26,8 +26,9 @@
 
     //设置子控制器
     [self setController];
-    
-}
+    //设置导航栏字体颜色
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont systemFontOfSize:25.0]}];
+    }
 
 //设置子控制器
 - (void)setController{

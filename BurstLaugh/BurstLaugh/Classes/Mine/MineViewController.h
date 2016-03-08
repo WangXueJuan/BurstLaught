@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QiuShiTableViewCell.h"
+#import "qiushiModel.h"
 @interface MineViewController : UIViewController
+//接收幽默糗事界面的数据
+@property (nonatomic, strong) qiushiModel *mineModel;
 
 @end

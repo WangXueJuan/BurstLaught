@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "qiushiModel.h"
 
 @interface QiushiViewController : UIViewController
+@property (nonatomic, strong) qiushiModel *qiuModel;
 
 @end

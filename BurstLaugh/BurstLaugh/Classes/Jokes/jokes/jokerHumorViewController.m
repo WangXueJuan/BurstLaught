@@ -11,7 +11,10 @@
 #import "PullingRefreshTableView.h"
 #import "QiuShiTableViewCell.h"
 #import "HWTools.h"
-@interface jokerHumorViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate>
+#import "ProgressHUD.h"
+#import "QiuShiDetailViewController.h"
+#import "CollectionViewController.h"
+@interface jokerHumorViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate, collectDelegate>
 {
     NSInteger _pageCount;
     
@@ -35,6 +38,7 @@
 }
 
 - (void)requestData {
+    [ProgressHUD show:@"正在加载数据"];
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
     [sessionManger GET:[NSString stringWithFormat:@"%@&page=%ld",kJokesList, _pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
        
@@ -46,7 +50,7 @@
             [self.dataArray addObject:model];
         }
         [self.tableView reloadData];
-       
+        [ProgressHUD dismiss];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -66,10 +70,44 @@
     jokerModel *model = self.dataArray[indexPath.row];
     cell.jokerModel = model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    cell.delegate = self;
     return cell;
     
 }
+
+//cell的协议方法
+-(void)collectionClick:(UIButton *)btn {
+    if (btn.tag == 9) {
+        [ProgressHUD showSuccess:@"收藏成功"];
+        CollectionViewController *collectVC = [[CollectionViewController alloc] init];
+        QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
+        NSIndexPath *path = [self.tableView indexPathForCell:cell];
+        qiushiModel *model = self.dataArray[path.row];
+        collectVC.collectModel = model;
+        NSMutableArray *array = [NSMutableArray new];
+        [array addObject:collectVC.collectModel];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:array forKey:@"content"];
+        
+        //    [self.navigationController pushViewController:collectVC animated:YES];
+        
+        
+    }else {
+        QiuShiDetailViewController *detailVc = [[QiuShiDetailViewController alloc] init];
+//        QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
+//        NSIndexPath *path = [self.tableView indexPathForCell:cell];
+//        qiushiModel *model = self.dataArray[path.row];
+//        detailVc.QiushiModel = model;
+//        detailVc._detailId = model.contentId;
+        [self.navigationController pushViewController:detailVc animated:YES];
+    }
+    
+
+
+
+}
+
 
 //返回cell高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,6 +160,8 @@
     }
     return _dataArray;
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

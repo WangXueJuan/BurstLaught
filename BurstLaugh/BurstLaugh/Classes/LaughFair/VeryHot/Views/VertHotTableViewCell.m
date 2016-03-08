@@ -45,7 +45,7 @@
     self.imageIcon.clipsToBounds = YES;
     [self.contentView addSubview:self.imageIcon];
     //name
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 6 + 20, 5, kWidth / 2 - 20, 30)];
+    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 6 + 20, 5, kWidth / 2 - 50, 30)];
     self.nameLabel.font = [UIFont boldSystemFontOfSize:16.0];
     [self.contentView addSubview:self.nameLabel];
     //time

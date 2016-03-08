@@ -28,8 +28,12 @@
 //最新段子
 #define kJokesList @"http://jianstory.com/rest/images/new?type=2&like_count=10"
 
+//新浪微博分享
+#define kRedirectURL @"https://api.weibo.com/oauth2/default.html"
+#define kAppKey @"2914262332"
+#define kAppSecrect @"4ea9a5c153277473c994a59142b6f6a5"
 
-
-
+//Bmob
+#define kBmobAppkey @"f3d80ef331356f923af658b6a9a586fe"
 
 #endif /* HWDefine_h */

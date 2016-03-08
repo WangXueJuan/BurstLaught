@@ -12,7 +12,9 @@
 #import "verHotModel.h"
 #import "verHotDetailTableViewController.h"
 #import "GifView.h"
-
+#import "ProgressHUD.h"
+#import "Reachability.h"
+#import "ZMYNetManager.h"
 @interface VerHotViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -37,10 +39,16 @@
 
 //请求网路数据
 - (void)requestData {
+    
+    if (![[ZMYNetManager shareZMYNetManager] isZMYNetWorkRunning]) {
+        
+        return;
+    }
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
     [sessionManger GET:[NSString stringWithFormat:@"%@", kVerHotList] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [ProgressHUD show:@"数据加载完成"];
         NSDictionary *responDic = responseObject;
         NSMutableArray *listArray = responDic[@"list"];
         NSLog(@"%ld",listArray.count);
@@ -53,10 +61,8 @@
         
         
         [self.tableView reloadData];
-        
+         [ProgressHUD dismiss];
        
-    
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
