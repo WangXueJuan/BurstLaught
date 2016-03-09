@@ -117,9 +117,6 @@
                                 <rect key="frame" x="43" y="148" width="312" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Lp4-OY-6pG" id="caM-UR-xcu"/>
-                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_title_key" translatesAutoresizingMaskIntoConstraints="NO" id="P7p-9C-VZN">
                                 <rect key="frame" x="5" y="151" width="30" height="37"/>
@@ -171,17 +168,11 @@
                                 <rect key="frame" x="43" y="88" width="312" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Lp4-OY-6pG" id="HmV-Vg-xna"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xgG-wS-CeP">
                                 <rect key="frame" x="43" y="214" width="312" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Lp4-OY-6pG" id="BIR-Kz-4A7"/>
-                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_title_cell_phone" translatesAutoresizingMaskIntoConstraints="NO" id="gm7-Qv-ufO">
                                 <rect key="frame" x="5" y="96" width="22" height="37"/>
@@ -195,11 +186,11 @@
                     <navigationItem key="navigationItem" title="手机号注册" id="BpX-AV-aOP"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="againPassField" destination="xgG-wS-CeP" id="quh-rS-fjj"/>
-                        <outlet property="passwordField" destination="KUh-8l-SNz" id="cm0-Y4-zNd"/>
+                        <outlet property="againPWTextField" destination="xgG-wS-CeP" id="9EC-ey-uBk"/>
+                        <outlet property="passwordTextField" destination="KUh-8l-SNz" id="Q5C-ej-4GK"/>
                         <outlet property="registerBtn" destination="S5l-N7-PQd" id="1Mq-W7-0gC"/>
                         <outlet property="switchP" destination="joO-QL-SKS" id="h9N-4g-DnB"/>
-                        <outlet property="userField" destination="Lcl-va-NJ5" id="HpJ-k5-2IR"/>
+                        <outlet property="userTextField" destination="Lcl-va-NJ5" id="7Zn-OE-K6O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4FB-9y-VX2" userLabel="First Responder" sceneMemberID="firstResponder"/>

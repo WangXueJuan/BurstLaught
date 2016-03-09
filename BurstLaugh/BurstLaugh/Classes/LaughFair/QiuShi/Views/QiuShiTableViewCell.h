@@ -16,7 +16,7 @@
 
 @end
 
-@interface QiuShiTableViewCell : UITableViewCell<collectDelegate>
+@interface QiuShiTableViewCell : UITableViewCell
 @property (nonatomic, strong) UIImageView *iconImage; //头像
 @property (nonatomic, strong) UILabel *nameLabel; //名字
 @property (nonatomic, strong) UILabel *contextLabel; //文字

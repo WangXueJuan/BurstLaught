@@ -7,12 +7,21 @@
 //
 
 #import "CollectionViewController.h"
+#import "QiuShiTableViewCell.h"
 #import <CoreLocation/CoreLocation.h>
+#import "HWTools.h"
+#import "DataBaseManger.h"
 @interface CollectionViewController ()<UITableViewDataSource, UITableViewDelegate>
+{
+    CGFloat cellHeight;
+}
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
+@property (nonatomic, strong) DataBaseManger *dbManger;
+@property (nonatomic, strong) qiushiModel *model;
+@property (nonatomic, strong) NSArray *array;
+@property (nonatomic, strong) NSMutableDictionary *dic;
 @end
 
 @implementation CollectionViewController
@@ -20,47 +29,85 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //添加tableView
-    [self.view addSubview:self.tableView];
-    self.dataArray = [NSMutableArray new];
-    NSString *content = [[NSUserDefaults standardUserDefaults] valueForKey:@"content"];
+   
     
-    [self.dataArray addObject: content];
+    [self showBackButtonWithImage:@"back"];
+    
+    self.dic = [[NSMutableDictionary alloc] init];
+    self.array = [[NSArray alloc] init];
+    //初始化数据库对象
+    self.dbManger = [DataBaseManger sharedInstance];
+    self.dic = [self.dbManger selectAllQiuShiModel];
+    self.model = [[qiushiModel alloc] initWithDictionary:self.dic];
+    [self.dataArray addObject:self.model];
+    
+     //添加tableView
+    [self.view addSubview:self.tableView];
+
+
+   
 }
 
 #pragma mark--------------------------- 协议方法
+//重用机制
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"cellId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    QiuShiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
+        cell = [[QiuShiTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
         cell.selectionStyle =UITableViewCellSelectionStyleNone;
         
     }
-    cell.textLabel.text = self.dataArray[indexPath.row];
+   
+    cell.qiushiModel = self.dataArray[indexPath.row];
+    
     return cell;
 }
 
+//返回分区行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+   NSLog(@"67890-=%ld",self.dataArray.count);
+    
+    
     return self.dataArray.count;
+}
+
+//返回文本高度
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    qiushiModel *model = self.dataArray[indexPath.row];
+    CGFloat cellH = [HWTools getTextHeightWithText:model.content];
+    return cellH + 80;;
+    
 }
 
 #pragma mark -------------------------- 懒加载
 -(UITableView *)tableView {
     if (_tableView == nil) {
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight - 80) style:UITableViewStylePlain];
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, kWidth, kHeight - 80) style:UITableViewStylePlain];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-        self.tableView.backgroundColor = [UIColor purpleColor];
-        self.tableView.rowHeight = 100;
+        self.tableView.rowHeight = 200;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }
 
-//自定义cell高度
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
+-(qiushiModel *)collectModel {
+    if (_collectModel == nil) {
+        self.collectModel = [[qiushiModel alloc] init];
+    }
+    return _collectModel;
+}
+
+-(NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        self.dataArray = [NSMutableArray new];
+    }
+    return _dataArray;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

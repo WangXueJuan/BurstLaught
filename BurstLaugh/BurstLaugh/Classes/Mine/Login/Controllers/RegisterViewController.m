@@ -11,10 +11,9 @@
 #import <BmobSDK/Bmob.h>
 #import "LoginViewController.h"
 @interface RegisterViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *userField;
-@property (weak, nonatomic) IBOutlet UITextField *againPassField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
-
+@property (weak, nonatomic) IBOutlet UITextField *userTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *againPWTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *switchP;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 
@@ -25,9 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self showBackButtonWithImage:@"back"];
     
-    self.passwordField.secureTextEntry = YES;
-    self.againPassField.secureTextEntry = YES;
+    self.passwordTextField.secureTextEntry = YES;
+    self.againPWTextField.secureTextEntry = YES;
     
     self.switchP.on = NO;
     
@@ -36,11 +36,11 @@
 - (IBAction)switchAction:(id)sender {
     UISwitch *passSwitch = sender;
     if (passSwitch.on) {
-        self.passwordField.secureTextEntry = NO;
-        self.againPassField.secureTextEntry = NO;
+        self.passwordTextField.secureTextEntry = NO;
+        self.againPWTextField.secureTextEntry = NO;
     } else {
-        self.passwordField.secureTextEntry = YES;
-        self.againPassField.secureTextEntry = YES;
+        self.passwordTextField.secureTextEntry = YES;
+        self.againPWTextField.secureTextEntry = YES;
     }
     
 }
@@ -49,28 +49,30 @@
     if (![self checkOut]) {
         return;
     }
-    [ProgressHUD show:@"正在为您注册...."];
+
+    [ProgressHUD show:@"正在为您注册"];
     BmobUser *bmUser = [[BmobUser alloc] init];
-    [bmUser setUsername:self.userField.text];
-    [bmUser setPassword:self.passwordField.text];
+    [bmUser setUsername:self.userTextField.text];
+    [bmUser setPassword:self.passwordTextField.text];
+    [bmUser setPassword:self.againPWTextField.text];
     [bmUser signUpInBackgroundWithBlock:^(BOOL isSuccessful, NSError *error) {
         if (isSuccessful) {
             [ProgressHUD showSuccess:@"注册成功"];
-            LoginViewController *loginVC = [[LoginViewController alloc] init];
-            [self.navigationController popToViewController:loginVC animated:YES];
+
         } else {
             [ProgressHUD showSuccess:@"注册失败"];
+            
         }
     }];
+
     
     
 }
 
 //注册之前需要判断
 - (BOOL)checkOut {
-   
     //用户名不能为空
-    if (self.userField.text.length <= 0 || [self.userField.text stringByReplacingOccurrencesOfString:@" " withString:@""].length <= 0) {
+    if (self.userTextField.text.length <= 0 || [self.userTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""].length <= 0) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示框" message:@"用户名有空格或格式不正确" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
@@ -85,7 +87,7 @@
         return NO;
     }
     //两次输入密码一致
-    if (![self.passwordField.text isEqualToString:self.againPassField.text]) {
+    if (![self.passwordTextField.text isEqualToString:self.againPWTextField.text]) {
         //提示框
         UIAlertController *alertPass = [UIAlertController alertControllerWithTitle:@"提示" message:@"密码不一致，请重新输入" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -100,11 +102,12 @@
         return NO;
     }
     //输入密码不能为空
-    if ([self.passwordField.text isEqualToString:@" " ]|| [self.passwordField.text isEqualToString:@" "]) {
+    if ([self.passwordTextField.text isEqualToString:@" " ]|| [self.passwordTextField.text isEqualToString:@" "] || [self.againPWTextField.text isEqualToString:@" " ]|| [self.againPWTextField.text isEqualToString:@" "]) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"密码不能为空，请重新输入" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }];
+        
         UIAlertAction *alertCan = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }];
@@ -112,7 +115,9 @@
         [alert addAction:alertAction];
         [alert addAction:alertCan];
         [self presentViewController:alert animated:YES completion:nil];
+        return NO;
     }
+    
     return YES;
 }
 

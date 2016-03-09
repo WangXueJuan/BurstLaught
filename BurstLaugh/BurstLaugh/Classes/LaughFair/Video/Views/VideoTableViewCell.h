@@ -11,6 +11,9 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface VideoTableViewCell : UITableViewCell
+{
+    NSInteger Clickount;  //点击次数
+}
 
 @property (nonatomic, strong) UILabel *txtLabel;
 @property (nonatomic, strong) UIImageView *image;

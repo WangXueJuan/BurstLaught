@@ -26,13 +26,24 @@
     [BmobUser loginWithUsernameInBackground:self.userTextField.text password:self.passwordTextField.text block:^(BmobUser *user, NSError *error) {
         if (user) {
             [ProgressHUD showSuccess:@"登陆成功!"];
-            VerHotViewController *verVc = [[VerHotViewController alloc] init];
-            [self.navigationController popToViewController:verVc animated:YES];
-            NSLog(@"user = %@",user);
+            NSLog(@"11111user = %@",user);
+        } else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有注册此账号，请先完成注册" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            
+            [alert addAction:sureAction];
+            [alert addAction:cancelAction];
+            //添加提示框
+            [self presentViewController:alert animated:YES completion:nil];
         }
+        
     }];
 }
-
 
 //点击空白处回收键盘
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -60,6 +71,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self showBackButtonWithImage:@"back"];
 }
 
 - (void)didReceiveMemoryWarning {

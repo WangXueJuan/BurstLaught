@@ -36,6 +36,7 @@
     // Do any additional setup after loading the view.
     _pageCount = 1;
     [self.view addSubview:self.tableView];
+    [self showBackButtonWithImage:@"back"];
     //开始请求网络
     [self rerquestData];
     [self.tableView launchRefreshing];
@@ -138,16 +139,16 @@
 //发表按钮响应方法
 - (void)publishContext{
     if (self.textFied.text) {
-        [self.textFied removeFromSuperview];
-        [self.publishBtn removeFromSuperview];
         //把输入的内容转化成model类型然后添加到数组中
         QiuShiDetailModell *pingLunModel = [[QiuShiDetailModell alloc] init];
         pingLunModel.content = self.textFied.text;
         [self.listArray insertObject:pingLunModel atIndex:0];
+        [self.textFied removeFromSuperview];
+        [self.publishBtn removeFromSuperview];
+        count += 1;
         
     }
     [self.tableView reloadData];
-  
 }
 
 //点击return回收键盘

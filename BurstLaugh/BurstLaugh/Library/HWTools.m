@@ -22,10 +22,11 @@
 //获取系统当前的时间
 //创建一个NSDateFormatter现实刷新时间
 +(NSDate *)getSystemNowTime {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    //创建一个NSDataFormatter显示刷新时间
+    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
     df.dateFormat = @"yyyy-MM-dd HH:mm";
-    NSString *dataStr = [df stringFromDate:[NSDate date]];
-    NSDate *date = [df dateFromString:dataStr];
+    NSString *dateStr = [df stringFromDate:[NSDate date]];
+    NSDate *date = [df dateFromString:dateStr];
     return date;
 }
 

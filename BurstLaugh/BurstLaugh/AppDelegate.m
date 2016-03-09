@@ -11,8 +11,12 @@
 #import "MineViewController.h"
 #import "jokerHumorViewController.h"
 #import <BmobSDK/Bmob.h>
+#import "WeiboSDK.h"
+#import "WBHttpRequest+WeiboShare.h"
+#import "WBHttpRequest+WeiboToken.h"
 
-@interface AppDelegate ()
+
+@interface AppDelegate ()<WBHttpRequestDelegate, WeiboSDKDelegate>
 
 @end
 
@@ -23,6 +27,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+    //注册微博
+    [WeiboSDK enableDebugMode:YES];
+    [WeiboSDK registerApp:kAppKey];
+    
+    //注册Bmob
+    [Bmob registerWithAppKey:kBmobAppkey];
     //初始化UITabBarController
     self.tabBarVC = [[UITabBarController alloc] init];
     //创建被tabBarVC管理的视图控制器
@@ -67,7 +77,71 @@
 }
 
 
+#pragma mark --------------------- 微博
+- (void)didReceiveWeiboRequest:(WBBaseRequest *)request {
 
+}
+
+-(void)didReceiveWeiboResponse:(WBBaseResponse *)response{
+    if ([response isKindOfClass:WBSendMessageToWeiboResponse.class])
+    {
+        NSString *title = NSLocalizedString(@"恭喜您，分享成功!", nil);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"确定", nil)
+                                              otherButtonTitles:nil];
+        WBSendMessageToWeiboResponse* sendMessageToWeiboResponse = (WBSendMessageToWeiboResponse*)response;
+        NSString* accessToken = [sendMessageToWeiboResponse.authResponse accessToken];
+        if (accessToken)
+        {
+            self.wbtoken = accessToken;
+        }
+        NSString* userID = [sendMessageToWeiboResponse.authResponse userID];
+        if (userID) {
+            self.webCurrentUserID = userID;
+        }
+        [alert show];
+    }
+    else if ([response isKindOfClass:WBAuthorizeResponse.class])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"返回应用"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"确定", nil)
+                                              otherButtonTitles:@"返回", nil];
+        
+        self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
+        self.webCurrentUserID = [(WBAuthorizeResponse *)response userID];
+        self.wbRefreshToken = [(WBAuthorizeResponse *)response refreshToken];
+        [alert show];
+    }
+
+    
+}
+
+//返回请求加载的结果
+-(void)request:(WBHttpRequest *)request didFinishLoadingWithResult:(NSString *)result{
+    NSString *title = nil;
+    UIAlertView *alert = nil;
+    title = @"收到网络回调";
+    alert = [[UIAlertView alloc] initWithTitle:title message:[NSString stringWithFormat:@"%@",result] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
+//请求失败
+-(void)request:(WBHttpRequest *)request didFailWithError:(NSError *)error{
+    NSString *title = nil;
+    UIAlertView *alert = nil;
+    title = @"请求异常";
+    alert = [[UIAlertView alloc] initWithTitle:title message:[NSString stringWithFormat:@"%@",error] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return [WeiboSDK handleOpenURL:url delegate:self];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -10,6 +10,8 @@
 #import "HWTools.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ProgressHUD.h"
+#import "ShareView.h"
+
 @implementation QiuShiTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -47,13 +49,17 @@
     self.upBtn.alpha = 0.5;
     self.upBtn.frame = CGRectMake(5, kWidth / 6 + 70, kWidth / 4 - 5, 30);
     [self.upBtn setImage:[UIImage imageNamed:@"zan@2x.icon"] forState:UIControlStateNormal];
+    [self.upBtn addTarget:self action:@selector(fourBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.upBtn.tag = 1;
     [self.contentView addSubview:self.upBtn];
     
     self.downBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.downBtn setImage:[UIImage imageNamed:@"cai@2x.icon"] forState:UIControlStateNormal];
     [self.downBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     self.downBtn.alpha = 0.5;
+    self.downBtn.tag = 2;
     self.downBtn.frame = CGRectMake(kWidth / 4 + 5, kWidth / 6 + 70, kWidth / 4 - 5, 30);
+    [self.downBtn addTarget:self action:@selector(fourBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.downBtn];
     
     self.countBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -68,6 +74,7 @@
     self.sharBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.sharBtn.frame = CGRectMake(kWidth * 0.75 + 5, kWidth / 6 + 70, kWidth / 4 - 10, 30);
     [self.sharBtn setImage:[UIImage imageNamed:@"shar@2x.icon"] forState:UIControlStateNormal];
+    [self.sharBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.sharBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     self.sharBtn.alpha = 0.5;
     [self.contentView addSubview:self.sharBtn];
@@ -79,6 +86,7 @@
     
 }
 
+//幽默糗事界面自定义cell高度
 -(void)setQiushiModel:(qiushiModel *)qiushiModel {
     [self.iconImage sd_setImageWithURL:[NSURL URLWithString:qiushiModel.iconImage] placeholderImage:nil];
     self.nameLabel.text = qiushiModel.login;
@@ -109,7 +117,7 @@
 }
 
 
-//段子界面赋值
+//段子界面赋值及自定义高度
 -(void)setJokerModel:(jokerModel *)jokerModel {
     [self.iconImage sd_setImageWithURL:[NSURL URLWithString:jokerModel.avatar] placeholderImage:nil];
     self.nameLabel.text = jokerModel.name;
@@ -153,6 +161,24 @@
     }
 
 }
+
+
+//点赞按钮响应事件
+- (void)fourBtnAction:(UIButton *)btn {
+    if (btn.tag == 1) {
+        [self.upBtn setImage:[UIImage imageNamed:@"icon_joke_like_on"] forState:UIControlStateNormal];
+    } else if (btn.tag == 2){
+    [self.downBtn setImage:[UIImage imageNamed:@"icon_joke_favorite_on"] forState:UIControlStateNormal];
+    }
+}
+
+//点击分享
+- (void)shareAction:(UIButton *)btn {
+    ShareView *shareV = [[ShareView alloc] init];
+    [self.contentView addSubview:shareV];
+
+}
+
 
 - (void)awakeFromNib {
     // Initialization code

@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import "WXApi.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    NSString *wbtoken;
+    NSString *webCurrentUserID;
+
+}
+@property (nonatomic, strong) NSString *wbtoken;
+@property (nonatomic, strong) NSString *webCurrentUserID;
+@property (nonatomic, strong) NSString *wbRefreshToken;
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) UITabBarController *tabBarVC;
-@property (nonatomic, strong) NSString *wbRefreshToken;
+
 
 @end
 

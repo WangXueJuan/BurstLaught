@@ -24,6 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self showBackButtonWithImage:@"back"];
+    
     
 }
 - (IBAction)sureNumBtnAction:(id)sender {

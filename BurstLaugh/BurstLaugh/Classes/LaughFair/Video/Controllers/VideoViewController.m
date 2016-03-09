@@ -35,7 +35,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    [self.view addSubview:self.player];
+
+    [self showBackButtonWithImage:@"back"];
+    
     [self.view addSubview:self.tableView];
     //启动自动刷新
     [self.tableView launchRefreshing];

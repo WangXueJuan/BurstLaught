@@ -15,6 +15,8 @@
 #import "ProgressHUD.h"
 #import "CollectionViewController.h"
 #import "MineViewController.h"
+#import "DataBaseManger.h"
+
 @interface QiushiViewController ()<PullingRefreshTableViewDelegate, UITableViewDataSource, UITableViewDelegate,collectDelegate>
 {
     NSInteger _pageCount;
@@ -23,7 +25,7 @@
 @property (nonatomic, assign) BOOL refreshing;
 @property (nonatomic, strong) PullingRefreshTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
+@property (nonatomic, strong) NSMutableArray *collectArray;
 @end
 
 @implementation QiushiViewController
@@ -33,14 +35,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.collectArray = [NSMutableArray new];
     [self.view addSubview:self.tableView];
     //请求网络数据
     [self requestData];
     //启动自动刷新
     [self.tableView launchRefreshing];
     
+    
+    
 }
 
+//网络请求
 - (void)requestData {
     [ProgressHUD show:@"正在加载数据"];
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
@@ -72,6 +78,7 @@
 
 
 #pragma mark-------------------- UITableViewDataSource
+//重用机制
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"cellId";
     QiuShiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -87,38 +94,26 @@
     return cell;
 
 }
-
-
+//分区行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"%ld",self.dataArray.count);
     return self.dataArray.count;
 }
 
+//点击收藏响应方法
 -(void)collectionClick:(UIButton *)btn {
     if (btn.tag == 9) {
         [ProgressHUD showSuccess:@"收藏成功"];
+        //创建一个数据库管理对象
+        DataBaseManger *dbManger = [DataBaseManger sharedInstance];
+        
         CollectionViewController *collectVC = [[CollectionViewController alloc] init];
         QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
         NSIndexPath *path = [self.tableView indexPathForCell:cell];
         qiushiModel *model = self.dataArray[path.row];
-        collectVC.collectModel = model;
-        //把model中的数据取出来存到defaults里面然后传到收藏界面
-        NSString *iconImage = collectVC.collectModel.iconImage;
-        NSString *name = collectVC.collectModel.login;
-        NSString *up = collectVC.collectModel.up;
-        NSString *down = collectVC.collectModel.down;
-        NSString *shared = collectVC.collectModel.share_count;
-        NSString *comment = collectVC.collectModel.comments_count;
-        NSString *content = collectVC.collectModel.content;
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue:iconImage forKey:@"iconImage"];
-        [defaults setValue:name forKey:@"name"];
-        [defaults setValue:up forKey:@"up"];
-        [defaults setValue:down forKey:@"down"];
-        [defaults setValue:shared forKey:@"shared"];
-        [defaults setValue:comment forKey:@"comment"];
-        [defaults setValue:content forKey:@"content"];
-    
+        //把model传入到数据库
+        [dbManger insertIntoNewQuiShiModel:model];
+        
         
 
     }else {
@@ -135,13 +130,14 @@
 
 
 #pragma mark -------------------- UITableViewDelegate
+//每一行的行高
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     qiushiModel *model = self.dataArray[indexPath.row];
     cellHeight = [QiuShiTableViewCell getCellHeightModel:model];
     return cellHeight + 50;
 }
-
+//cell点击方法
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QiuShiDetailViewController *detailVc = [[QiuShiDetailViewController alloc] init];
     qiushiModel *model = self.dataArray[indexPath.row];
@@ -186,10 +182,9 @@
 #pragma mark----------------------- 懒加载
 -(PullingRefreshTableView *)tableView {
     if (_tableView == nil) {
-        self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight - 150) pullingDelegate:self];
+        self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, -50, kWidth, kHeight - 150) pullingDelegate:self];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-        self.tableView.rowHeight = 250;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;

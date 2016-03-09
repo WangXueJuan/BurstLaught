@@ -9,6 +9,7 @@
 #import "VideoTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "HWTools.h"
+
 @implementation VideoTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -100,7 +101,7 @@
     self.moviePlayer = [[MPMoviePlayerController alloc] init];
     self.moviePlayer.contentURL = [NSURL URLWithString:videoModel.video_url];
     //添加播放器界面到控制器的view上
-    self.moviePlayer.view.frame = CGRectMake(0, 0, kWidth,self.image.frame.size.height + 30);
+    self.moviePlayer.view.frame = CGRectMake(0, 0, kWidth,self.image.frame.size.height + 60);
     self.moviePlayer.view.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.moviePlayer.view];
     //隐藏自动自带的控制面板
@@ -119,8 +120,16 @@
 - (void)removeMovie {
     [self.moviePlayer play];
     [self.quitBtn removeFromSuperview];
+    Clickount += 1;
+    if (Clickount == 2) {
+        [self.moviePlayer stop];
+        [self.moviePlayer.view removeFromSuperview];
+    }
+
     
 }
+
+
 
 
 //定义一个获取text高度的方法，可在外调用

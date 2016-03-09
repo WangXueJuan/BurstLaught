@@ -33,7 +33,13 @@
 #define kAppKey @"2914262332"
 #define kAppSecrect @"4ea9a5c153277473c994a59142b6f6a5"
 
+//微信分享
+#define kWeiAppKey @"wx6a3d9bd15e280a72"
+#define kWeiAppSecrect @"f0f920eacc56fa0287824a4a41e0e36a"
+
 //Bmob
-#define kBmobAppkey @"f3d80ef331356f923af658b6a9a586fe"
+#define kBmobAppkey @"9bb13624b533e7f34853ce2a6622d2f6"
+
+
 
 #endif /* HWDefine_h */

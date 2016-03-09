@@ -13,6 +13,7 @@
 #import "CollectionViewController.h"
 #import "QiushiViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "ShareView.h"
 @interface MineViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *headImageBtn;
@@ -126,7 +127,8 @@
 
 //分享好友
 - (void)shareView{
-    
+     ShareView *shareView = [[ShareView alloc] init];
+    [self.view addSubview:shareView];
 
 }
 
@@ -146,6 +148,7 @@
     self.headImageBtn.frame = CGRectMake((kWidth - 160)/2, 80, 160, 160);
     [self.headImageBtn setTitle:@"登陆/注册" forState:UIControlStateNormal];
     [self.headImageBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+//    [self.headImageBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     self.headImageBtn.backgroundColor = [UIColor whiteColor];
     self.headImageBtn.layer.cornerRadius = 80;
     self.headImageBtn.clipsToBounds = YES;
@@ -172,6 +175,8 @@
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.rowHeight = 60;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
     }
     return _tableView;
 
