@@ -28,6 +28,7 @@
     self.iconImage.layer.cornerRadius = (kWidth / 6 - 20 ) * 0.5;
     self.iconImage.image = [UIImage imageNamed:@"geren"];
     self.iconImage.clipsToBounds = YES;
+    self.iconImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"geren"]];
     [self.contentView addSubview:self.iconImage];
     //名称
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 6 + 10, 10, kWidth - kWidth / 6 - 50, kWidth / 6 - 20)];
@@ -77,6 +78,7 @@
     [self.sharBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.sharBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     self.sharBtn.alpha = 0.5;
+    self.sharBtn.tag = 10;
     [self.contentView addSubview:self.sharBtn];
     //创建分割线
     self.lineLabel = [[UILabel alloc] init];
@@ -163,6 +165,7 @@
 }
 
 
+
 //点赞按钮响应事件
 - (void)fourBtnAction:(UIButton *)btn {
     if (btn.tag == 1) {
@@ -174,8 +177,10 @@
 
 //点击分享
 - (void)shareAction:(UIButton *)btn {
-    ShareView *shareV = [[ShareView alloc] init];
-    [self.contentView addSubview:shareV];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(sharedClick:)]) {
+        self.tag = btn.tag;
+//        [self.delegate sharedClick:btn];
+    }
 
 }
 

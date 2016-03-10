@@ -101,7 +101,7 @@
     self.moviePlayer = [[MPMoviePlayerController alloc] init];
     self.moviePlayer.contentURL = [NSURL URLWithString:videoModel.video_url];
     //添加播放器界面到控制器的view上
-    self.moviePlayer.view.frame = CGRectMake(0, 0, kWidth,self.image.frame.size.height + 60);
+    self.moviePlayer.view.frame = CGRectMake(0, 0, kWidth,self.image.frame.size.height + 40);
     self.moviePlayer.view.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.moviePlayer.view];
     //隐藏自动自带的控制面板
@@ -110,7 +110,7 @@
     //添加一个按钮，点击播放器
     self.quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.quitBtn.frame = CGRectMake(20, 20, kWidth - 40, self.moviePlayer.view.frame.size.height - 50);
-    [self.quitBtn setImage:[UIImage imageNamed:@"iconfont-3"] forState:UIControlStateNormal];
+    [self.quitBtn setImage:[UIImage imageNamed:@"buddy_header_arrow"] forState:UIControlStateNormal];
     [self.quitBtn addTarget:self action:@selector(removeMovie) forControlEvents:UIControlEventTouchUpInside];
     [self.moviePlayer.view addSubview:self.quitBtn];
 

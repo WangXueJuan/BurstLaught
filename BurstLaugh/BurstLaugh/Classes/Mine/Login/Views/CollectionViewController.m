@@ -11,6 +11,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "HWTools.h"
 #import "DataBaseManger.h"
+
+
 @interface CollectionViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
     CGFloat cellHeight;
@@ -20,7 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) DataBaseManger *dbManger;
 @property (nonatomic, strong) qiushiModel *model;
-@property (nonatomic, strong) NSArray *array;
+@property (nonatomic, strong) NSMutableArray *array;
 @property (nonatomic, strong) NSMutableDictionary *dic;
 @end
 
@@ -33,21 +35,25 @@
     
     [self showBackButtonWithImage:@"back"];
     
-    self.dic = [[NSMutableDictionary alloc] init];
-    self.array = [[NSArray alloc] init];
-    //初始化数据库对象
-    self.dbManger = [DataBaseManger sharedInstance];
-    self.dic = [self.dbManger selectAllQiuShiModel];
-    self.model = [[qiushiModel alloc] initWithDictionary:self.dic];
-    [self.dataArray addObject:self.model];
-    
      //添加tableView
     [self.view addSubview:self.tableView];
+    //初始化数据库对象
+    self.dbManger = [DataBaseManger sharedInstance];
+    //将查询出来的数据添加到数组
+    self.array = [self.dbManger selectAllQiuShiModel];
 
-
+    for (NSDictionary *dic in self.array) {
+        self.model = [[qiushiModel alloc] initWithDictionary:dic number:1];
+        [self.dataArray addObject:self.model];
+        
+    }
+    
+    [self.tableView reloadData];
    
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
 #pragma mark--------------------------- 协议方法
 //重用机制
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,20 +62,16 @@
     if (cell == nil) {
         cell = [[QiuShiTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
         cell.selectionStyle =UITableViewCellSelectionStyleNone;
-        
     }
-   
-    cell.qiushiModel = self.dataArray[indexPath.row];
+    qiushiModel *qiuModel = self.dataArray[indexPath.row];
+    cell.qiushiModel = qiuModel;
     
     return cell;
 }
 
 //返回分区行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-   NSLog(@"67890-=%ld",self.dataArray.count);
-    
-    
+
     return self.dataArray.count;
 }
 
@@ -106,7 +108,12 @@
     }
     return _dataArray;
 }
-
+-(NSMutableArray *)array {
+    if (_array == nil) {
+        self.array = [NSMutableArray new];
+    }
+    return _array;
+}
 
 
 - (void)didReceiveMemoryWarning {

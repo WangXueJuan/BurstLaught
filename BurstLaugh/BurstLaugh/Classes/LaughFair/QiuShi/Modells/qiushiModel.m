@@ -9,7 +9,7 @@
 #import "qiushiModel.h"
 
 @implementation qiushiModel
--(instancetype)initWithDictionary:(NSDictionary *)dic {
+-(instancetype)initWithDictionary:(NSDictionary *)dic number:(int)number{
     self = [super init];
     if (self) {
         self.contentId = dic[@"id"];
@@ -18,7 +18,8 @@
         self.share_count = dic[@"share_count"];
         NSDictionary *userDic = dic[@"user"];
         NSString *preId;
-        if (![userDic isEqual:[NSNull null]]) {
+            if (![userDic isEqual:[NSNull null]]) {
+
             self.login = userDic[@"login"];
             self.iconId = [NSString stringWithFormat:@"%@", userDic[@"id"]];
             self.icon = userDic[@"icon"];
@@ -30,12 +31,16 @@
         preId = [self.iconId substringToIndex:4];
         //拼接id头像
         self.iconImage = [NSString stringWithFormat:@"http://img.qiushibaike.com/system/avtnew/%@/%@/thumb/%@",preId,self.iconId, self.icon];
-        
+        if (number == 1) {
+            NSLog(@"ffdsfddfs");
+            self.login = dic[@"login"];
+            self.down = dic[@"down"];
+            self.up = dic[@"up"];
+            self.iconImage = dic[@"icon"];
+        }
     }
     return self;
 }
-
-
 
 
 

@@ -14,6 +14,8 @@
 
 - (void)collectionClick:(UIButton *)btn;
 
+//- (void)sharedClick:(UIButton *)btn;
+
 @end
 
 @interface QiuShiTableViewCell : UITableViewCell

@@ -38,7 +38,7 @@ static sqlite3 *dataBase = nil;
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
     dataBasePath = [documentsPath stringByAppendingString:@"/Mango.sqlite"];
     
-    NSLog(@"%@",dataBasePath);
+    NSLog(@"path = %@",dataBasePath);
     
 }
 
@@ -69,7 +69,7 @@ static sqlite3 *dataBase = nil;
 //8.创建数据库表
 -(void)creatDataBaseTable {
     //建表语句
-    NSString *sql = @"CREATE TABLE QiuShiModel (number INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, icon TEXT, content TEXT, up TEXT, down TEXT, comment TEXT, shared TEXT)";
+    NSString *sql = @"CREATE TABLE QiuShiModel (number INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, icon TEXT, content TEXT, up TEXT, down TEXT, comment TEXT, shared TEXT, qiushiID TEXT)";
     //9.执行SQL语句
     char *err = nil;
     sqlite3_exec(dataBase, [sql UTF8String], nil, nil, &err);
@@ -97,7 +97,7 @@ static sqlite3 *dataBase = nil;
     //创建一个存储sql语句的指针
     sqlite3_stmt *stmt = nil;
     //sql语句
-    NSString *sql = @"INSERT INTO QiuShiModel (name,icon,content,up,down,comment,shared) VALUES (?,?,?,?,?,?,?)";
+    NSString *sql = @"INSERT INTO QiuShiModel (name,icon,content,up,down,comment,shared,qiushiID) VALUES (?,?,?,?,?,?,?,?)";
     //验证sql语句
     int result = sqlite3_prepare_v2(dataBase, [sql UTF8String], -1, &stmt, NULL);
     if (result == SQLITE_OK) {
@@ -121,6 +121,9 @@ static sqlite3 *dataBase = nil;
         //绑定第七个  shared
         NSString *shared = [NSString stringWithFormat:@"%@",qiushi.share_count];
         sqlite3_bind_text(stmt, 7, [shared UTF8String], -1, NULL);
+        //绑定第八个  qiushiID
+        NSString *qiushiID = [NSString stringWithFormat:@"%@",qiushi.contentId];
+        sqlite3_bind_text(stmt, 8, [qiushiID UTF8String], -1, NULL);
         
         //执行
         sqlite3_step(stmt);
@@ -159,17 +162,20 @@ static sqlite3 *dataBase = nil;
 }
 
 //查
--(NSMutableDictionary *)selectAllQiuShiModel {
+-(NSMutableArray *)selectAllQiuShiModel {
     [self openDataBase];
     sqlite3_stmt *stmt = nil;
     NSString *sql = @"SELECT * FROM QiuShiModel";
     //验证语句
     int result = sqlite3_prepare_v2(dataBase, [sql UTF8String], -1, &stmt, NULL);
-    //创建一个可变字典，存储查询出来的数据
-    NSMutableDictionary *QiuShiDic = [NSMutableDictionary new];
-   
+    //创建一个可变字典，存储查询出来的字典
+    NSMutableArray *qiuShiArray = [NSMutableArray new];
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+
     if (result == SQLITE_OK) {
         while (sqlite3_step(stmt) == SQLITE_ROW) {
+            //初始化一个字典用来存放查询出来的数据
+            NSMutableDictionary *qiuShiDic = [NSMutableDictionary new];
             //把每一次查询出来的数据添加到字典中
             NSString *name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
             NSString *icon = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
@@ -178,20 +184,24 @@ static sqlite3 *dataBase = nil;
             NSString *down = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 5)];
             NSString *comment = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 6)];
             NSString *shared = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
+            NSString *qiushiId = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 8)];
             
-            [QiuShiDic setValue:name forKey:@"name"];
-             [QiuShiDic setValue:icon forKey:@"icon"];
-            [QiuShiDic setValue:content forKey:@"content"];
-            [QiuShiDic setValue:up forKey:@"up"];
-            [QiuShiDic setValue:down forKey:@"down"];
-            [QiuShiDic setValue:comment forKey:@"comment"];
-            [QiuShiDic setValue:shared forKey:@"shared"];
+            [qiuShiDic setValue:name forKey:@"login"];
+            [qiuShiDic setValue:icon forKey:@"icon"];
+            [qiuShiDic setValue:content forKey:@"content"];
+            [qiuShiDic setValue:up forKey:@"up"];
+            [qiuShiDic setValue:down forKey:@"down"];
+            [qiuShiDic setValue:comment forKey:@"comments_count"];
+            [qiuShiDic setValue:shared forKey:@"share_count"];
+            [qiuShiDic setValue:qiushiId forKey:@"qiushiID"];
+            //把字典添加到数组
+            [qiuShiArray addObject:qiuShiDic];
         }
     } else {
         NSLog(@"查询语句有错误");
     }
     sqlite3_finalize(stmt);
-    return QiuShiDic;
+    return qiuShiArray;
 }
 
 

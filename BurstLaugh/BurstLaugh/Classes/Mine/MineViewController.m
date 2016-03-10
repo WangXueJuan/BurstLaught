@@ -14,7 +14,10 @@
 #import "QiushiViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "ShareView.h"
-@interface MineViewController ()<UITableViewDataSource, UITableViewDelegate>
+#import <MessageUI/MessageUI.h>
+#import "DataBaseManger.h"
+
+@interface MineViewController ()<UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *headImageBtn;
 @property (nonatomic, strong) NSArray *imageArray;
@@ -68,17 +71,22 @@
         case 1:{
             //我的收藏
             
-            
+//        DataBaseManger *dbManger = [DataBaseManger sharedInstance];
+//            NSMutableArray *array1 = [NSMutableArray new];
+//         NSMutableArray *array = [dbManger selectAllQiuShiModel];
+//            for (NSDictionary *dic in array) {
+//                qiushiModel *model = [[qiushiModel alloc] initWithDictionary:dic];
+//                [array1 addObject:model];
+//            }
             CollectionViewController *collectVC = [[CollectionViewController alloc] init];
-            collectVC.collectModel = self.mineModel;
-            
+//            collectVC.collectModel = array1[indexPath.row];
             [self.navigationController pushViewController:collectVC animated:YES];
         }
             break;
         case 2:{
             //用户反馈
             
-            [ProgressHUD showSuccess:@"您的反馈信息已发送"];
+            [self sendEmail];
         }
             break;
 
@@ -125,6 +133,34 @@
     
 }
 
+//发送邮件
+- (void)sendEmail {
+    Class mailClass = NSClassFromString(@"MFMailComposeViewController");
+    if (mailClass != nil) {
+        if ([MFMailComposeViewController canSendMail]) {
+            //初始化发送对象
+            MFMailComposeViewController *pickerVC = [[MFMailComposeViewController alloc] init];
+            pickerVC.mailComposeDelegate = self;
+            //设置主题
+            [pickerVC setSubject:@"用户反馈"];
+            //设置收件人
+            NSArray *receiveArray = [NSArray arrayWithObjects:@"1216747227@qq.com", nil];
+            [pickerVC setToRecipients:receiveArray];
+            //设置发送内容
+            NSString *textEmail = @"请留下您对我们建议";
+            [pickerVC setMessageBody:textEmail isHTML:NO];
+            //推出视图
+            [self presentViewController:pickerVC animated:YES completion:nil];
+            
+        } else {
+            NSLog(@"未配置邮箱号码");
+        }
+    } else {
+        NSLog(@"当前设备不能发送");
+}
+
+}
+
 //分享好友
 - (void)shareView{
      ShareView *shareView = [[ShareView alloc] init];
@@ -138,6 +174,33 @@
 
 }
 
+
+//邮件发送完成调用方法
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            //取消
+            NSLog(@"取消发送邮件");
+            break;
+        case MFMailComposeResultFailed:
+            //发送失败或尝试保存
+            NSLog(@"发送邮件失败");
+            break;
+        case MFMailComposeResultSaved:
+            //保存
+            NSLog(@"邮件已被保存");
+            break;
+        case MFMailComposeResultSent:
+            //成功
+            NSLog(@"邮件发送成功");
+            break;
+            
+        default:
+            break;
+    }
+    
+
+}
 
 #pragma mark ------------------- 自定义方法
 - (void)setupTableViewHeadImageView{

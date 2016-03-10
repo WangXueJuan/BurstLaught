@@ -20,7 +20,7 @@
 @property (nonatomic, strong) NSString *icon;
 @property (nonatomic, strong) NSString *contentId;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dic;
+- (instancetype)initWithDictionary:(NSDictionary *)dic number:(int)number;
 
 
 

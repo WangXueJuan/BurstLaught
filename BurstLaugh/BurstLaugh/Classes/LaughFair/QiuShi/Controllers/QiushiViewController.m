@@ -16,7 +16,7 @@
 #import "CollectionViewController.h"
 #import "MineViewController.h"
 #import "DataBaseManger.h"
-
+#import "ShareView.h"
 @interface QiushiViewController ()<PullingRefreshTableViewDelegate, UITableViewDataSource, UITableViewDelegate,collectDelegate>
 {
     NSInteger _pageCount;
@@ -63,7 +63,7 @@
         NSDictionary *successDic = responseObject;
         NSMutableArray *itemsArray = successDic[@"items"];
         for (NSDictionary *dic in itemsArray) {
-            qiushiModel *model = [[qiushiModel alloc] initWithDictionary:dic];
+            qiushiModel *model = [[qiushiModel alloc] initWithDictionary:dic number:2];
             [self.dataArray addObject:model];
         }
         
@@ -106,8 +106,6 @@
         [ProgressHUD showSuccess:@"收藏成功"];
         //创建一个数据库管理对象
         DataBaseManger *dbManger = [DataBaseManger sharedInstance];
-        
-        CollectionViewController *collectVC = [[CollectionViewController alloc] init];
         QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
         NSIndexPath *path = [self.tableView indexPathForCell:cell];
         qiushiModel *model = self.dataArray[path.row];
@@ -127,6 +125,7 @@
     }
     
 }
+
 
 
 #pragma mark -------------------- UITableViewDelegate

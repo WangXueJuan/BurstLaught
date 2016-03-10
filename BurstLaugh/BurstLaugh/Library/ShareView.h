@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "qiushiModel.h"
 @interface ShareView : UIView
+@property (nonatomic, strong) qiushiModel *sharedModel;
 
 @end

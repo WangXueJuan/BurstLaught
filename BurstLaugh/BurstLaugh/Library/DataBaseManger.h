@@ -30,7 +30,7 @@
 - (void)deleteQiuShiModelWithContent:(NSString *)content;
 //查
 //查询所有列表信息
-- (NSMutableDictionary *)selectAllQiuShiModel;
+- (NSMutableArray *)selectAllQiuShiModel;
 
 
 @end

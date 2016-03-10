@@ -44,7 +44,7 @@
     weiboBtn.frame = CGRectMake(15, 10, 100, 80);
     [weiboBtn setImage:[UIImage imageNamed:@"sina_weibo"] forState:UIControlStateNormal];
     weiboBtn.tag = 1;
-    [weiboBtn addTarget:self action:@selector(sharBtnAction:) forControlEvents:UIControlEventTouchUpOutside];
+    [weiboBtn addTarget:self action:@selector(sharBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *weiboLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 80, 100, 30)];
     weiboLabel.text = @"新浪微博";
     weiboLabel.textAlignment = NSTextAlignmentCenter;
@@ -102,6 +102,7 @@
             authRequest.redirectURI = kRedirectURL;
             authRequest.scope = @"all";
             WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:[self messageToShare] authInfo:authRequest access_token:myDelegate.wbtoken];
+            request.userInfo = @{@"ShareMessageFrom": @"SendMessageToWeiboViewController",@"Other_Info_1": [NSNumber numberWithInt:123],@"Other_Info_2": @[@"obj1", @"obj2"],@"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
             [WeiboSDK sendRequest:request];
             
             [self.blackView removeFromSuperview];
@@ -112,25 +113,25 @@
             break;
         case 2: {
             //朋友圈
-//            SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-//            req.text = @"你想看最新爆料吗???";
-//            req.bText = YES;
-//            //发送场景 为 微信朋友圈 默认为 会话窗口
-//            req.scene = WXSceneTimeline;
-//            [WXApi sendReq:req];
-//            [self alertViewAction];
+            SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+            req.text = self.sharedModel.content;
+            req.bText = YES;
+            //发送场景 为 微信朋友圈 默认为 会话窗口
+            req.scene = WXSceneTimeline;
+            [WXApi sendReq:req];
+            [self alertViewAction];
         
         }
             break;
         case 3: {
             //微信朋友
-//            SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-//            req.text = @"你想看最新爆料吗???,邀请好友来看.";
-//            req.bText = YES;
-//            //发送场景 为 微信朋友圈 默认为 会话窗口
-//            req.scene = WXSceneSession;
-//            [WXApi sendReq:req];
-//            [self alertViewAction];
+            SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+            req.text = self.sharedModel.content;
+            req.bText = YES;
+            //发送场景 为 微信朋友圈 默认为 会话窗口
+            req.scene = WXSceneSession;
+            [WXApi sendReq:req];
+            [self alertViewAction];
             
         }
             break;
@@ -138,8 +139,6 @@
         default:
             break;
     }
-
-
 }
 
 - (void)alertViewAction {

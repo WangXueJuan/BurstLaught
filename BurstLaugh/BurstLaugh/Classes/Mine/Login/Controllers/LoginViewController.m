@@ -15,11 +15,27 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *forgetPastAction;
 @property (weak, nonatomic) IBOutlet UIButton *loginAction;
+@property (weak, nonatomic) IBOutlet UISwitch *switchP;
 
 
 @end
 
 @implementation LoginViewController
+
+
+- (IBAction)switchSecurity:(id)sender {
+    UISwitch *passSwitch = sender;
+    if (passSwitch.on) {
+        self.passwordTextField.secureTextEntry = NO;
+    } else {
+        self.passwordTextField.secureTextEntry = YES;
+    
+    }
+
+    
+}
+
+
 
 //点击登录
 - (IBAction)loginAction:(id)sender {
@@ -72,6 +88,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self showBackButtonWithImage:@"back"];
+    
+    self.passwordTextField.secureTextEntry = YES;
+   
+    
+    self.switchP.on = NO;
 }
 
 - (void)didReceiveMemoryWarning {
