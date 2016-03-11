@@ -1167,7 +1167,7 @@
 				);
 				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/阶段项目/爆笑百科/BurstLaught/BurstLaugh/BurstLaugh/Library/PrefixHeader.pch";
 				INFOPLIST_FILE = BurstLaugh/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1195,7 +1195,7 @@
 					2,
 				);
 				INFOPLIST_FILE = BurstLaugh/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

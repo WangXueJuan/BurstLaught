@@ -41,42 +41,42 @@
     [window addSubview:self.shareView];
     //新浪微博
     UIButton *weiboBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    weiboBtn.frame = CGRectMake(15, 10, 100, 80);
+    weiboBtn.frame = CGRectMake(10, 20, kWidth/4, kWidth/4);
     [weiboBtn setImage:[UIImage imageNamed:@"sina_weibo"] forState:UIControlStateNormal];
     weiboBtn.tag = 1;
     [weiboBtn addTarget:self action:@selector(sharBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    UILabel *weiboLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 80, 100, 30)];
+    UILabel *weiboLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, kWidth /4 + 20, kWidth/4, 30)];
     weiboLabel.text = @"新浪微博";
     weiboLabel.textAlignment = NSTextAlignmentCenter;
     [self.shareView addSubview:weiboBtn];
     [self.shareView addSubview:weiboLabel];
     //朋友圈
     UIButton *friendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    friendBtn.frame = CGRectMake(130, 10, 100, 80);
+    friendBtn.frame = CGRectMake(kWidth/3 + 10, 20, kWidth / 4, 80);
     [friendBtn setImage:[UIImage imageNamed:@"py_normal-1"] forState:UIControlStateNormal];
     [friendBtn addTarget:self action:@selector(sharBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     friendBtn.tag = 2;
     [self.shareView addSubview:friendBtn];
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(130, 80, 100, 30)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 3 + 10, kWidth /4 + 20, kWidth / 4, 30)];
     label2.text = @"朋友圈";
     label2.textAlignment = NSTextAlignmentCenter;
     [self.shareView addSubview:label2];
     //微信
     UIButton *weixinBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    weixinBtn.frame = CGRectMake(245, 10, 100, 80);
+    weixinBtn.frame = CGRectMake(kWidth * 2 / 3, 20, kWidth / 4, kWidth / 4);
     [weixinBtn setImage:[UIImage imageNamed:@"icon_pay_weixin"] forState:UIControlStateNormal];
     weixinBtn.tag = 3;
     [weixinBtn addTarget:self action:@selector(sharBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.shareView addSubview:weixinBtn];
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(245, 80, 100, 30)];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(kWidth * 2 / 3 + 10, kWidth / 4 + 20, kWidth / 4, 30)];
     label3.text = @"微 信";
     label3.textAlignment = NSTextAlignmentCenter;
     [self.shareView addSubview:label3];
     //remove
     UIButton *removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    removeBtn.frame = CGRectMake(50, 135, 270, 40);
+    removeBtn.frame = CGRectMake(20, 135, kWidth - 40, 40);
     [removeBtn setTitle:@"取消" forState:UIControlStateNormal];
-    removeBtn.backgroundColor = [UIColor cyanColor];
+    removeBtn.backgroundColor = [UIColor colorWithRed:255.0 / 255.0 green:129.0 / 255.0 blue:169.0 / 255.0 alpha:1.0];
     [removeBtn addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
     [self.shareView addSubview:removeBtn];
     

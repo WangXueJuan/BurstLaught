@@ -21,6 +21,8 @@
 @end
 
 @implementation AppDelegate
+@synthesize webCurrentUserID;
+@synthesize wbtoken;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

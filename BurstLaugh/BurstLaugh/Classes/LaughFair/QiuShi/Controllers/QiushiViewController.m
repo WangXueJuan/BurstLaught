@@ -17,6 +17,8 @@
 #import "MineViewController.h"
 #import "DataBaseManger.h"
 #import "ShareView.h"
+#import "Reachability.h"
+#import "ZMYNetManager.h"
 @interface QiushiViewController ()<PullingRefreshTableViewDelegate, UITableViewDataSource, UITableViewDelegate,collectDelegate>
 {
     NSInteger _pageCount;
@@ -48,6 +50,10 @@
 
 //网络请求
 - (void)requestData {
+    if (![[ZMYNetManager shareZMYNetManager] isZMYNetWorkRunning]) {
+        
+        return;
+    }
     [ProgressHUD show:@"正在加载数据"];
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
     sessionManger.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
@@ -96,7 +102,7 @@
 }
 //分区行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%ld",self.dataArray.count);
+
     return self.dataArray.count;
 }
 
@@ -112,9 +118,9 @@
         //把model传入到数据库
         [dbManger insertIntoNewQuiShiModel:model];
         
-        
-
-    }else {
+    }
+    //详情点击评论按钮
+    if (btn.tag == 10) {
         QiuShiDetailViewController *detailVc = [[QiuShiDetailViewController alloc] init];
         QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
         NSIndexPath *path = [self.tableView indexPathForCell:cell];
@@ -122,6 +128,15 @@
         detailVc.QiushiModel = model;
         detailVc._detailId = model.contentId;
         [self.navigationController pushViewController:detailVc animated:YES];
+    }
+    //点击分享按钮
+    if (btn.tag == 12) {
+        QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
+        NSIndexPath *path = [self.tableView indexPathForCell:cell];
+        qiushiModel *model = self.dataArray[path.row];
+        ShareView *shareVe = [[ShareView alloc] init];
+        shareVe.sharedModel = model;
+        [self.view addSubview:shareVe];
     }
     
 }

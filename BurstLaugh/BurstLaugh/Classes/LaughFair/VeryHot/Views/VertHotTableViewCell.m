@@ -50,7 +50,7 @@
     [self.contentView addSubview:self.nameLabel];
     //time
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 1.60, 5, kWidth - kWidth / 1.8, 30)];
-    self.timeLabel.font = [UIFont systemFontOfSize:13.0];
+    self.timeLabel.font = [UIFont systemFontOfSize:11.0];
     self.timeLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:self.timeLabel];
     //text

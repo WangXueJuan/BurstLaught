@@ -15,6 +15,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "ProgressHUD.h"
+#import "ZMYNetManager.h"
+#import "Reachability.h"
 @interface VideoViewController ()<UITableViewDataSource, UITableViewDelegate,PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;
@@ -49,6 +51,11 @@
 
 //请求网络数据
 - (void)loadDataRe {
+    
+    if (![[ZMYNetManager shareZMYNetManager] isZMYNetWorkRunning]) {
+        
+        return;
+    }
     [ProgressHUD show:@"正在加载数据"];
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
     [sessionManger GET:[NSString stringWithFormat:@"%@udid=%ld",kVideoList, (long)_netId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {

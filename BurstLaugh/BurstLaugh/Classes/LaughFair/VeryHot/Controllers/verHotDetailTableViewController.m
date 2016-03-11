@@ -10,6 +10,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "HWTools.h"
 #import "ProgressHUD.h"
+#import "Reachability.h"
+#import "ZMYNetManager.h"
 @interface verHotDetailTableViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -31,7 +33,6 @@
     [commentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:commentBtn];
     self.navigationItem.rightBarButtonItem = rightBtnItem;
-    
   
     self.imageV = [[UIImageView alloc] initWithFrame:CGRectMake(5, 20, kWidth - 10, self.verModel.height - 40)];
     //picturer

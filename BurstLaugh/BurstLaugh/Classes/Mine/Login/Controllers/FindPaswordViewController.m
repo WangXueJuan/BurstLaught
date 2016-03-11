@@ -10,7 +10,7 @@
 #import "LoginViewController.h"
 #import "ProgressHUD.h"
 #import <BmobSDK/BmobSMS.h>
-
+#import <BmobSDK/BmobUser.h>
 @interface FindPaswordViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *cellPhoneNumberTF;
 @property (weak, nonatomic) IBOutlet UIButton *sureNumberBtn;
@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.tabBarController.tabBar.hidden = YES;
     [self showBackButtonWithImage:@"back"];
     self.passWordTF.secureTextEntry = YES;
     
@@ -46,8 +46,6 @@
         }
     }];
     
-    
-    
 }
 
 //点击完成返回到登陆界面
@@ -61,7 +59,21 @@
         }
         
     }];
-   
+    
+   // 用户收到验证码之后就可以调用resetPasswordBySMSCode方法将密码重置
+    [BmobUser resetPasswordInbackgroundWithSMSCode:self.sureNumberTF.text andNewPassword:self.passWordTF.text block:^(BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            [ProgressHUD showSuccess:@"密码验证成功，请重新登陆"];
+            NSLog(@"密码重置成功");
+        } else {
+            [ProgressHUD showSuccess:@"密码验证不成功"];
+            NSLog(@"密码修改不成功");
+           
+        }
+        
+    }];
+    
+    
     
 }
 

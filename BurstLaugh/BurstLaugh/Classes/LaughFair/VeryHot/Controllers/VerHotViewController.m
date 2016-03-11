@@ -39,7 +39,7 @@
 
 //请求网路数据
 - (void)requestData {
-    
+
     if (![[ZMYNetManager shareZMYNetManager] isZMYNetWorkRunning]) {
         
         return;
@@ -51,7 +51,6 @@
         [ProgressHUD show:@"数据加载完成"];
         NSDictionary *responDic = responseObject;
         NSMutableArray *listArray = responDic[@"list"];
-        NSLog(@"%ld",listArray.count);
         NSMutableArray *textArray = [NSMutableArray new];
         for (NSDictionary *dict in listArray) {
             verHotModel *verModel = [[verHotModel alloc] initWithDictionary:dict];

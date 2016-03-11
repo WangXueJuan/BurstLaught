@@ -33,11 +33,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    
+    self.tabBarController.tabBar.hidden = NO;
     [self.view addSubview:self.tableView];
     self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"我的收藏",@"用户反馈",@"分享给好友",@"当前版本1.0" ,nil];
     [self setupTableViewHeadImageView];
-    [self.view addSubview:self.headImageBtn];
+    
     
 }
 
@@ -70,16 +70,7 @@
             break;
         case 1:{
             //我的收藏
-            
-//        DataBaseManger *dbManger = [DataBaseManger sharedInstance];
-//            NSMutableArray *array1 = [NSMutableArray new];
-//         NSMutableArray *array = [dbManger selectAllQiuShiModel];
-//            for (NSDictionary *dic in array) {
-//                qiushiModel *model = [[qiushiModel alloc] initWithDictionary:dic];
-//                [array1 addObject:model];
-//            }
             CollectionViewController *collectVC = [[CollectionViewController alloc] init];
-//            collectVC.collectModel = array1[indexPath.row];
             [self.navigationController pushViewController:collectVC animated:YES];
         }
             break;
@@ -123,6 +114,9 @@
 //每次当页面将要重新出现的时候，重新计算图片的缓存
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    
+    
     SDImageCache *chace = [SDImageCache sharedImageCache];
     NSInteger chaceSize = [chace getSize];
     NSString *cacheStr = [NSString stringWithFormat:@"清除缓存(%.02f)M",(float)chaceSize/1024/1024];
@@ -174,7 +168,6 @@
 
 }
 
-
 //邮件发送完成调用方法
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     switch (result) {
@@ -203,22 +196,30 @@
 }
 
 #pragma mark ------------------- 自定义方法
-- (void)setupTableViewHeadImageView{
-    UIView *headImageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 200)];
-    headImageView.backgroundColor = [UIColor grayColor];
-    headImageView.alpha = 0.5;
-    self.headImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.headImageBtn.frame = CGRectMake((kWidth - 160)/2, 80, 160, 160);
-    [self.headImageBtn setTitle:@"登陆/注册" forState:UIControlStateNormal];
-    [self.headImageBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-//    [self.headImageBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    self.headImageBtn.backgroundColor = [UIColor whiteColor];
-    self.headImageBtn.layer.cornerRadius = 80;
-    self.headImageBtn.clipsToBounds = YES;
-    [self.headImageBtn addTarget:self action:@selector(loginAndRegister:) forControlEvents:UIControlEventTouchUpInside];
 
-    [headImageView addSubview:self.headImageBtn];
-    self.tableView.tableHeaderView = headImageView;
+-(UIButton *)headImageBtn {
+    if (_headImageBtn == nil) {
+        self.headImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.headImageBtn.frame = CGRectMake((kWidth - 10)/2 + 45, 80, 110, 110);
+        self.headImageBtn.titleLabel.font = [UIFont systemFontOfSize:25.0];
+        [self.headImageBtn setTitle:@"登陆/注册" forState:UIControlStateNormal];
+        [self.headImageBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        self.headImageBtn.backgroundColor = [UIColor whiteColor];
+        self.headImageBtn.layer.cornerRadius = 55;
+        self.headImageBtn.clipsToBounds = YES;
+        [self.headImageBtn addTarget:self action:@selector(loginAndRegister:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _headImageBtn;
+
+}
+
+- (void)setupTableViewHeadImageView{
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 200)];
+    headView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"xxx.jpg"]];
+    headView.alpha = 0.5;
+    
+    [headView addSubview:self.headImageBtn];
+    self.tableView.tableHeaderView = headView;
 
 }
 
@@ -243,6 +244,11 @@
     }
     return _tableView;
 
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {

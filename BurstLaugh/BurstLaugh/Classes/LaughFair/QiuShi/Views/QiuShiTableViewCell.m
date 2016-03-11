@@ -24,11 +24,10 @@
 
 - (void)configView {
     //头像
-    self.iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, kWidth / 6 - 20, kWidth / 6 - 20)];
+    self.iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 15, kWidth / 6 - 20, kWidth / 6 - 20)];
     self.iconImage.layer.cornerRadius = (kWidth / 6 - 20 ) * 0.5;
-    self.iconImage.image = [UIImage imageNamed:@"geren"];
     self.iconImage.clipsToBounds = YES;
-    self.iconImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"geren"]];
+    self.iconImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"11geren"]];
     [self.contentView addSubview:self.iconImage];
     //名称
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 6 + 10, 10, kWidth - kWidth / 6 - 50, kWidth / 6 - 20)];
@@ -75,10 +74,10 @@
     self.sharBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.sharBtn.frame = CGRectMake(kWidth * 0.75 + 5, kWidth / 6 + 70, kWidth / 4 - 10, 30);
     [self.sharBtn setImage:[UIImage imageNamed:@"shar@2x.icon"] forState:UIControlStateNormal];
-    [self.sharBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.sharBtn addTarget:self action:@selector(collectionAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.sharBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     self.sharBtn.alpha = 0.5;
-    self.sharBtn.tag = 10;
+    self.sharBtn.tag = 12;
     [self.contentView addSubview:self.sharBtn];
     //创建分割线
     self.lineLabel = [[UILabel alloc] init];
@@ -122,6 +121,8 @@
 //段子界面赋值及自定义高度
 -(void)setJokerModel:(jokerModel *)jokerModel {
     [self.iconImage sd_setImageWithURL:[NSURL URLWithString:jokerModel.avatar] placeholderImage:nil];
+    //头像
+    self.iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, kWidth / 6 - 20, kWidth / 6 - 20)];
     self.nameLabel.text = jokerModel.name;
     //重写给label赋值
     CGFloat height = [HWTools getTextHeightWithText:jokerModel.text];
@@ -175,14 +176,7 @@
     }
 }
 
-//点击分享
-- (void)shareAction:(UIButton *)btn {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(sharedClick:)]) {
-        self.tag = btn.tag;
-//        [self.delegate sharedClick:btn];
-    }
 
-}
 
 
 - (void)awakeFromNib {

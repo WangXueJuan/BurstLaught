@@ -148,7 +148,7 @@ static sqlite3 *dataBase = nil;
     if (result == SQLITE_OK) {
         NSLog(@"sql语句没有问题");
         //绑定第三个问号的值 content
-        sqlite3_bind_text(stmt, 3, [content UTF8String], -1, nil);
+        sqlite3_bind_text(stmt, 1, [content UTF8String], -1, nil);
         //执行
         sqlite3_step(stmt);
         
@@ -170,7 +170,6 @@ static sqlite3 *dataBase = nil;
     int result = sqlite3_prepare_v2(dataBase, [sql UTF8String], -1, &stmt, NULL);
     //创建一个可变字典，存储查询出来的字典
     NSMutableArray *qiuShiArray = [NSMutableArray new];
-    NSMutableDictionary *dict = [NSMutableDictionary new];
 
     if (result == SQLITE_OK) {
         while (sqlite3_step(stmt) == SQLITE_ROW) {

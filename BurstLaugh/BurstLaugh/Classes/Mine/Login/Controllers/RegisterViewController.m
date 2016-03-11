@@ -27,7 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self showBackButtonWithImage:@"back"];
-    
+    self.tabBarController.tabBar.hidden = YES;
     self.passwordTextField.secureTextEntry = YES;
     self.againPWTextField.secureTextEntry = YES;
     
@@ -59,15 +59,11 @@
     [bmobUser setPassword:self.passwordTextField.text];
     [bmobUser setMobilePhoneNumber:self.userTextField.text];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:[NSString stringWithString:self.userTextField.text] forKey:@"userName"];
-    [userDefaults setValue:[NSString stringWithString:self.passwordTextField.text] forKey:@"userPass"];
-    
     [bmobUser signUpInBackgroundWithBlock:^(BOOL isSuccessful, NSError *error) {
         if (isSuccessful) {
-            //保存数据
-            [userDefaults synchronize];
             [ProgressHUD showSuccess:@"注册成功"];
+            BmobUser *user = [BmobUser getCurrentUser];
+            NSLog(@"注册成功 user= %@",user);
         }else{
             [ProgressHUD showSuccess:@"注册失败"];
         }

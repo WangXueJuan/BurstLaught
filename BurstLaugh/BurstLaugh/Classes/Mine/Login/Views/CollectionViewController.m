@@ -20,9 +20,11 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataArray1;
 @property (nonatomic, strong) DataBaseManger *dbManger;
 @property (nonatomic, strong) qiushiModel *model;
 @property (nonatomic, strong) NSMutableArray *array;
+@property (nonatomic, strong) NSMutableArray *array1;
 @property (nonatomic, strong) NSMutableDictionary *dic;
 @end
 
@@ -31,8 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   
-    
+    self.tabBarController.tabBar.hidden = YES;
     [self showBackButtonWithImage:@"back"];
     
      //添加tableView
@@ -41,6 +42,7 @@
     self.dbManger = [DataBaseManger sharedInstance];
     //将查询出来的数据添加到数组
     self.array = [self.dbManger selectAllQiuShiModel];
+    
 
     for (NSDictionary *dic in self.array) {
         self.model = [[qiushiModel alloc] initWithDictionary:dic number:1];
@@ -48,12 +50,9 @@
         
     }
     
-    [self.tableView reloadData];
-   
+ 
 }
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
+
 #pragma mark--------------------------- 协议方法
 //重用机制
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -83,6 +82,34 @@
     
 }
 
+//处于可编辑状态
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [self.tableView setEditing:YES animated:YES];
+}
+
+//先指定可删除的行数
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+//指定删除样式
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+         qiushiModel *deModel = self.dataArray[indexPath.row];
+        DataBaseManger *dbManger = [DataBaseManger sharedInstance];
+        [dbManger deleteQiuShiModelWithContent:deModel.content];
+        [self.dataArray removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewAutomaticDimension];
+
+
+}
+
+
 #pragma mark -------------------------- 懒加载
 -(UITableView *)tableView {
     if (_tableView == nil) {
@@ -108,6 +135,7 @@
     }
     return _dataArray;
 }
+
 -(NSMutableArray *)array {
     if (_array == nil) {
         self.array = [NSMutableArray new];
@@ -115,6 +143,24 @@
     return _array;
 }
 
+-(NSMutableArray *)dataArray1 {
+    if (_dataArray1 == nil) {
+        self.dataArray1 = [NSMutableArray new];
+    }
+    return _dataArray1;
+}
+
+-(NSMutableArray *)array1 {
+    if (_array1 == nil) {
+        self.array1 = [NSMutableArray new];
+    }
+    return _array1;
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

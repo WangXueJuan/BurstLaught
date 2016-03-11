@@ -12,8 +12,8 @@
 #import "QiuShiTableViewCell.h"
 #import "HWTools.h"
 #import "ProgressHUD.h"
-#import "QiuShiDetailViewController.h"
 #import "CollectionViewController.h"
+#import "DataBaseManger.h"
 @interface jokerHumorViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate, collectDelegate>
 {
     NSInteger _pageCount;
@@ -40,7 +40,7 @@
 - (void)requestData {
     [ProgressHUD show:@"正在加载数据"];
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
-    [sessionManger GET:[NSString stringWithFormat:@"%@&page=%ld",kJokesList, _pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManger GET:[NSString stringWithFormat:@"%@&page=%ld",kJokesList, (long)_pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -79,34 +79,10 @@
 -(void)collectionClick:(UIButton *)btn {
     if (btn.tag == 9) {
         [ProgressHUD showSuccess:@"收藏成功"];
-        CollectionViewController *collectVC = [[CollectionViewController alloc] init];
-        QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
-        NSIndexPath *path = [self.tableView indexPathForCell:cell];
-        qiushiModel *model = self.dataArray[path.row];
-        collectVC.collectModel = model;
-        NSMutableArray *array = [NSMutableArray new];
-        [array addObject:collectVC.collectModel];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue:array forKey:@"content"];
-        
-        //    [self.navigationController pushViewController:collectVC animated:YES];
-        
-        
-    }else {
-        QiuShiDetailViewController *detailVc = [[QiuShiDetailViewController alloc] init];
-//        QiuShiTableViewCell *cell = (QiuShiTableViewCell *)[[btn superview]superview];
-//        NSIndexPath *path = [self.tableView indexPathForCell:cell];
-//        qiushiModel *model = self.dataArray[path.row];
-//        detailVc.QiushiModel = model;
-//        detailVc._detailId = model.contentId;
-        [self.navigationController pushViewController:detailVc animated:YES];
     }
-    
-
-
-
 }
+
+
 
 
 //返回cell高度

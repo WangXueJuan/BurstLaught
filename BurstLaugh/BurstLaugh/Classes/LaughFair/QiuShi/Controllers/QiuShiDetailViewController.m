@@ -13,6 +13,8 @@
 #import "QiuShiDetailTableViewCell.h"
 #import <StoreKit/StoreKit.h>
 #import "ProgressHUD.h"
+#import "Reachability.h"
+#import "ZMYNetManager.h"
 @interface QiuShiDetailViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate, SKStoreProductViewControllerDelegate>
 {
    
@@ -40,6 +42,7 @@
     //开始请求网络
     [self rerquestData];
     [self.tableView launchRefreshing];
+    self.tabBarController.tabBar.hidden = YES;
     //添加右标题
     UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     commentBtn.frame = CGRectMake(kWidth * 0.75, 5, kWidth / 4, 30);
@@ -53,6 +56,10 @@
 
 //开始请求网络
 - (void)rerquestData{
+    if (![[ZMYNetManager shareZMYNetManager] isZMYNetWorkRunning]) {
+        
+        return;
+    }
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
     [sessionManger GET:[NSString stringWithFormat:@"%@/%@/comments?count=50&page=%ld",kQiuShiDetailList, self._detailId, (long)_pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
@@ -63,7 +70,6 @@
         for (NSDictionary *dic in itemsArray) {
             QiuShiDetailModell *model = [[QiuShiDetailModell alloc] initWithDictionary:dic];
             [self.listArray addObject:model];
-            NSLog(@"%@",model);
         }
         count = self.listArray.count;
         [self.tableView reloadData];
@@ -107,7 +113,6 @@
             detailCell = [[QiuShiDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
         QiuShiDetailModell *model = self.listArray[indexPath.row];
-//        NSLog(@"%@",self.listArray[indexPath.row]);
         detailCell.detailModell = model;
         self.tableView.separatorColor = [UIColor clearColor];
         detailCell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -123,12 +128,13 @@
     [self.view addSubview:self.textFied];
     [self.textFied becomeFirstResponder];
     //发表按钮
-    self.publishBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.publishBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.publishBtn.frame = CGRectMake(kWidth - 10 - 65 + 5, kHeight - 300, 60, 60);
     [self.publishBtn setTitle:@"发表" forState:UIControlStateNormal];
     self.publishBtn.layer.cornerRadius = 55 / 4;
     self.publishBtn.clipsToBounds = YES;
     [self.publishBtn addTarget:self action:@selector(publishContext) forControlEvents:UIControlEventTouchUpInside];
+    self.publishBtn.backgroundColor = [UIColor colorWithRed:254.0 / 255.0 green:128.0 / 255.0 blue:168.0 / 255.0 alpha:1.0];
     [self.view addSubview:self.publishBtn];
     
 
@@ -191,7 +197,7 @@
 
 //返回分区标题
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *str = [NSString stringWithFormat:@"%ld条评论",count];
+    NSString *str = [NSString stringWithFormat:@"%ld条评论",(long)count];
     return str;
 
 }
