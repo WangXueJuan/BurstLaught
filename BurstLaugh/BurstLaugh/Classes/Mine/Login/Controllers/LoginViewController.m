@@ -10,6 +10,7 @@
 #import <BmobSDK/Bmob.h>
 #import "VerHotViewController.h"
 #import "ProgressHUD.h"
+#import "MineViewController.h"
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -22,7 +23,7 @@
 
 @implementation LoginViewController
 
-
+//代码是否加密
 - (IBAction)switchSecurity:(id)sender {
     UISwitch *passSwitch = sender;
     if (passSwitch.on) {
@@ -43,6 +44,10 @@
         if (user) {
             [ProgressHUD showSuccess:@"登陆成功!"];
             NSLog(@"11111user = %@",user);
+            //登陆成功返回到个人主页
+            MineViewController *mineVC = [[MineViewController alloc] init];
+            mineVC.iconImage = self.userTextField.text;
+            [self.navigationController pushViewController:mineVC animated:YES];
         } else {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有注册此账号，请先完成注册" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -68,7 +73,8 @@
 
 //点击return回收键盘
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
+    [self.userTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
     
     return YES;
 }
@@ -93,6 +99,12 @@
     self.tabBarController.tabBar.hidden = YES;
     
     self.switchP.on = NO;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

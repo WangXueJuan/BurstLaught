@@ -858,7 +858,7 @@
 				TargetAttributes = {
 					7AA6F7B71C88287100C7DE19 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 2R47XK2D44;
+						DevelopmentTeam = CCQ5LLLX4L;
 					};
 					7AA6F7CA1C88287200C7DE19 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1087,7 +1087,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1111,6 +1112,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "5175ab45-b409-4d55-86d4-f381467f030d";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1132,7 +1134,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Lamco Sinyo education technology co., LTD (CCQ5LLLX4L)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1149,6 +1152,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "5175ab45-b409-4d55-86d4-f381467f030d";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1160,6 +1164,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BurstLaugh/Resource/Bmob_SDK_iOS_v1.6.6",
@@ -1167,7 +1173,7 @@
 				);
 				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/阶段项目/爆笑百科/BurstLaught/BurstLaugh/BurstLaugh/Library/PrefixHeader.pch";
 				INFOPLIST_FILE = BurstLaugh/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1178,8 +1184,10 @@
 					"$(PROJECT_DIR)BurstLaugh/Resource/SDK1.6.2/WXApi.h",
 					"$(PROJECT_DIR)BurstLaugh/Resource/SDK1.6.2/WXApiObject.h",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-125.BurstLaugh";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.-125.BurstLaugh";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1189,13 +1197,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BurstLaugh/Resource/Bmob_SDK_iOS_v1.6.6",
 					2,
 				);
+				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/阶段项目/爆笑百科/BurstLaught/BurstLaugh/BurstLaugh/Library/PrefixHeader.pch";
 				INFOPLIST_FILE = BurstLaugh/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1206,8 +1217,10 @@
 					"$(PROJECT_DIR)BurstLaugh/Resource/SDK1.6.2/WXApi.h",
 					"$(PROJECT_DIR)BurstLaugh/Resource/SDK1.6.2/WXApiObject.h",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-125.BurstLaugh";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.-125.BurstLaugh";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

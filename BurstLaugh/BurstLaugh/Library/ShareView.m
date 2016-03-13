@@ -52,7 +52,7 @@
     [self.shareView addSubview:weiboLabel];
     //朋友圈
     UIButton *friendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    friendBtn.frame = CGRectMake(kWidth/3 + 10, 20, kWidth / 4, 80);
+    friendBtn.frame = CGRectMake(kWidth/3 + 10, 20, kWidth / 4, kWidth / 4);
     [friendBtn setImage:[UIImage imageNamed:@"py_normal-1"] forState:UIControlStateNormal];
     [friendBtn addTarget:self action:@selector(sharBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     friendBtn.tag = 2;
@@ -74,7 +74,7 @@
     [self.shareView addSubview:label3];
     //remove
     UIButton *removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    removeBtn.frame = CGRectMake(20, 135, kWidth - 40, 40);
+    removeBtn.frame = CGRectMake(20, kWidth * 3 / 8 + 10, kWidth - 40, 30);
     [removeBtn setTitle:@"取消" forState:UIControlStateNormal];
     removeBtn.backgroundColor = [UIColor colorWithRed:255.0 / 255.0 green:129.0 / 255.0 blue:169.0 / 255.0 alpha:1.0];
     [removeBtn addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
@@ -96,13 +96,13 @@
 - (void)sharBtnAction:(UIButton *)btn {
     switch (btn.tag) {
         case 1:{
-            //新浪微博
+            //新浪微博分享
             AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
             WBAuthorizeRequest *authRequest =[WBAuthorizeRequest request];
             authRequest.redirectURI = kRedirectURL;
             authRequest.scope = @"all";
             WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:[self messageToShare] authInfo:authRequest access_token:myDelegate.wbtoken];
-            request.userInfo = @{@"ShareMessageFrom": @"SendMessageToWeiboViewController",@"Other_Info_1": [NSNumber numberWithInt:123],@"Other_Info_2": @[@"obj1", @"obj2"],@"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
+            [WeiboSDK sendRequest:request];            request.shouldOpenWeiboAppInstallPageIfNotInstalled = NO;
             [WeiboSDK sendRequest:request];
             
             [self.blackView removeFromSuperview];
@@ -114,7 +114,7 @@
         case 2: {
             //朋友圈
             SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-            req.text = self.sharedModel.content;
+            req.text = @"爆笑BreakOut，这是我的一个测试软件，最新视频，图片，段子爆笑分享，让你笑个不停，下载地址https://itunes.apple.com/cn/genre/yin-le/id34";
             req.bText = YES;
             //发送场景 为 微信朋友圈 默认为 会话窗口
             req.scene = WXSceneTimeline;
@@ -126,7 +126,7 @@
         case 3: {
             //微信朋友
             SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-            req.text = self.sharedModel.content;
+            req.text = @"爆笑BreakOut，这是我的一个测试软件，最新视频，图片，段子爆笑分享，让你笑个不停，下载地址https://itunes.apple.com/cn/genre/yin-le/id34";
             req.bText = YES;
             //发送场景 为 微信朋友圈 默认为 会话窗口
             req.scene = WXSceneSession;
@@ -162,14 +162,16 @@
 
 - (WBMessageObject *)messageToShare{
     WBMessageObject *message = [WBMessageObject message];
-    message.text = NSLocalizedString(@"最新爆料段子，让你笑个不停...", nil);
+    message.text = NSLocalizedString(@"这是我的一个测试软件，爆笑BreakOut,最新爆料段子，视频，图片，让你笑个不停...", nil);
     WBImageObject *image = [WBImageObject object];
-    image.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"shar" ofType:@".png"]];
+    image.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Icon-60" ofType:@".png"]];
     message.imageObject = image;
     
     return message;
     
 }
+
+
 
 
 /*

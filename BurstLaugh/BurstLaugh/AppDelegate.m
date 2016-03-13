@@ -23,7 +23,7 @@
 @implementation AppDelegate
 @synthesize webCurrentUserID;
 @synthesize wbtoken;
-
+@synthesize wbRefreshToken;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -43,6 +43,8 @@
     //创建被tabBarVC管理的视图控制器
     //笑神
     UIStoryboard *lauStory = [UIStoryboard storyboardWithName:@"Laught" bundle:nil];
+    //设置导航栏字体颜色
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont systemFontOfSize:25.0]}];
     UINavigationController *laughNav = lauStory.instantiateInitialViewController;
     //设置图片
     laughNav.tabBarItem.image = [UIImage imageNamed:@"icon_my_enable"];
@@ -88,6 +90,7 @@
 }
 
 -(void)didReceiveWeiboResponse:(WBBaseResponse *)response{
+    
     if ([response isKindOfClass:WBSendMessageToWeiboResponse.class])
     {
         NSString *title = NSLocalizedString(@"恭喜您，分享成功!", nil);
@@ -121,8 +124,6 @@
         self.wbRefreshToken = [(WBAuthorizeResponse *)response refreshToken];
         [alert show];
     }
-
-    
 }
 
 //返回请求加载的结果
@@ -135,6 +136,7 @@
     
 }
 
+
 //请求失败
 -(void)request:(WBHttpRequest *)request didFailWithError:(NSError *)error{
     NSString *title = nil;
@@ -144,12 +146,12 @@
     [alert show];
 }
 
--(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    
     return [WeiboSDK handleOpenURL:url delegate:self] || [WXApi handleOpenURL:url delegate:self];
 }
 
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    
     return [WeiboSDK handleOpenURL:url delegate:self] || [WXApi handleOpenURL:url delegate:self];
 }
 

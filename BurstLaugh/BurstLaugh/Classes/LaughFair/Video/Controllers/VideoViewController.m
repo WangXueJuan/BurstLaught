@@ -17,6 +17,7 @@
 #import "ProgressHUD.h"
 #import "ZMYNetManager.h"
 #import "Reachability.h"
+
 @interface VideoViewController ()<UITableViewDataSource, UITableViewDelegate,PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;
@@ -62,15 +63,16 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [ProgressHUD show:@"数据加载完成"];
+        NSDictionary *responDic = responseObject;
+        NSMutableArray *listArray = responDic[@"list"];
+        NSMutableArray *array = [NSMutableArray new];
         //下拉刷新时需要移除数组中的数据
         if (self.refreshing) {
             if (self.videoArray.count > 0) {
                 [self.videoArray removeLastObject];
             }
         }
-        NSDictionary *responDic = responseObject;
-        NSMutableArray *listArray = responDic[@"list"];
-        NSMutableArray *array = [NSMutableArray new];
+
         for (NSDictionary *dic in listArray) {
             videoModel *model = [[videoModel alloc] initWithDictionary:dic];
             [array addObject:model];
@@ -92,7 +94,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"cellId";
-    VideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    VideoTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil) {
         cell = [[VideoTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
     }
@@ -105,21 +107,7 @@
 
 
 }
-/*
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray *array = self.videoArray[indexPath.section];
-    videoModel *model = array[indexPath.row];
-    self.player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:model.video_url]];
-    self.player.view.frame = CGRectMake(0, 0, kWidth, 80);
-    self.player.view.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.player.view];
-    //隐藏自动自带的控制面板
-    self.player.controlStyle = MPMovieControlStyleDefault;
-    NSLog(@"%@",model.video_url);
-    [self.player play];
-    
-}
-*/
+
 //返回分区行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.videoArray.count;
@@ -178,8 +166,15 @@
         self.videoArray = [NSMutableArray new];
     }
     return _videoArray;
+    
 
 }
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [ProgressHUD dismiss];
+}
+
 
 
 

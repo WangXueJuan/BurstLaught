@@ -32,10 +32,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
+   
     self.tabBarController.tabBar.hidden = NO;
     [self.view addSubview:self.tableView];
-    self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"我的收藏",@"用户反馈",@"分享给好友",@"当前版本1.0" ,nil];
+    self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"我的收藏",@"用户反馈",@"分享给好友",@"当前版本号" ,nil];
     [self setupTableViewHeadImageView];
     
     
@@ -90,7 +91,7 @@
 
         case 4:{
             //监测版本
-            [ProgressHUD show:@"正在为您监测..."];
+            [ProgressHUD show:@"正在为您监测更新..."];
             [self performSelector:@selector(checkVersion) withObject:nil afterDelay:2.0];
         }
             break;
@@ -114,16 +115,16 @@
 //每次当页面将要重新出现的时候，重新计算图片的缓存
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    
-    
     SDImageCache *chace = [SDImageCache sharedImageCache];
     NSInteger chaceSize = [chace getSize];
     NSString *cacheStr = [NSString stringWithFormat:@"清除缓存(%.02f)M",(float)chaceSize/1024/1024];
     [self.titleArray replaceObjectAtIndex:0 withObject:cacheStr];
     NSIndexPath *indePath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView  reloadRowsAtIndexPaths:@[indePath] withRowAnimation:UITableViewRowAnimationFade];
-    
+    //设置返回按钮为空不显示
+    [self.navigationItem.backBarButtonItem setTitle:@""];
+    [self.navigationItem setHidesBackButton:YES];
+     self.navigationItem.title = @"个人主页";
     
 }
 
@@ -164,6 +165,7 @@
 
 //监测版本
 - (void)checkVersion{
+    
     [ProgressHUD showSuccess:@"恭喜您，已是最新版本!"];
 
 }
@@ -198,12 +200,20 @@
 #pragma mark ------------------- 自定义方法
 
 -(UIButton *)headImageBtn {
+    NSMutableArray *imageArray = [NSMutableArray arrayWithObjects:@"33.jpg",@"44.jpg",@"55.jpg", @"66.jpg",@"77.jpg", nil];
     if (_headImageBtn == nil) {
         self.headImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         self.headImageBtn.frame = CGRectMake((kWidth - 10)/2 + 45, 80, 110, 110);
-        self.headImageBtn.titleLabel.font = [UIFont systemFontOfSize:25.0];
-        [self.headImageBtn setTitle:@"登陆/注册" forState:UIControlStateNormal];
         [self.headImageBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        //判断用户是否登陆，若登陆成功，随机附上一张头像
+        if (self.iconImage != nil) {
+          NSInteger index = arc4random() % 4;
+        [self.headImageBtn setImage:[UIImage imageNamed:[imageArray objectAtIndex:index]] forState:UIControlStateNormal];
+        } else {
+            self.headImageBtn.titleLabel.font = [UIFont systemFontOfSize:23.0];
+            [self.headImageBtn setTitle:@"登陆/注册" forState:UIControlStateNormal];
+        }
+        
         self.headImageBtn.backgroundColor = [UIColor whiteColor];
         self.headImageBtn.layer.cornerRadius = 55;
         self.headImageBtn.clipsToBounds = YES;
@@ -249,6 +259,7 @@
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = NO;
+    [ProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning {

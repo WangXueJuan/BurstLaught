@@ -15,6 +15,8 @@
 #import "ProgressHUD.h"
 #import "Reachability.h"
 #import "ZMYNetManager.h"
+
+
 @interface VerHotViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -122,12 +124,15 @@
 }
 
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 #pragma mark ----------------------------- 懒加载
 -(UITableView *)tableView {
     if (!_tableView) {
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight - 180) style:UITableViewStylePlain];
-        //设置属性
-//        self.tableView.rowHeight = 250.0;
         //设置代理
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -142,6 +147,11 @@
     }
     return _dataArray;
 
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [ProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning {

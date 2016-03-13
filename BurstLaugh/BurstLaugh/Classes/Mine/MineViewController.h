@@ -12,5 +12,6 @@
 @interface MineViewController : UIViewController
 //接收幽默糗事界面的数据
 @property (nonatomic, strong) qiushiModel *mineModel;
+@property (nonatomic, copy) NSString *iconImage;
 
 @end

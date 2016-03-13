@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self showBackButtonWithImage:@"back"];
+    self.tabBarController.tabBar.hidden = YES;
     //添加右标题
     UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     commentBtn.frame = CGRectMake(kWidth * 0.75, 5, 30, 30);
@@ -70,7 +71,10 @@
     }
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [ProgressHUD dismiss];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

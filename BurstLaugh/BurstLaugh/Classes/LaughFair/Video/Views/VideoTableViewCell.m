@@ -24,8 +24,6 @@
 
 - (void)config{
     
-   
-    
     //内容
     UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 5, kWidth - 10, 30)];
     [self.contentView addSubview:tLabel];
@@ -41,12 +39,16 @@
     [prBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.contentView addSubview:prBtn];
     self.priseBtn = prBtn;
+    self.priseBtn.tag = 1;
+    [self.priseBtn addTarget:self action:@selector(fourBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     //踩按钮
     UIButton *dwBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     dwBtn.frame = CGRectMake(kWidth / 4 + 5, 237, kWidth / 4, 30);
     [dwBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.contentView addSubview:dwBtn];
     self.downBtn = dwBtn;
+    self.downBtn.tag = 2;
+    [self.downBtn addTarget:self action:@selector(fourBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     //播放次数label
     UILabel *pcLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 2 + 5, 237, kWidth / 4, 30)];
     pcLabel.textColor = [UIColor grayColor];
@@ -62,12 +64,7 @@
     self.uiClear.backgroundColor = [UIColor grayColor];
     self.uiClear.alpha = 0.2;
     [self.contentView addSubview:self.uiClear];
-    
-   
     self.backgroundColor = [UIColor whiteColor];
-    
-    
-    
 }
 
 //set方法赋值
@@ -97,40 +94,40 @@
     //分割线
     self.uiClear.frame = CGRectMake(0,frame.size.height + 263, kWidth, 8);
     
+    
+    
     //添加视频播放器
     self.moviePlayer = [[MPMoviePlayerController alloc] init];
     self.moviePlayer.contentURL = [NSURL URLWithString:videoModel.video_url];
     //添加播放器界面到控制器的view上
-    self.moviePlayer.view.frame = CGRectMake(0, 0, kWidth,self.image.frame.size.height + 40);
+    self.moviePlayer.view.frame = CGRectMake(5, frame.size.height + 10, kWidth - 10, 200);
     self.moviePlayer.view.backgroundColor = [UIColor clearColor];
-    [self.contentView addSubview:self.moviePlayer.view];
-    //隐藏自动自带的控制面板
-    self.moviePlayer.controlStyle = MPMovieControlStyleDefault;
-   
+    [self addSubview:self.moviePlayer.view];
     //添加一个按钮，点击播放器
     self.quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.quitBtn.frame = CGRectMake(20, 20, kWidth - 40, self.moviePlayer.view.frame.size.height - 50);
-    [self.quitBtn setImage:[UIImage imageNamed:@"buddy_header_arrow"] forState:UIControlStateNormal];
+    self.quitBtn.frame = CGRectMake((kWidth - 10) / 2 - 20, self.moviePlayer.view.frame.origin.y + 60, 40, 40);
+    [self.quitBtn setImage:[UIImage imageNamed:@"btn_video_play"] forState:UIControlStateNormal];
     [self.quitBtn addTarget:self action:@selector(removeMovie) forControlEvents:UIControlEventTouchUpInside];
     [self.moviePlayer.view addSubview:self.quitBtn];
-
     
 }
 
+//点击播放按钮
 - (void)removeMovie {
     [self.moviePlayer play];
     [self.quitBtn removeFromSuperview];
-    Clickount += 1;
-    if (Clickount == 2) {
-        [self.moviePlayer stop];
-        [self.moviePlayer.view removeFromSuperview];
-    }
-
     
 }
 
 
-
+//点赞按钮响应事件
+- (void)fourBtnAction:(UIButton *)btn {
+    if (btn.tag == 1) {
+        [self.priseBtn setImage:[UIImage imageNamed:@"icon_joke_like_on"] forState:UIControlStateNormal];
+    } else if (btn.tag == 2){
+        [self.downBtn setImage:[UIImage imageNamed:@"icon_joke_favorite_on"] forState:UIControlStateNormal];
+    }
+}
 
 //定义一个获取text高度的方法，可在外调用
 + (CGFloat)getTextHeightWithText:(NSString *)txtlabel {

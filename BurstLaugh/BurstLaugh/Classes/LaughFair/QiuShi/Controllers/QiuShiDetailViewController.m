@@ -15,6 +15,13 @@
 #import "ProgressHUD.h"
 #import "Reachability.h"
 #import "ZMYNetManager.h"
+
+//糗事详情接口
+#define kQiuShiDetailList @"http://m2.qiushibaike.com/article"
+//屏幕宽度和高度
+#define kWidth [UIScreen mainScreen].bounds.size.width
+#define kHeight [UIScreen mainScreen].bounds.size.height
+
 @interface QiuShiDetailViewController ()<UITableViewDataSource, UITableViewDelegate, PullingRefreshTableViewDelegate, SKStoreProductViewControllerDelegate>
 {
    
@@ -144,7 +151,19 @@
 
 //发表按钮响应方法
 - (void)publishContext{
-    if (self.textFied.text) {
+    if (self.textFied.text.length <= 0 && [self.textFied.text stringByReplacingOccurrencesOfString:@" " withString:@""].length <= 0) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示框" message:@"您没有输入任何评论" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *canAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:action];
+        [alert addAction:canAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        [self.textFied removeFromSuperview];
+        [self.publishBtn removeFromSuperview];
+        
+    } else {
+    
         //把输入的内容转化成model类型然后添加到数组中
         QiuShiDetailModell *pingLunModel = [[QiuShiDetailModell alloc] init];
         pingLunModel.content = self.textFied.text;
@@ -152,9 +171,10 @@
         [self.textFied removeFromSuperview];
         [self.publishBtn removeFromSuperview];
         count += 1;
-        
+
     }
-    [self.tableView reloadData];
+     [self.tableView reloadData];
+    
 }
 
 //点击return回收键盘
@@ -231,6 +251,28 @@
     return _listArray;
 }
 
+
+//导航栏添加返回按钮
+- (void)showBackButtonWithImage:(NSString *)imageName{
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 0, 44, 44);
+    [backBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
+    [backBtn addTarget:self action:@selector(backButtonAcyion:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarBtn = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    
+}
+
+
+- (void)backButtonAcyion:(UIButton *)button{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [ProgressHUD dismiss];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -37,6 +37,16 @@
 
 //发送短信验证码
 - (IBAction)sureNumBtnAction:(id)sender {
+    
+    if (self.cellPhoneNumberTF.text.length <= 0 && [self.cellPhoneNumberTF.text stringByReplacingOccurrencesOfString:@" " withString:@""].length <= 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示框" message:@"请输入您的手机号码" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *canAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:action];
+        [alert addAction:canAction];
+        [self presentViewController:alert animated:YES completion:nil];
+
+    } else {
     [BmobSMS requestSMSCodeInBackgroundWithPhoneNumber:self.cellPhoneNumberTF.text andTemplate:@"test" resultBlock:^(int number, NSError *error) {
         if (error) {
             NSLog(@"error = %@",error);
@@ -45,7 +55,7 @@
             NSLog(@"sms ID: %d",number);
         }
     }];
-    
+  }
 }
 
 //点击完成返回到登陆界面
@@ -88,7 +98,11 @@
     }
 }
 
-
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

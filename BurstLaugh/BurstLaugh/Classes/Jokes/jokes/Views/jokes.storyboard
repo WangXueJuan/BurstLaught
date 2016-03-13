@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--段 子-->
+        <!--涵 段 子-->
         <scene sceneID="3Q3-3i-vDq">
             <objects>
                 <viewController id="Kkk-Pg-cQw" customClass="jokerHumorViewController" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
-                    <navigationItem key="navigationItem" title="段 子" id="uZp-4g-M8b"/>
+                    <navigationItem key="navigationItem" title="涵 段 子" id="uZp-4g-M8b"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dF3-7g-tgc" userLabel="First Responder" sceneMemberID="firstResponder"/>

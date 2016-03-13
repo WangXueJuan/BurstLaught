@@ -7,7 +7,7 @@
 //
 
 #import "HWTools.h"
-
+#define kWidth [UIScreen mainScreen].bounds.size.width
 @implementation HWTools
 +(NSString *)getDataFromString:(NSString *)timesTemp {
     NSTimeInterval time = [timesTemp doubleValue];

@@ -101,17 +101,23 @@
         [self presentViewController:alertC animated:YES completion:nil];
         return NO;
     }
-    //判断密码
+    //判断密码是否为空
     if (self.passwordTextField.text.length <= 0 && [self.passwordTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""].length <= 0) {
         UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"密码不能为空" preferredStyle:UIAlertControllerStyleAlert];
         [alertC addAction:self.alertCancel];
         [alertC addAction:self.alertSure];
         [self presentViewController:alertC animated:YES completion:nil];
-        
-        
-        
         return NO;
     }
+    //判断密码长度是否在5-10位之间
+    if (self.passwordTextField.text.length <  6 && self.againPWTextField.text.length < 6) {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"密码长度至少为6位" preferredStyle:UIAlertControllerStyleAlert];
+        [alertC addAction:self.alertCancel];
+        [alertC addAction:self.alertSure];
+        [self presentViewController:alertC animated:YES completion:nil];
+        return NO;
+    }
+    
     //判断两个密码
     if (![self.passwordTextField.text isEqualToString:self.againPWTextField.text]) {
         UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"密码不一致，请重新输入" preferredStyle:UIAlertControllerStyleAlert];
@@ -145,6 +151,12 @@
     return _alertSure;
 }
 
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+    
+}
 
 //点击return处回收键盘
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
