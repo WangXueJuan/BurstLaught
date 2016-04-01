@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *imageV;
+@property (nonatomic, strong) UILabel *inpulLabel;
 
 @end
 
@@ -23,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title  =@"图片详情";
     [self showBackButtonWithImage:@"back"];
     self.tabBarController.tabBar.hidden = YES;
     //添加右标题
@@ -35,13 +37,20 @@
     UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:commentBtn];
     self.navigationItem.rightBarButtonItem = rightBtnItem;
   
-    self.imageV = [[UIImageView alloc] initWithFrame:CGRectMake(5, 20, kWidth - 10, self.verModel.height - 40)];
+    self.imageV = [[UIImageView alloc] initWithFrame:CGRectMake(5, 20, kWidth - 10, self.verModel.height)];
+    self.inpulLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.verModel.height - 100, kWidth - 10, 100)];
+    self.inpulLabel.backgroundColor = [UIColor blackColor];
+    self.inpulLabel.text = @"爆笑BreakOut  ";
+    self.inpulLabel.textColor = [UIColor whiteColor];
+    self.inpulLabel.textAlignment = NSTextAlignmentRight;
+    self.inpulLabel.font = [UIFont systemFontOfSize:30.0];
+    [self.imageV addSubview:self.inpulLabel];
     //picturer
     [self.imageV sd_setImageWithURL:[NSURL URLWithString:self.verModel.textImage] placeholderImage:nil];
     //添加scrollview
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight)];
     self.scrollView.backgroundColor = [UIColor blackColor];
-    self.scrollView.contentSize = CGSizeMake(kWidth, self.verModel.height);
+    self.scrollView.contentSize = CGSizeMake(kWidth, self.verModel.height - 50);
     self.scrollView.delegate = self;
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.imageV];

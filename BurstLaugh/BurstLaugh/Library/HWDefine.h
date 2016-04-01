@@ -15,18 +15,16 @@
 #define kVerHotList @"http://s.budejie.com/topic/list/zuixin/10/budejie-android-6.3.2/0-20.json?market=tencentyingyongbao&appname=baisibudejie&os=4.2.2&client=android&visiting=&mac=90%3A4e%3A2b%3A17%3A8d%3A8b&ver=6.3.2"
 
 //视频接口
-#define kVideoList @"http://s.budejie.com/topic/list/zuixin/41/budejie-android-6.3.2/0-20.json?market=tencentyingyongbao&appname=baisibudejie&os=4.2.2&visiting=&mac=90%3A4e%3A2b%3A17%3A8d%3A8b&ver=6.3.2"
+#define kVide @"http://dailyapi.ibaozou.com/api/v1/videos/latest"
 
 //糗事接口
 #define kQiushiList @"http://m2.qiushibaike.com/article/list/text?count=30&rqcnt=2"
 //糗事详情接口
 #define kQiuShiDetailList @"http://m2.qiushibaike.com/article"
-
-/*     段子接口   */
-
+/*   段子接口   */
 
 //最新段子
-#define kJokesList @"http://jianstory.com/rest/images/new?type=2&like_count=10"
+#define kJokesList @"http://m2.qiushibaike.com/article/list/latest?count=30"
 
 //新浪微博分享
 #define kRedirectURL @"https://api.weibo.com/oauth2/default.html"

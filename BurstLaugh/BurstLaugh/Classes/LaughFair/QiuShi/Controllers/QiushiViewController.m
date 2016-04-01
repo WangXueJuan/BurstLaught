@@ -149,7 +149,7 @@
     
     qiushiModel *model = self.dataArray[indexPath.row];
     cellHeight = [QiuShiTableViewCell getCellHeightModel:model];
-    return cellHeight + 50;
+    return cellHeight + 20;
 }
 //cell点击方法
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

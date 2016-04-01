@@ -32,7 +32,6 @@
         //拼接id头像
         self.iconImage = [NSString stringWithFormat:@"http://img.qiushibaike.com/system/avtnew/%@/%@/thumb/%@",preId,self.iconId, self.icon];
         if (number == 1) {
-            NSLog(@"ffdsfddfs");
             self.login = dic[@"login"];
             self.down = dic[@"down"];
             self.up = dic[@"up"];

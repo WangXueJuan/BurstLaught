@@ -16,9 +16,10 @@
 }
 @property(nonatomic, retain) UIImageView *imageIcon;
 @property(nonatomic, retain) UIImageView *imagePctiu;
-@property(nonatomic, retain) UILabel *nameLabel;
-@property(nonatomic, retain) UILabel *txtLabel;
+@property (nonatomic, retain) UILabel *nameLabel;
+@property (nonatomic, retain) UILabel *txtLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel *inputLabel;
 
 @end
 
@@ -61,6 +62,13 @@
     self.imagePctiu = [[UIImageView alloc] initWithFrame:CGRectMake(kWidth / 5, 80,kWidth - (kWidth / 3), kWidth / 2.5)];
     self.imagePctiu.userInteractionEnabled = YES;
     [self.contentView addSubview:self.imagePctiu];
+    //输入label
+    self.inputLabel = [[UILabel alloc] initWithFrame:CGRectMake(kWidth / 5, kWidth / 2.5 - 30, kWidth - (kWidth / 3), 30)];
+    self.inputLabel.backgroundColor = [UIColor blackColor];
+    self.inputLabel.text = @" 笑神经,最新爆笑热料，让你笑不停!";
+    self.inputLabel.textAlignment = NSTextAlignmentRight;
+    self.inputLabel.textColor = [UIColor whiteColor];
+    self.inputLabel.font = [UIFont systemFontOfSize:20.0];
     
     
 }
@@ -82,6 +90,15 @@
     self.timeLabel.text = [NSString stringWithFormat:@"%@",verModel.passtime];
     //重新给图片的frame赋值
     self.imagePctiu.frame = CGRectMake(10, frame.size.height + (kWidth / 6) - 10, kWidth - 20, verModel.height / 3);
+    //输入label
+    self.inputLabel.frame = CGRectMake(0, verModel.height / 3 - 40, kWidth - 20, 40);
+    if (verModel.textImage != nil) {
+        [self.imagePctiu addSubview:self.inputLabel];
+
+    } else {
+        [self.inputLabel removeFromSuperview];
+    
+    }
 
 
 }

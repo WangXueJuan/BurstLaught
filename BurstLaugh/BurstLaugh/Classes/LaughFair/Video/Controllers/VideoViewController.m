@@ -59,12 +59,12 @@
     }
     [ProgressHUD show:@"正在加载数据"];
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
-    [sessionManger GET:[NSString stringWithFormat:@"%@udid=%ld",kVideoList, (long)_netId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManger GET:kVide parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [ProgressHUD show:@"数据加载完成"];
         NSDictionary *responDic = responseObject;
-        NSMutableArray *listArray = responDic[@"list"];
+        NSMutableArray *listArray = responDic[@"videos"];
         NSMutableArray *array = [NSMutableArray new];
         //下拉刷新时需要移除数组中的数据
         if (self.refreshing) {

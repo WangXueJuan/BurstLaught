@@ -36,7 +36,7 @@
    
     self.tabBarController.tabBar.hidden = NO;
     [self.view addSubview:self.tableView];
-    self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"我的收藏",@"用户反馈",@"分享给好友",@"当前版本号" ,nil];
+    self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"我的收藏",@"用户反馈",@"分享给好友",nil];
     [self setupTableViewHeadImageView];
     
     
@@ -86,13 +86,6 @@
             //分享好友
             [self shareView];
             
-        }
-            break;
-
-        case 4:{
-            //监测版本
-            [ProgressHUD show:@"正在为您监测更新..."];
-            [self performSelector:@selector(checkVersion) withObject:nil afterDelay:2.0];
         }
             break;
 
@@ -160,13 +153,6 @@
 - (void)shareView{
      ShareView *shareView = [[ShareView alloc] init];
     [self.view addSubview:shareView];
-
-}
-
-//监测版本
-- (void)checkVersion{
-    
-    [ProgressHUD showSuccess:@"恭喜您，已是最新版本!"];
 
 }
 

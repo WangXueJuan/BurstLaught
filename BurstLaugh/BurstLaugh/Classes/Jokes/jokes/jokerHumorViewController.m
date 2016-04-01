@@ -39,13 +39,16 @@
 
 - (void)requestData {
     [ProgressHUD show:@"正在加载数据"];
+    
     AFHTTPSessionManager *sessionManger = [AFHTTPSessionManager manager];
+    
+    sessionManger.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     [sessionManger GET:[NSString stringWithFormat:@"%@&page=%ld",kJokesList, (long)_pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
         NSDictionary *itemDic = responseObject;
-        for (NSDictionary *dic in itemDic) {
+        NSMutableArray *itemsArray = itemDic[@"items"];
+        for (NSDictionary *dic in itemsArray) {
             jokerModel *model = [[jokerModel alloc] initWithDictionary:dic];
             [self.dataArray addObject:model];
         }
@@ -98,7 +101,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     jokerModel *model = self.dataArray[indexPath.row];
     CGFloat cellHeight = [QiuShiTableViewCell getCellHeightJokerModel:model];
-    return cellHeight + 50;
+    return cellHeight + 20;
 }
 
 //下拉刷新

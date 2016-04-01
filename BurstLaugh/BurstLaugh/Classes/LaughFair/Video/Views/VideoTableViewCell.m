@@ -88,7 +88,7 @@
     
     [self.priseBtn setTitle:[NSString stringWithFormat:@"赞 %@",videoModel.up] forState:UIControlStateNormal];
     [self.downBtn setTitle:[NSString stringWithFormat:@"踩 %@",videoModel.down] forState:UIControlStateNormal];
-    self.durationLabel.text = [NSString stringWithFormat:@"时长%.f",videoModel.duration];
+    self.durationLabel.text = [NSString stringWithFormat:@"时长 %.f 秒",videoModel.duration];
     self.playCountLabel.text = [NSString stringWithFormat:@"次数%@",videoModel.playcount];
     
     //分割线
@@ -103,9 +103,10 @@
     self.moviePlayer.view.frame = CGRectMake(5, frame.size.height + 10, kWidth - 10, 200);
     self.moviePlayer.view.backgroundColor = [UIColor clearColor];
     [self addSubview:self.moviePlayer.view];
+
     //添加一个按钮，点击播放器
     self.quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.quitBtn.frame = CGRectMake((kWidth - 10) / 2 - 20, self.moviePlayer.view.frame.origin.y + 60, 40, 40);
+    self.quitBtn.frame = CGRectMake((kWidth - 10) / 2 - 20, 80, 40, 40);
     [self.quitBtn setImage:[UIImage imageNamed:@"btn_video_play"] forState:UIControlStateNormal];
     [self.quitBtn addTarget:self action:@selector(removeMovie) forControlEvents:UIControlEventTouchUpInside];
     [self.moviePlayer.view addSubview:self.quitBtn];

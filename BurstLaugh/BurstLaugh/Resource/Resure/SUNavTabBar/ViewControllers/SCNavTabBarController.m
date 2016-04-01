@@ -164,6 +164,7 @@
     _navTabBar.currentItemIndex = _currentIndex;
 }
 
+
 #pragma mark - SCNavTabBarDelegate Methods
 #pragma mark -
 - (void)itemDidSelectedWithIndex:(NSInteger)index
@@ -176,13 +177,13 @@
     if (pop)
     {
         [UIView animateWithDuration:0.5f animations:^{
-            _navTabBar.frame = CGRectMake(_navTabBar.frame.origin.x, _navTabBar.frame.origin.y, _navTabBar.frame.size.width, height + NAV_TAB_BAR_HEIGHT);
+            _navTabBar.frame = CGRectMake(_navTabBar.frame.origin.x + 30, _navTabBar.frame.origin.y, _navTabBar.frame.size.width - 15, height + NAV_TAB_BAR_HEIGHT);
         }];
     }
     else
     {
         [UIView animateWithDuration:0.5f animations:^{
-            _navTabBar.frame = CGRectMake(_navTabBar.frame.origin.x, _navTabBar.frame.origin.y, _navTabBar.frame.size.width, NAV_TAB_BAR_HEIGHT);
+            _navTabBar.frame = CGRectMake(_navTabBar.frame.origin.x + 30, _navTabBar.frame.origin.y, _navTabBar.frame.size.width - 15, NAV_TAB_BAR_HEIGHT);
         }];
     }
     [_navTabBar refresh];

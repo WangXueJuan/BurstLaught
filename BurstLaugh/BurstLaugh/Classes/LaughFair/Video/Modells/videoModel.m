@@ -13,28 +13,14 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dic{
     self = [super init];
     if (self) {
-        self.text = dic[@"text"];
-        self.down = dic[@"down"];
-        self.up = dic[@"up"];
-        NSDictionary *videoDic = dic[@"video"];
-        NSMutableArray *videoArray = [NSMutableArray new];
-        NSMutableArray *thumbnailArray = dic[@"thumbnail"];
-        if (![videoDic isEqual:[NSNull null]]) {
-            videoArray = videoDic[@"video"];
-            self.video_url = videoArray[0];
-            thumbnailArray = videoDic[@"thumbnail"];
-            self.picture = thumbnailArray[0];
-            self.duration = [videoDic[@"duration"] floatValue];
-            [self covertTime:self.duration];
-            self.playcount = videoDic[@"playcount"];
-        }
-        NSDictionary *uDic = dic[@"u"];
-        NSMutableArray *array = [NSMutableArray new];
-        if (![uDic isEqual:[NSNull null]]) {
-            array = uDic[@"header"];
-            self.iconImage = array[0];
-        }
-        
+
+        self.picture = dic[@"image"];
+        self.text = dic[@"title"];
+        self.playcount = [dic[@"play_count"] stringValue];
+        self.up = [dic[@"vote_count"] stringValue];
+        self.video_url = dic[@"first_url"];
+        self.duration = [dic[@"play_time"] floatValue];
+        self.down = [dic[@"visiable"] stringValue];
     }
     
     return self;

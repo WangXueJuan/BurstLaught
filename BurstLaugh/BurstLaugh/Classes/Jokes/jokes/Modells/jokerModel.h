@@ -16,6 +16,10 @@
 @property (nonatomic, strong) NSString *unlike;
 @property (nonatomic, strong) NSString *comment; //评论
 @property (nonatomic, strong) NSString *shared;
+@property (nonatomic, strong) NSString *iconId;
+@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, strong) NSString *iconImage; //头像
+@property (nonatomic, strong) NSString *format;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dic;
 

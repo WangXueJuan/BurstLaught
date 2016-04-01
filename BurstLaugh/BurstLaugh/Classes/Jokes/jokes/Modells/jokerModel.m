@@ -12,19 +12,27 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        NSDictionary *authorDic = dic[@"author"];
+        NSString *preId;
+        NSDictionary *authorDic = dic[@"user"];
         if (![authorDic isEqual:[NSNull null]]) {
-            self.avatar = authorDic[@"avatar"];
-            self.name = authorDic[@"name"];
+            self.name = authorDic[@"login"];
+            self.iconId = [NSString stringWithFormat:@"%@", authorDic[@"id"]];
+            self.icon = authorDic[@"icon"];
         }
-        NSDictionary *contDic = dic[@"content"];
-        if (![contDic isEqual:[NSNull null]]) {
-            self.text = contDic[@"text"];
+        self.text = dic[@"content"];
+        NSDictionary *votesD = dic[@"votes"];
+        if (![votesD isEqual:[NSNull null]]) {
+            self.like = votesD[@"up"];
+            self.unlike = votesD[@"down"];
         }
-        self.like = dic[@"like"];
-        self.unlike = dic[@"unlike"];
-        self.shared = dic[@"shared"];
-        self.comment = dic[@"comment"];
+        self.shared = dic[@"share_count"];
+        self.comment = dic[@"comments_count"];
+        self.format  =dic[@"format"];
+        //拼接头像
+        //截取id前四位
+        preId = [self.iconId substringToIndex:4];
+        //拼接id头像
+        self.iconImage = [NSString stringWithFormat:@"http://img.qiushibaike.com/system/avtnew/%@/%@/thumb/%@",preId,self.iconId, self.icon];
         
     }
     return self;

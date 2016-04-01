@@ -26,28 +26,27 @@
 
     //设置子控制器
     [self setController];
-//    //设置导航栏字体颜色
-//    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont systemFontOfSize:25.0]}];
+
     }
 
 //设置子控制器
 - (void)setController{
     //最热
     VerHotViewController *verHotVC = [[VerHotViewController alloc] init];
-    verHotVC.title = @"最 热 笑 料";
+    verHotVC.title = @"\t\t最 热 笑 料";
     //视频
-    VideoViewController *videVC = [[VideoViewController alloc] init];
-    videVC.title = @"精 彩 视 频";
-    videVC.view.backgroundColor = [UIColor whiteColor];
+//    VideoViewController *videVC = [[VideoViewController alloc] init];
+//    videVC.title = @"精 彩 视 频";
+//    videVC.view.backgroundColor = [UIColor whiteColor];
     
     //糗事
     QiushiViewController *qiushiVc = [[QiushiViewController alloc] init];
-    qiushiVc.title = @"幽 默 糗 事";
+    qiushiVc.title = @"\t\t幽 默 糗 事";
     qiushiVc.view.backgroundColor = [UIColor whiteColor];
     
     SCNavTabBarController *navTabBar = [[SCNavTabBarController alloc] init];
-    navTabBar.subViewControllers = @[verHotVC, videVC, qiushiVc];
-    navTabBar.showArrowButton = YES;
+    navTabBar.subViewControllers = @[verHotVC, qiushiVc];
+    navTabBar.showArrowButton = NO;
     [navTabBar addParentController:self];
     
 }

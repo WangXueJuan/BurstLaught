@@ -43,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"糗事详情";
     _pageCount = 1;
     [self.view addSubview:self.tableView];
     [self showBackButtonWithImage:@"back"];
@@ -199,7 +200,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         cellHeight = [HWTools getTextHeightWithText:self.QiushiModel.content];
-        return cellHeight + 80;
+        return cellHeight + 100;
     }
     QiuShiDetailModell *model = self.listArray[indexPath.row];
     CGFloat cellH = [HWTools getTextHeightWithText:model.content];

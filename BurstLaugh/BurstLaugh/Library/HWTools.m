@@ -34,7 +34,7 @@
 //返回文本的最大高度
 + (CGFloat)getTextHeightWithText:(NSString *)txtlabel{
     //计算方法
-    CGRect textRect = [txtlabel boundingRectWithSize:CGSizeMake(kWidth * 0.65, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0]} context:nil];
+    CGRect textRect = [txtlabel boundingRectWithSize:CGSizeMake(kWidth - 20, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0]} context:nil];
     return textRect.size.height;
     
 }

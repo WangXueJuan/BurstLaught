@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2A7AB11CA7914F005253B0 /* vid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A7AB01CA7914F005253B0 /* vid.plist */; };
+		7A2A7ABB1CA7C133005253B0 /* 123456dszdfz.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A7ABA1CA7C133005253B0 /* 123456dszdfz.plist */; };
 		7A2BA5831C911DB700D9353C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2BA57E1C911DB700D9353C /* libWeChatSDK.a */; };
 		7A2BA5841C911DB700D9353C /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7A2BA57F1C911DB700D9353C /* read_me.txt */; };
 		7A2BA5861C91210B00D9353C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2BA5851C91210B00D9353C /* libz.tbd */; };
@@ -111,6 +113,8 @@
 		41767937985FA64A38DBD8DB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4B75084CA0B05FBFB1A98091 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B814C4AA5A0B28517C27FA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7A2A7AB01CA7914F005253B0 /* vid.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = vid.plist; sourceTree = "<group>"; };
+		7A2A7ABA1CA7C133005253B0 /* 123456dszdfz.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 123456dszdfz.plist; sourceTree = "<group>"; };
 		7A2BA57E1C911DB700D9353C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		7A2BA57F1C911DB700D9353C /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		7A2BA5801C911DB700D9353C /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
@@ -490,6 +494,7 @@
 				7AA6F7EC1C8829F700C7DE19 /* Modells */,
 				7AA6F7ED1C8829F700C7DE19 /* Views */,
 				7AA22FE71C8C61B4005D2646 /* joker.plist */,
+				7A2A7ABA1CA7C133005253B0 /* 123456dszdfz.plist */,
 			);
 			path = jokes;
 			sourceTree = "<group>";
@@ -636,6 +641,7 @@
 			children = (
 				7AA6F8311C885CAA00C7DE19 /* VideoViewController.h */,
 				7AA6F8321C885CAA00C7DE19 /* VideoViewController.m */,
+				7A2A7AB01CA7914F005253B0 /* vid.plist */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -899,6 +905,7 @@
 			files = (
 				7AC80ABC1C8E80410010C18E /* Login.storyboard in Resources */,
 				7AA6F7C21C88287200C7DE19 /* Assets.xcassets in Resources */,
+				7A2A7ABB1CA7C133005253B0 /* 123456dszdfz.plist in Resources */,
 				7A6723A51C8D36170041E638 /* QiushiDeatil.plist in Resources */,
 				7A6723B21C8DB64A0041E638 /* ProgressHUD.bundle in Resources */,
 				7A75DC1A1C891C8E00BFBA10 /* KverHot.plist in Resources */,
@@ -911,6 +918,7 @@
 				7A65D14A1C8A85630016B8A3 /* blueArrow.png in Resources */,
 				7AA22FD51C8BF01E005D2646 /* qiushi.plist in Resources */,
 				7AA6F81A1C8830BA00C7DE19 /* jokes.storyboard in Resources */,
+				7A2A7AB11CA7914F005253B0 /* vid.plist in Resources */,
 				7A821D161C8F9F35003D1EF1 /* Bmob_iOS_SDK更新历史.txt in Resources */,
 				7A2BA5841C911DB700D9353C /* read_me.txt in Resources */,
 				7A65D1441C8A81D30016B8A3 /* Vedio.plist in Resources */,
@@ -1171,7 +1179,7 @@
 					"$(PROJECT_DIR)/BurstLaugh/Resource/Bmob_SDK_iOS_v1.6.6",
 					2,
 				);
-				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/阶段项目/爆笑百科/BurstLaught/BurstLaugh/BurstLaugh/Library/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/阶段项目/B段项目-爆笑百科/BurstLaught/BurstLaugh/BurstLaugh/Library/PrefixHeader.pch";
 				INFOPLIST_FILE = BurstLaugh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1204,7 +1212,7 @@
 					"$(PROJECT_DIR)/BurstLaugh/Resource/Bmob_SDK_iOS_v1.6.6",
 					2,
 				);
-				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/阶段项目/爆笑百科/BurstLaught/BurstLaugh/BurstLaugh/Library/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/阶段项目/B段项目-爆笑百科/BurstLaught/BurstLaugh/BurstLaugh/Library/PrefixHeader.pch";
 				INFOPLIST_FILE = BurstLaugh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
